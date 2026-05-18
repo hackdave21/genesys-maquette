@@ -1,0 +1,240 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&family=Caveat:wght@500&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  .g-root{background:#0D0D0D;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;border-radius:12px;overflow:hidden;border:0.5px solid #2a2a2a}
+  .g-nav{background:#0D0D0D;border-bottom:0.5px solid #1f1f1f;padding:0 28px;height:56px;display:flex;align-items:center;justify-content:space-between}
+  .g-logo{font-family:'Clash Display',sans-serif;font-size:18px;font-weight:700;color:#fff;letter-spacing:2px}
+  .g-logo span{color:#FF6B2B}
+  .g-navlinks{display:flex;align-items:center;gap:20px}
+  .g-navlink{color:#888;font-size:12px;font-weight:500;cursor:pointer}
+  .g-navlink.active{color:#FF6B2B}
+  .g-cta-nav{background:#FF6B2B;color:#fff;font-size:11px;font-weight:600;padding:6px 14px;border-radius:4px;cursor:pointer}
+  .g-hero-work{padding:44px 28px 32px;border-bottom:0.5px solid #1f1f1f}
+  .g-section-tag{font-size:10px;color:#FF6B2B;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+  .g-page-title{font-family:'Clash Display',sans-serif;font-size:30px;font-weight:700;color:#fff;line-height:1.15;max-width:420px;margin-bottom:10px}
+  .g-page-title span{color:#FF6B2B}
+  .g-page-sub{font-size:13px;color:#666;max-width:360px;line-height:1.6}
+  .g-filters{padding:0 28px;border-bottom:0.5px solid #1f1f1f;display:flex;gap:6px;overflow-x:auto;padding-top:14px;padding-bottom:14px}
+  .g-filter{padding:6px 14px;border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;white-space:nowrap;border:0.5px solid #2a2a2a;color:#666;background:transparent;transition:all 0.2s}
+  .g-filter.active{background:#FF6B2B;color:#fff;border-color:#FF6B2B}
+  .g-filter:hover:not(.active){color:#fff;border-color:#444}
+  .g-grid-section{padding:24px 28px}
+  .g-portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .g-card{background:#111;border:0.5px solid #1f1f1f;border-radius:8px;overflow:hidden;cursor:pointer}
+  .g-card:hover .g-card-thumb{filter:brightness(1.1)}
+  .g-card-thumb{height:130px;display:flex;align-items:center;justify-content:center;position:relative;transition:filter 0.3s}
+  .g-card-cat{position:absolute;top:8px;left:8px;background:rgba(255,107,43,0.15);border:0.5px solid rgba(255,107,43,0.3);border-radius:3px;padding:2px 7px;font-size:9px;color:#FF6B2B;font-weight:600}
+  .g-card-duration{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,0.7);border-radius:3px;padding:2px 6px;font-size:9px;color:#aaa}
+  .g-play-sm{width:36px;height:36px;background:rgba(255,107,43,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .g-play-tri{width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:2px}
+  .g-card-body{padding:10px 12px}
+  .g-card-client{font-size:12px;font-weight:600;color:#fff}
+  .g-card-type{font-size:10px;color:#555;margin-top:2px}
+  .g-card-kpi{display:inline-flex;align-items:center;gap:4px;background:rgba(0,168,107,0.08);border:0.5px solid rgba(0,168,107,0.25);border-radius:3px;padding:2px 7px;font-size:9px;color:#00A86B;font-weight:600;margin-top:6px}
+  .g-card-featured{grid-column:span 2}
+  .g-card-featured .g-card-thumb{height:180px}
+  .g-gold-tag{background:rgba(197,165,114,0.1);border:0.5px solid rgba(197,165,114,0.3);border-radius:3px;padding:2px 7px;font-size:9px;color:#C5A572;font-weight:600;position:absolute;top:8px;right:8px}
+  .g-project-detail{background:#111;border:0.5px solid #1f1f1f;border-radius:8px;overflow:hidden;margin-top:14px}
+  .g-detail-header{padding:16px 18px;border-bottom:0.5px solid #1f1f1f;display:flex;align-items:center;justify-content:space-between}
+  .g-detail-title{font-family:'Clash Display',sans-serif;font-size:16px;font-weight:700;color:#fff}
+  .g-detail-tag{background:#FF6B2B;color:#fff;font-size:9px;font-weight:700;padding:3px 8px;border-radius:3px}
+  .g-detail-body{display:grid;grid-template-columns:2fr 1fr;gap:0}
+  .g-detail-video{background:#0a0a0a;height:120px;display:flex;align-items:center;justify-content:center;border-right:0.5px solid #1f1f1f}
+  .g-detail-meta{padding:14px}
+  .g-meta-row{margin-bottom:10px}
+  .g-meta-label{font-size:9px;color:#555;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:2px}
+  .g-meta-value{font-size:12px;color:#fff;font-weight:500}
+  .g-meta-value.green{color:#00A86B}
+  .g-meta-value.gold{color:#C5A572}
+  .g-load-more{margin:20px 28px 0;text-align:center;padding:12px;border:0.5px solid #2a2a2a;border-radius:6px;font-size:12px;color:#666;cursor:pointer}
+  .g-load-more:hover{border-color:#FF6B2B;color:#FF6B2B}
+  .g-cta-band{background:#FF6B2B;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:24px}
+  .g-cta-title{font-family:'Clash Display',sans-serif;font-size:16px;font-weight:700;color:#fff}
+  .g-btn-white{background:#fff;color:#FF6B2B;font-size:11px;font-weight:700;padding:9px 18px;border-radius:4px;cursor:pointer}
+  .g-btn-outline-w{background:transparent;color:#fff;font-size:11px;font-weight:600;padding:9px 18px;border-radius:4px;border:1.5px solid rgba(255,255,255,0.5);cursor:pointer}
+  .g-footer-bottom{background:#0a0a0a;padding:14px 28px;border-top:0.5px solid #1a1a1a;display:flex;justify-content:space-between;align-items:center}
+  .g-footer-copy{font-size:10px;color:#444}
+  .g-thumb-emoji{font-size:24px}
+  .count-badge{background:#1a1a1a;border:0.5px solid #2a2a2a;border-radius:20px;padding:3px 10px;font-size:10px;color:#555;margin-left:8px}
+</style>
+
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Page Portfolio de GENESYS — grille de projets vidéo avec filtres par catégorie</h2>
+
+<div class="g-root">
+
+  <nav class="g-nav">
+    <div class="g-logo">GENE<span>S</span>YS</div>
+    <div class="g-navlinks">
+      <span class="g-navlink">Accueil</span>
+      <span class="g-navlink active">Work</span>
+      <span class="g-navlink">Services</span>
+      <span class="g-navlink">À propos</span>
+      <span class="g-navlink">Contact</span>
+      <span class="g-cta-nav">Demander un devis</span>
+    </div>
+  </nav>
+
+  <div class="g-hero-work">
+    <div class="g-section-tag">Portfolio</div>
+    <h1 class="g-page-title">Notre <span>travail</span> parle pour nous.</h1>
+    <p class="g-page-sub">120+ projets livrés en Afrique de l'Ouest. Spots, Reels, Corporate, Événements — chaque vidéo est conçue pour convertir.</p>
+  </div>
+
+  <div class="g-filters">
+    <span class="g-filter active">Tous <span class="count-badge">24</span></span>
+    <span class="g-filter">Spots publicitaires</span>
+    <span class="g-filter">Reels / TikTok</span>
+    <span class="g-filter">Corporate</span>
+    <span class="g-filter">Événements</span>
+    <span class="g-filter">Motion Design</span>
+    <span class="g-filter">Documentaire</span>
+  </div>
+
+  <div class="g-grid-section">
+    <div class="g-portfolio-grid">
+
+      <div class="g-card g-card-featured">
+        <div class="g-card-thumb" style="background:linear-gradient(135deg,#1a0800,#0d0d0d)">
+          <div class="g-play-sm"><div class="g-play-tri"></div></div>
+          <div class="g-card-cat">⭐ Featured</div>
+          <div class="g-gold-tag">Showreel 2026</div>
+          <div class="g-card-duration">2:14</div>
+        </div>
+        <div class="g-card-body">
+          <div class="g-card-client">GENESYS — Showreel Annuel</div>
+          <div class="g-card-type">Tous projets confondus • 2025–2026</div>
+          <div class="g-card-kpi">↑ 12M+ vues générées au total</div>
+        </div>
+      </div>
+
+      <div class="g-card">
+        <div class="g-card-thumb" style="background:linear-gradient(135deg,#0a1a10,#0d0d0d)">
+          <div class="g-play-sm"><div class="g-play-tri"></div></div>
+          <div class="g-card-cat">Spot publicitaire</div>
+          <div class="g-card-duration">0:45</div>
+        </div>
+        <div class="g-card-body">
+          <div class="g-card-client">Ecobank Togo</div>
+          <div class="g-card-type">Corporate / Finance • 2025</div>
+          <div class="g-card-kpi">↑ +40% leads post-diffusion</div>
+        </div>
+      </div>
+
+      <div class="g-card">
+        <div class="g-card-thumb" style="background:linear-gradient(135deg,#12000a,#0d0d0d)">
+          <div class="g-play-sm"><div class="g-play-tri"></div></div>
+          <div class="g-card-cat">Reels / TikTok</div>
+          <div class="g-card-duration">0:30</div>
+        </div>
+        <div class="g-card-body">
+          <div class="g-card-client">Restaurant Le Belvédère</div>
+          <div class="g-card-type">Hospitalité • 2026</div>
+          <div class="g-card-kpi">↑ 850K vues TikTok</div>
+        </div>
+      </div>
+
+      <div class="g-card">
+        <div class="g-card-thumb" style="background:linear-gradient(135deg,#0a0a1a,#0d0d0d)">
+          <div class="g-play-sm"><div class="g-play-tri"></div></div>
+          <div class="g-card-cat">Événement</div>
+          <div class="g-card-duration">3:20</div>
+        </div>
+        <div class="g-card-body">
+          <div class="g-card-client">Mariage Kokou & Afi</div>
+          <div class="g-card-type">Événementiel • Lomé 2025</div>
+          <div class="g-card-kpi">↑ Film cinématique 4K</div>
+        </div>
+      </div>
+
+      <div class="g-card">
+        <div class="g-card-thumb" style="background:linear-gradient(135deg,#1a1000,#0d0d0d)">
+          <div class="g-play-sm"><div class="g-play-tri"></div></div>
+          <div class="g-card-cat">Motion Design</div>
+          <div class="g-card-duration">1:05</div>
+        </div>
+        <div class="g-card-body">
+          <div class="g-card-client">GIZ Togo</div>
+          <div class="g-card-type">Institutionnel / ONG • 2025</div>
+          <div class="g-card-kpi">↑ Diffusion internationale</div>
+        </div>
+      </div>
+
+      <div class="g-card">
+        <div class="g-card-thumb" style="background:linear-gradient(135deg,#001a10,#0d0d0d)">
+          <div class="g-play-sm"><div class="g-play-tri"></div></div>
+          <div class="g-card-cat">Corporate</div>
+          <div class="g-card-duration">2:00</div>
+        </div>
+        <div class="g-card-body">
+          <div class="g-card-client">Hôtel Sarakawa</div>
+          <div class="g-card-type">Hospitalité / Tourisme • 2026</div>
+          <div class="g-card-kpi">↑ +60% réservations en ligne</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="g-load-more">Charger plus de projets →</div>
+
+    <div class="g-project-detail">
+      <div class="g-detail-header">
+        <div>
+          <div style="font-size:10px;color:#555;margin-bottom:4px">Détail projet — Aperçu</div>
+          <div class="g-detail-title">Ecobank Togo — Spot Lancement</div>
+        </div>
+        <div class="g-detail-tag">Spot publicitaire</div>
+      </div>
+      <div class="g-detail-body">
+        <div class="g-detail-video">
+          <div style="text-align:center">
+            <div class="g-play-sm" style="margin:0 auto 8px"><div class="g-play-tri"></div></div>
+            <div style="font-size:10px;color:#444">Lecteur vidéo intégré</div>
+          </div>
+        </div>
+        <div class="g-detail-meta">
+          <div class="g-meta-row">
+            <div class="g-meta-label">Client</div>
+            <div class="g-meta-value">Ecobank Togo</div>
+          </div>
+          <div class="g-meta-row">
+            <div class="g-meta-label">Durée</div>
+            <div class="g-meta-value">45 secondes</div>
+          </div>
+          <div class="g-meta-row">
+            <div class="g-meta-label">Résultat</div>
+            <div class="g-meta-value green">+40% de leads</div>
+          </div>
+          <div class="g-meta-row">
+            <div class="g-meta-label">Budget</div>
+            <div class="g-meta-value gold">Sur devis</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="g-cta-band">
+    <div class="g-cta-title">Votre projet mérite d'être dans cette liste.</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <div class="g-btn-white">Demander un devis</div>
+      <div class="g-btn-outline-w">💬 WhatsApp</div>
+    </div>
+  </div>
+
+  <div class="g-footer-bottom">
+    <span class="g-footer-copy">© 2026 GENESYS Agency — Lomé, Togo</span>
+    <span class="g-footer-copy" style="color:#333">Work / Services / Contact</span>
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.g-filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.g-filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
