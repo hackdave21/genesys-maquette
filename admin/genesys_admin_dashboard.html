@@ -1,0 +1,359 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  .a-root{background:#0a0a0a;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;border-radius:12px;overflow:hidden;border:0.5px solid #1f1f1f;display:grid;grid-template-columns:200px 1fr;min-height:700px}
+
+  /* SIDEBAR */
+  .a-sidebar{background:#0d0d0d;border-right:0.5px solid #1f1f1f;display:flex;flex-direction:column}
+  .a-sidebar-top{padding:18px 16px;border-bottom:0.5px solid #1f1f1f}
+  .a-logo{font-family:'Clash Display',sans-serif;font-size:15px;font-weight:700;letter-spacing:2px}
+  .a-logo span{color:#FF6B2B}
+  .a-logo-sub{font-size:9px;color:#444;margin-top:2px;letter-spacing:0.5px;text-transform:uppercase}
+  .a-nav{padding:12px 8px;flex:1}
+  .a-nav-section{font-size:9px;color:#333;text-transform:uppercase;letter-spacing:1px;padding:0 8px;margin:10px 0 4px}
+  .a-nav-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:6px;cursor:pointer;color:#555;font-size:12px;font-weight:500;transition:all 0.2s;margin-bottom:1px}
+  .a-nav-item:hover{background:#1a1a1a;color:#ccc}
+  .a-nav-item.active{background:rgba(255,107,43,0.1);color:#FF6B2B;border:0.5px solid rgba(255,107,43,0.2)}
+  .a-nav-icon{font-size:14px;width:18px;text-align:center}
+  .a-nav-badge{margin-left:auto;background:#FF6B2B;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:10px}
+  .a-nav-badge.green{background:#00A86B}
+  .a-sidebar-bottom{padding:12px 8px;border-top:0.5px solid #1f1f1f}
+  .a-user{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:6px;cursor:pointer}
+  .a-user-avatar{width:28px;height:28px;background:#FF6B2B;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+  .a-user-name{font-size:11px;font-weight:600;color:#ccc}
+  .a-user-role{font-size:9px;color:#444}
+
+  /* MAIN */
+  .a-main{overflow-y:auto;display:flex;flex-direction:column}
+  .a-topbar{background:#0d0d0d;border-bottom:0.5px solid #1f1f1f;padding:0 22px;height:50px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:5}
+  .a-topbar-left{display:flex;align-items:center;gap:8px}
+  .a-page-title{font-family:'Clash Display',sans-serif;font-size:15px;font-weight:700}
+  .a-date{font-size:11px;color:#444}
+  .a-topbar-right{display:flex;align-items:center;gap:8px}
+  .a-search{background:#111;border:0.5px solid #1f1f1f;border-radius:5px;padding:6px 12px;font-size:11px;color:#888;width:160px;outline:none;font-family:'Plus Jakarta Sans',sans-serif}
+  .a-notif{width:30px;height:30px;background:#111;border:0.5px solid #1f1f1f;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;position:relative}
+  .a-notif-dot{position:absolute;top:5px;right:5px;width:6px;height:6px;background:#FF6B2B;border-radius:50%;border:1.5px solid #0d0d0d}
+  .a-btn-new{background:#FF6B2B;color:#fff;font-size:10px;font-weight:600;padding:6px 12px;border-radius:5px;cursor:pointer;white-space:nowrap}
+
+  .a-content{padding:20px 22px;flex:1}
+
+  /* KPI CARDS */
+  .a-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+  .a-kpi{background:#111;border:0.5px solid #1f1f1f;border-radius:8px;padding:14px}
+  .a-kpi-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .a-kpi-label{font-size:10px;color:#555;text-transform:uppercase;letter-spacing:0.5px;font-weight:600}
+  .a-kpi-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px}
+  .a-kpi-num{font-family:'Clash Display',sans-serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:3px}
+  .a-kpi-change{font-size:10px;font-weight:600}
+  .a-kpi-change.up{color:#00A86B}
+  .a-kpi-change.down{color:#FF4444}
+  .a-kpi-change.neutral{color:#555}
+
+  /* CHARTS ROW */
+  .a-charts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+  .a-card{background:#111;border:0.5px solid #1f1f1f;border-radius:8px;overflow:hidden}
+  .a-card-header{padding:12px 14px;border-bottom:0.5px solid #1f1f1f;display:flex;align-items:center;justify-content:space-between}
+  .a-card-title{font-size:12px;font-weight:600;color:#fff}
+  .a-card-action{font-size:10px;color:#555;cursor:pointer}
+  .a-card-body{padding:14px}
+
+  /* Bar chart */
+  .a-bar-chart{display:flex;align-items:flex-end;gap:6px;height:80px}
+  .a-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+  .a-bar{width:100%;border-radius:3px 3px 0 0;background:#1f1f1f;transition:background 0.2s;cursor:pointer;min-height:4px}
+  .a-bar:hover{background:#FF6B2B!important}
+  .a-bar-lbl{font-size:9px;color:#444}
+
+  /* Donut */
+  .a-donut-wrap{display:flex;align-items:center;gap:16px}
+  .a-donut-legend{flex:1}
+  .a-legend-item{display:flex;align-items:center;gap:6px;margin-bottom:7px}
+  .a-legend-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+  .a-legend-label{font-size:11px;color:#888;flex:1}
+  .a-legend-val{font-size:11px;font-weight:600;color:#fff}
+
+  /* Activity & Devis */
+  .a-bottom{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+
+  /* Table */
+  .a-table{width:100%;border-collapse:collapse}
+  .a-table th{font-size:9px;color:#444;text-transform:uppercase;letter-spacing:0.5px;padding:0 0 8px;border-bottom:0.5px solid #1f1f1f;text-align:left;font-weight:600}
+  .a-table td{padding:9px 0;border-bottom:0.5px solid #111;font-size:11px;color:#888;vertical-align:middle}
+  .a-table tr:last-child td{border-bottom:none}
+  .a-table tr:hover td{color:#ccc}
+  .a-status{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:10px;font-size:9px;font-weight:600}
+  .a-status.new{background:rgba(255,107,43,0.1);color:#FF6B2B;border:0.5px solid rgba(255,107,43,0.2)}
+  .a-status.progress{background:rgba(197,165,114,0.1);color:#C5A572;border:0.5px solid rgba(197,165,114,0.2)}
+  .a-status.done{background:rgba(0,168,107,0.1);color:#00A86B;border:0.5px solid rgba(0,168,107,0.2)}
+  .a-client-cell{display:flex;align-items:center;gap:6px}
+  .a-mini-avatar{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;flex-shrink:0}
+
+  /* Activity feed */
+  .a-feed-item{display:flex;gap:10px;margin-bottom:12px;align-items:flex-start}
+  .a-feed-icon{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:1px}
+  .a-feed-text{font-size:11px;color:#888;line-height:1.4}
+  .a-feed-text strong{color:#ccc}
+  .a-feed-time{font-size:9px;color:#333;margin-top:2px}
+
+  /* Quick actions */
+  .a-quick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}
+  .a-quick-btn{background:#111;border:0.5px solid #1f1f1f;border-radius:7px;padding:12px 8px;text-align:center;cursor:pointer;transition:border-color 0.2s}
+  .a-quick-btn:hover{border-color:#FF6B2B}
+  .a-quick-icon{font-size:18px;margin-bottom:5px}
+  .a-quick-label{font-size:10px;color:#666;font-weight:500}
+
+  .a-section-title{font-size:11px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px}
+</style>
+
+<div class="a-root">
+
+  <!-- SIDEBAR -->
+  <div class="a-sidebar">
+    <div class="a-sidebar-top">
+      <div class="a-logo">GENE<span>S</span>YS</div>
+      <div class="a-logo-sub">Admin Panel</div>
+    </div>
+    <div class="a-nav">
+      <div class="a-nav-section">Principal</div>
+      <div class="a-nav-item active"><span class="a-nav-icon">📊</span> Dashboard</div>
+      <div class="a-nav-item"><span class="a-nav-icon">📋</span> Devis <span class="a-nav-badge">5</span></div>
+      <div class="a-nav-item"><span class="a-nav-icon">🎬</span> Projets</div>
+      <div class="a-nav-item"><span class="a-nav-icon">👥</span> Clients</div>
+      <div class="a-nav-section">Contenu</div>
+      <div class="a-nav-item"><span class="a-nav-icon">🖼️</span> Portfolio</div>
+      <div class="a-nav-item"><span class="a-nav-icon">✍️</span> Blog <span class="a-nav-badge green">2</span></div>
+      <div class="a-nav-item"><span class="a-nav-icon">🎥</span> Showreel</div>
+      <div class="a-nav-section">Système</div>
+      <div class="a-nav-item"><span class="a-nav-icon">⚙️</span> Paramètres</div>
+      <div class="a-nav-item"><span class="a-nav-icon">🔔</span> Notifications</div>
+    </div>
+    <div class="a-sidebar-bottom">
+      <div class="a-user">
+        <div class="a-user-avatar">TA</div>
+        <div><div class="a-user-name">Thierry A.</div><div class="a-user-role">Super Admin</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="a-main">
+    <div class="a-topbar">
+      <div class="a-topbar-left">
+        <div class="a-page-title">Dashboard</div>
+        <div class="a-date">— Mardi 19 mai 2026</div>
+      </div>
+      <div class="a-topbar-right">
+        <input class="a-search" placeholder="🔍  Rechercher…">
+        <div class="a-notif">🔔<div class="a-notif-dot"></div></div>
+        <div class="a-btn-new">+ Nouveau projet</div>
+      </div>
+    </div>
+
+    <div class="a-content">
+
+      <!-- KPIs -->
+      <div class="a-kpis">
+        <div class="a-kpi">
+          <div class="a-kpi-top">
+            <div class="a-kpi-label">Devis reçus</div>
+            <div class="a-kpi-icon" style="background:rgba(255,107,43,0.1)">📋</div>
+          </div>
+          <div class="a-kpi-num">24</div>
+          <div class="a-kpi-change up">↑ +6 ce mois</div>
+        </div>
+        <div class="a-kpi">
+          <div class="a-kpi-top">
+            <div class="a-kpi-label">Projets actifs</div>
+            <div class="a-kpi-icon" style="background:rgba(197,165,114,0.1)">🎬</div>
+          </div>
+          <div class="a-kpi-num">8</div>
+          <div class="a-kpi-change up">↑ +2 ce mois</div>
+        </div>
+        <div class="a-kpi">
+          <div class="a-kpi-top">
+            <div class="a-kpi-label">CA du mois</div>
+            <div class="a-kpi-icon" style="background:rgba(0,168,107,0.1)">💰</div>
+          </div>
+          <div class="a-kpi-num">1.8M</div>
+          <div class="a-kpi-change up">↑ +22% vs avril</div>
+        </div>
+        <div class="a-kpi">
+          <div class="a-kpi-top">
+            <div class="a-kpi-label">Taux conversion</div>
+            <div class="a-kpi-icon" style="background:rgba(255,107,43,0.08)">📈</div>
+          </div>
+          <div class="a-kpi-num">68%</div>
+          <div class="a-kpi-change down">↓ −4% vs avril</div>
+        </div>
+      </div>
+
+      <!-- Quick actions -->
+      <div class="a-section-title">Actions rapides</div>
+      <div class="a-quick">
+        <div class="a-quick-btn"><div class="a-quick-icon">📋</div><div class="a-quick-label">Nouveau devis</div></div>
+        <div class="a-quick-btn"><div class="a-quick-icon">🎬</div><div class="a-quick-label">Ajouter projet</div></div>
+        <div class="a-quick-btn"><div class="a-quick-icon">✍️</div><div class="a-quick-label">Rédiger article</div></div>
+        <div class="a-quick-btn"><div class="a-quick-icon">🖼️</div><div class="a-quick-label">Upload portfolio</div></div>
+      </div>
+
+      <!-- Charts -->
+      <div class="a-charts">
+        <div class="a-card">
+          <div class="a-card-header">
+            <div class="a-card-title">Chiffre d'affaires (FCFA) — 2026</div>
+            <div class="a-card-action">Par mois ▾</div>
+          </div>
+          <div class="a-card-body">
+            <div class="a-bar-chart" id="barChart"></div>
+            <div style="display:flex;justify-content:space-between;margin-top:6px">
+              <span style="font-size:9px;color:#333">Jan</span>
+              <span style="font-size:9px;color:#333">Fév</span>
+              <span style="font-size:9px;color:#333">Mar</span>
+              <span style="font-size:9px;color:#333">Avr</span>
+              <span style="font-size:9px;color:#FF6B2B;font-weight:700">Mai</span>
+            </div>
+          </div>
+        </div>
+        <div class="a-card">
+          <div class="a-card-header">
+            <div class="a-card-title">Répartition des services</div>
+            <div class="a-card-action">Ce trimestre</div>
+          </div>
+          <div class="a-card-body">
+            <div class="a-donut-wrap">
+              <svg width="80" height="80" viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="28" fill="none" stroke="#1f1f1f" stroke-width="14"/>
+                <circle cx="40" cy="40" r="28" fill="none" stroke="#FF6B2B" stroke-width="14" stroke-dasharray="70 106" stroke-dashoffset="0" stroke-linecap="butt"/>
+                <circle cx="40" cy="40" r="28" fill="none" stroke="#C5A572" stroke-width="14" stroke-dasharray="35 141" stroke-dashoffset="-70" stroke-linecap="butt"/>
+                <circle cx="40" cy="40" r="28" fill="none" stroke="#00A86B" stroke-width="14" stroke-dasharray="25 151" stroke-dashoffset="-105" stroke-linecap="butt"/>
+                <circle cx="40" cy="40" r="28" fill="none" stroke="#333" stroke-width="14" stroke-dasharray="46 130" stroke-dashoffset="-130" stroke-linecap="butt"/>
+                <text x="40" y="44" text-anchor="middle" font-size="10" fill="#fff" font-weight="700" font-family="sans-serif">24 proj</text>
+              </svg>
+              <div class="a-donut-legend">
+                <div class="a-legend-item"><div class="a-legend-dot" style="background:#FF6B2B"></div><span class="a-legend-label">Spots pub.</span><span class="a-legend-val">40%</span></div>
+                <div class="a-legend-item"><div class="a-legend-dot" style="background:#C5A572"></div><span class="a-legend-label">PME Packs</span><span class="a-legend-val">20%</span></div>
+                <div class="a-legend-item"><div class="a-legend-dot" style="background:#00A86B"></div><span class="a-legend-label">Événements</span><span class="a-legend-val">15%</span></div>
+                <div class="a-legend-item"><div class="a-legend-dot" style="background:#333"></div><span class="a-legend-label">Autres</span><span class="a-legend-val">25%</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom: Devis récents + Activité -->
+      <div class="a-bottom">
+        <div class="a-card">
+          <div class="a-card-header">
+            <div class="a-card-title">Derniers devis reçus</div>
+            <div class="a-card-action">Voir tout →</div>
+          </div>
+          <div class="a-card-body">
+            <table class="a-table">
+              <thead>
+                <tr>
+                  <th>Client</th>
+                  <th>Service</th>
+                  <th>Budget</th>
+                  <th>Statut</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div class="a-client-cell"><div class="a-mini-avatar" style="background:#FF6B2B">KA</div>Kofi A.</div></td>
+                  <td>Spot pub.</td>
+                  <td style="color:#C5A572">500k</td>
+                  <td><span class="a-status new">Nouveau</span></td>
+                </tr>
+                <tr>
+                  <td><div class="a-client-cell"><div class="a-mini-avatar" style="background:#1a1a1a;color:#888;border:0.5px solid #333">MB</div>Marie B.</div></td>
+                  <td>Mariage</td>
+                  <td style="color:#C5A572">200k</td>
+                  <td><span class="a-status progress">En cours</span></td>
+                </tr>
+                <tr>
+                  <td><div class="a-client-cell"><div class="a-mini-avatar" style="background:#00A86B">EK</div>Ecobank</div></td>
+                  <td>Corporate</td>
+                  <td style="color:#C5A572">1.2M</td>
+                  <td><span class="a-status done">Signé</span></td>
+                </tr>
+                <tr>
+                  <td><div class="a-client-cell"><div class="a-mini-avatar" style="background:#1a1a1a;color:#888;border:0.5px solid #333">DY</div>Dodzi Y.</div></td>
+                  <td>Pack PME</td>
+                  <td style="color:#C5A572">250k/m</td>
+                  <td><span class="a-status new">Nouveau</span></td>
+                </tr>
+                <tr>
+                  <td><div class="a-client-cell"><div class="a-mini-avatar" style="background:#C5A572;color:#0d0d0d">HS</div>H. Sarakawa</div></td>
+                  <td>Corporate</td>
+                  <td style="color:#C5A572">700k</td>
+                  <td><span class="a-status done">Signé</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="a-card">
+          <div class="a-card-header">
+            <div class="a-card-title">Activité récente</div>
+            <div class="a-card-action">Tout voir</div>
+          </div>
+          <div class="a-card-body">
+            <div class="a-feed-item">
+              <div class="a-feed-icon" style="background:rgba(255,107,43,0.12)">📋</div>
+              <div><div class="a-feed-text"><strong>Nouveau devis</strong> reçu de Kofi Adzoa — Spot publicitaire 500k FCFA</div><div class="a-feed-time">Il y a 12 min</div></div>
+            </div>
+            <div class="a-feed-item">
+              <div class="a-feed-icon" style="background:rgba(0,168,107,0.12)">✅</div>
+              <div><div class="a-feed-text">Projet <strong>Hôtel Sarakawa</strong> marqué comme livré</div><div class="a-feed-time">Il y a 2h</div></div>
+            </div>
+            <div class="a-feed-item">
+              <div class="a-feed-icon" style="background:rgba(197,165,114,0.12)">🖼️</div>
+              <div><div class="a-feed-text">3 nouvelles vidéos ajoutées au <strong>portfolio</strong></div><div class="a-feed-time">Hier, 16h30</div></div>
+            </div>
+            <div class="a-feed-item">
+              <div class="a-feed-icon" style="background:rgba(255,107,43,0.12)">✍️</div>
+              <div><div class="a-feed-text">Article <strong>"Comment réussir sa vidéo TikTok"</strong> publié sur le blog</div><div class="a-feed-time">Hier, 10h15</div></div>
+            </div>
+            <div class="a-feed-item">
+              <div class="a-feed-icon" style="background:rgba(0,168,107,0.12)">💰</div>
+              <div><div class="a-feed-text">Paiement reçu — <strong>Ecobank Togo</strong> : 1 200 000 FCFA</div><div class="a-feed-time">18 mai, 09h00</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  // Bar chart
+  const data = [980, 1200, 1450, 1550, 1800];
+  const max = Math.max(...data);
+  const chart = document.getElementById('barChart');
+  const colors = ['#2a2a2a','#333','#3a3a3a','#444','#FF6B2B'];
+  data.forEach((v,i) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'a-bar-wrap';
+    const bar = document.createElement('div');
+    bar.className = 'a-bar';
+    bar.style.height = (v/max*80)+'px';
+    bar.style.background = colors[i];
+    const lbl = document.createElement('div');
+    lbl.className = 'a-bar-lbl';
+    lbl.textContent = (v/1000).toFixed(1)+'M';
+    wrap.appendChild(bar);
+    wrap.appendChild(lbl);
+    chart.appendChild(wrap);
+  });
+
+  // Nav interactions
+  document.querySelectorAll('.a-nav-item').forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.a-nav-item').forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+</script>
