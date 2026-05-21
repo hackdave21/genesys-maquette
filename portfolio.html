@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work & Portfolio - GENESYS Agency</title>
+  <meta name="description" content="Découvrez les projets vidéo réalisés par GENESYS Agency — spots publicitaires, Reels, films corporate et événementiels en Afrique de l'Ouest.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { orange: '#FF6B2B', gold: '#C5A572', green: '#00A86B', dark: '#0D0D0D' }
+          },
+          fontFamily: {
+            clash: ['Clash Display', 'sans-serif'],
+            jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&display=swap');
+    .lucide { display: inline-block; vertical-align: middle; }
+    .card-hover { transition: all 0.25s ease; }
+    .card-hover:hover { transform: translateY(-3px); border-color: rgba(255,107,43,0.4); }
+    .filter-active { background: #FF6B2B; border-color: #FF6B2B; color: #fff; }
+    .filter-inactive { background: transparent; border-color: #2a2a2a; color: #666; }
+    .filter-inactive:hover { border-color: #444; color: #ccc; }
+  </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#050505] text-white font-jakarta antialiased">
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-[#080808]/90 backdrop-blur-md border-b border-[#1f1f1f]">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="font-clash text-xl font-bold tracking-widest">GENE<span class="text-brand-orange">S</span>YS</a>
+      <div class="flex items-center gap-8">
+        <a href="index.html" class="text-[#888] text-sm font-medium hover:text-white transition-colors">Accueil</a>
+        <a href="portfolio.html" class="text-white text-sm font-medium">Work</a>
+        <a href="services.html" class="text-[#888] text-sm font-medium hover:text-white transition-colors">Services</a>
+        <a href="about.html" class="text-[#888] text-sm font-medium hover:text-white transition-colors">À propos</a>
+        <a href="contact.html" class="text-[#888] text-sm font-medium hover:text-white transition-colors">Contact</a>
+        <a href="contact.html" class="bg-brand-orange text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:bg-orange-600 transition-colors">Demander un devis</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="py-20 border-b border-[#1a1a1a]">
+    <div class="max-w-7xl mx-auto px-6">
+      <p class="text-xs text-brand-orange tracking-widest uppercase font-semibold mb-4">Portfolio</p>
+      <div class="flex items-end justify-between">
+        <div>
+          <h1 class="font-clash text-5xl font-bold text-white leading-tight mb-4">Notre <span class="text-brand-orange">travail</span> parle pour nous.</h1>
+          <p class="text-lg text-[#666] max-w-xl">120+ projets livrés en Afrique de l'Ouest. Spots, Reels, Corporate, Événements — chaque vidéo est conçue pour convertir.</p>
+        </div>
+        <div class="flex gap-4 text-center">
+          <div>
+            <p class="font-clash text-3xl font-bold text-brand-orange">120+</p>
+            <p class="text-xs text-[#555]">Projets</p>
+          </div>
+          <div class="w-px bg-[#222]"></div>
+          <div>
+            <p class="font-clash text-3xl font-bold text-brand-orange">12M+</p>
+            <p class="text-xs text-[#555]">Vues</p>
+          </div>
+          <div class="w-px bg-[#222]"></div>
+          <div>
+            <p class="font-clash text-3xl font-bold text-brand-orange">85+</p>
+            <p class="text-xs text-[#555]">Clients</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTERS + GRID -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- FILTERS -->
+      <div class="flex gap-3 mb-10 flex-wrap">
+        <button class="g-filter filter-active border rounded-full px-5 py-2 text-sm font-medium transition-all" onclick="filterPorfolio(this, 'all')">
+          Tous <span class="bg-white/20 rounded-full px-1.5 py-0.5 text-xs ml-1">24</span>
+        </button>
+        <button class="g-filter filter-inactive border rounded-full px-5 py-2 text-sm font-medium transition-all" onclick="filterPorfolio(this, 'spot')">Spots publicitaires</button>
+        <button class="g-filter filter-inactive border rounded-full px-5 py-2 text-sm font-medium transition-all" onclick="filterPorfolio(this, 'reels')">Reels / TikTok</button>
+        <button class="g-filter filter-inactive border rounded-full px-5 py-2 text-sm font-medium transition-all" onclick="filterPorfolio(this, 'corporate')">Corporate</button>
+        <button class="g-filter filter-inactive border rounded-full px-5 py-2 text-sm font-medium transition-all" onclick="filterPorfolio(this, 'event')">Événements</button>
+        <button class="g-filter filter-inactive border rounded-full px-5 py-2 text-sm font-medium transition-all" onclick="filterPorfolio(this, 'motion')">Motion Design</button>
+      </div>
+
+      <!-- FEATURED -->
+      <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-2xl overflow-hidden mb-6 group cursor-pointer hover:border-brand-orange/40 transition-colors">
+        <div class="grid grid-cols-2">
+          <div class="bg-gradient-to-br from-[#1a0800] to-[#0d0d0d] h-72 flex items-center justify-center relative">
+            <button class="w-16 h-16 bg-brand-orange/90 rounded-full flex items-center justify-center hover:scale-105 transition-transform shadow-xl shadow-orange-900/50">
+              <i data-lucide="play" class="w-6 h-6 text-white fill-current ml-1"></i>
+            </button>
+            <span class="absolute top-4 left-4 bg-brand-orange/15 border border-brand-orange/30 rounded px-3 py-1 text-xs text-brand-orange font-semibold flex items-center gap-1">
+              <i data-lucide="star" class="w-3 h-3 fill-current"></i> Featured
+            </span>
+            <span class="absolute top-4 right-4 bg-brand-gold/15 border border-brand-gold/30 rounded px-3 py-1 text-xs text-brand-gold font-semibold">Showreel 2026</span>
+            <span class="absolute bottom-4 right-4 bg-[#0d0d0d]/80 rounded px-2 py-1 text-xs text-[#888]">2:14</span>
+          </div>
+          <div class="p-10 flex flex-col justify-center">
+            <p class="text-xs text-brand-orange uppercase tracking-widest font-bold mb-3">SHOWREEL ANNUEL</p>
+            <h2 class="font-clash text-3xl font-bold text-white mb-4">GENESYS — Showreel Annuel 2026</h2>
+            <p class="text-[#666] leading-relaxed mb-6">Notre meilleur travail de l'année : spots, reels, corporates, mariages et motion design réunis en un film de 2 minutes.</p>
+            <div class="flex gap-3">
+              <div class="inline-flex items-center gap-1.5 bg-brand-green/10 border border-brand-green/25 rounded-lg px-4 py-2 text-sm text-brand-green font-semibold">
+                <i data-lucide="trending-up" class="w-4 h-4"></i> 12M+ vues générées
+              </div>
+              <div class="inline-flex items-center gap-1.5 bg-brand-orange/10 border border-brand-orange/25 rounded-lg px-4 py-2 text-sm text-brand-orange font-semibold">
+                <i data-lucide="award" class="w-4 h-4"></i> 120+ projets
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRID -->
+      <div class="grid grid-cols-3 gap-5" id="portfolio-grid">
+
+        <div class="portfolio-item spot bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl overflow-hidden card-hover cursor-pointer group">
+          <div class="h-48 bg-gradient-to-br from-[#1a0a00] to-[#0d0d0d] flex items-center justify-center relative">
+            <button class="w-12 h-12 bg-brand-orange/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+              <i data-lucide="play" class="w-5 h-5 text-white fill-current ml-0.5"></i>
+            </button>
+            <i data-lucide="clapperboard" class="w-10 h-10 text-brand-orange/20 absolute group-hover:opacity-0 transition-opacity"></i>
+            <span class="absolute top-3 left-3 bg-brand-orange/15 border border-brand-orange/30 rounded px-2 py-1 text-[10px] text-brand-orange font-semibold">Spot publicitaire</span>
+            <span class="absolute bottom-3 right-3 bg-[#0d0d0d]/80 rounded px-2 py-1 text-[10px] text-[#888]">0:45</span>
+          </div>
+          <div class="p-5">
+            <h3 class="text-sm font-semibold text-white mb-1">Ecobank Togo</h3>
+            <p class="text-xs text-[#555] mb-3">Corporate · Finance · 2025</p>
+            <div class="inline-flex items-center gap-1 bg-brand-green/10 border border-brand-green/25 rounded px-2.5 py-1 text-[10px] text-brand-green font-semibold">
+              <i data-lucide="trending-up" class="w-3 h-3"></i> +40% leads
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-item reels bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl overflow-hidden card-hover cursor-pointer group">
+          <div class="h-48 bg-gradient-to-br from-[#001a0d] to-[#0d0d0d] flex items-center justify-center relative">
+            <button class="w-12 h-12 bg-brand-orange/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+              <i data-lucide="play" class="w-5 h-5 text-white fill-current ml-0.5"></i>
+            </button>
+            <i data-lucide="smartphone" class="w-10 h-10 text-brand-green/20 absolute group-hover:opacity-0 transition-opacity"></i>
+            <span class="absolute top-3 left-3 bg-brand-green/15 border border-brand-green/30 rounded px-2 py-1 text-[10px] text-brand-green font-semibold">Reels / TikTok</span>
+            <span class="absolute bottom-3 right-3 bg-[#0d0d0d]/80 rounded px-2 py-1 text-[10px] text-[#888]">0:30</span>
+          </div>
+          <div class="p-5">
+            <h3 class="text-sm font-semibold text-white mb-1">Le Belvédère</h3>
+            <p class="text-xs text-[#555] mb-3">Hospitalité · 2026</p>
+            <div class="inline-flex items-center gap-1 bg-brand-green/10 border border-brand-green/25 rounded px-2.5 py-1 text-[10px] text-brand-green font-semibold">
+              <i data-lucide="trending-up" class="w-3 h-3"></i> 850K vues TikTok
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-item event bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl overflow-hidden card-hover cursor-pointer group">
+          <div class="h-48 bg-gradient-to-br from-[#0a0a1a] to-[#0d0d0d] flex items-center justify-center relative">
+            <button class="w-12 h-12 bg-brand-orange/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+              <i data-lucide="play" class="w-5 h-5 text-white fill-current ml-0.5"></i>
+            </button>
+            <i data-lucide="video" class="w-10 h-10 text-purple-500/20 absolute group-hover:opacity-0 transition-opacity"></i>
+            <span class="absolute top-3 left-3 bg-purple-500/15 border border-purple-500/30 rounded px-2 py-1 text-[10px] text-purple-400 font-semibold">Événement</span>
+            <span class="absolute bottom-3 right-3 bg-[#0d0d0d]/80 rounded px-2 py-1 text-[10px] text-[#888]">3:20</span>
+          </div>
+          <div class="p-5">
+            <h3 class="text-sm font-semibold text-white mb-1">Mariage Kokou & Afi</h3>
+            <p class="text-xs text-[#555] mb-3">Événementiel · Lomé 2025</p>
+            <div class="inline-flex items-center gap-1 bg-purple-500/10 border border-purple-500/25 rounded px-2.5 py-1 text-[10px] text-purple-400 font-semibold">
+              <i data-lucide="video" class="w-3 h-3"></i> Film 4K
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-item motion bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl overflow-hidden card-hover cursor-pointer group">
+          <div class="h-48 bg-gradient-to-br from-[#1a1000] to-[#0d0d0d] flex items-center justify-center relative">
+            <button class="w-12 h-12 bg-brand-orange/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+              <i data-lucide="play" class="w-5 h-5 text-white fill-current ml-0.5"></i>
+            </button>
+            <i data-lucide="sparkles" class="w-10 h-10 text-brand-gold/20 absolute group-hover:opacity-0 transition-opacity"></i>
+            <span class="absolute top-3 left-3 bg-brand-gold/15 border border-brand-gold/30 rounded px-2 py-1 text-[10px] text-brand-gold font-semibold">Motion Design</span>
+            <span class="absolute bottom-3 right-3 bg-[#0d0d0d]/80 rounded px-2 py-1 text-[10px] text-[#888]">1:05</span>
+          </div>
+          <div class="p-5">
+            <h3 class="text-sm font-semibold text-white mb-1">GIZ Togo</h3>
+            <p class="text-xs text-[#555] mb-3">Institutionnel / ONG · 2025</p>
+            <div class="inline-flex items-center gap-1 bg-brand-green/10 border border-brand-green/25 rounded px-2.5 py-1 text-[10px] text-brand-green font-semibold">
+              <i data-lucide="trending-up" class="w-3 h-3"></i> Diffusion internationale
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-item corporate bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl overflow-hidden card-hover cursor-pointer group">
+          <div class="h-48 bg-gradient-to-br from-[#001020] to-[#0d0d0d] flex items-center justify-center relative">
+            <button class="w-12 h-12 bg-brand-orange/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+              <i data-lucide="play" class="w-5 h-5 text-white fill-current ml-0.5"></i>
+            </button>
+            <i data-lucide="building-2" class="w-10 h-10 text-blue-500/20 absolute group-hover:opacity-0 transition-opacity"></i>
+            <span class="absolute top-3 left-3 bg-blue-500/15 border border-blue-500/30 rounded px-2 py-1 text-[10px] text-blue-400 font-semibold">Corporate</span>
+            <span class="absolute bottom-3 right-3 bg-[#0d0d0d]/80 rounded px-2 py-1 text-[10px] text-[#888]">2:30</span>
+          </div>
+          <div class="p-5">
+            <h3 class="text-sm font-semibold text-white mb-1">Togocom</h3>
+            <p class="text-xs text-[#555] mb-3">Télécommunications · 2025</p>
+            <div class="inline-flex items-center gap-1 bg-blue-500/10 border border-blue-500/25 rounded px-2.5 py-1 text-[10px] text-blue-400 font-semibold">
+              <i data-lucide="award" class="w-3 h-3"></i> Broadcast national
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-item spot bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl overflow-hidden card-hover cursor-pointer group">
+          <div class="h-48 bg-gradient-to-br from-[#1a0000] to-[#0d0d0d] flex items-center justify-center relative">
+            <button class="w-12 h-12 bg-brand-orange/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+              <i data-lucide="play" class="w-5 h-5 text-white fill-current ml-0.5"></i>
+            </button>
+            <i data-lucide="target" class="w-10 h-10 text-red-500/20 absolute group-hover:opacity-0 transition-opacity"></i>
+            <span class="absolute top-3 left-3 bg-brand-orange/15 border border-brand-orange/30 rounded px-2 py-1 text-[10px] text-brand-orange font-semibold">Spot publicitaire</span>
+            <span class="absolute bottom-3 right-3 bg-[#0d0d0d]/80 rounded px-2 py-1 text-[10px] text-[#888]">0:30</span>
+          </div>
+          <div class="p-5">
+            <h3 class="text-sm font-semibold text-white mb-1">Moov Africa Togo</h3>
+            <p class="text-xs text-[#555] mb-3">Télécom · 2026</p>
+            <div class="inline-flex items-center gap-1 bg-brand-orange/10 border border-brand-orange/25 rounded px-2.5 py-1 text-[10px] text-brand-orange font-semibold">
+              <i data-lucide="tv" class="w-3 h-3"></i> Pub TV nationale
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="mt-8 w-full py-4 border border-[#2a2a2a] rounded-xl text-sm text-[#666] hover:border-brand-orange hover:text-brand-orange transition-all">
+        Charger plus de projets <i data-lucide="chevron-down" class="w-4 h-4 inline ml-1"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-brand-orange py-20">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div>
+        <h2 class="font-clash text-4xl font-bold text-white mb-3">Votre projet mérite d'être dans cette liste.</h2>
+        <p class="text-orange-200 text-lg">Devis gratuit et sans engagement. Réponse sous 24h.</p>
+      </div>
+      <div class="flex gap-4 shrink-0">
+        <a href="contact.html" class="bg-white text-brand-orange font-bold px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors">Demander un devis</a>
+        <a href="#" class="bg-transparent text-white font-semibold px-8 py-4 rounded-lg border border-white/50 hover:bg-white/10 transition-colors flex items-center gap-2">
+          <i data-lucide="message-square" class="w-5 h-5"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#080808] border-t border-[#1a1a1a] py-8">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between text-xs text-[#444]">
+      <span>© 2026 GENESYS Agency — Lomé, Togo</span>
+      <div class="flex gap-6">
+        <a href="index.html" class="hover:text-white transition-colors">Accueil</a>
+        <a href="services.html" class="hover:text-white transition-colors">Services</a>
+        <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function filterPorfolio(el, category) {
+      document.querySelectorAll('.g-filter').forEach(b => {
+        b.className = 'g-filter filter-inactive border rounded-full px-5 py-2 text-sm font-medium transition-all';
+      });
+      el.className = 'g-filter filter-active border rounded-full px-5 py-2 text-sm font-medium transition-all';
+      
+      document.querySelectorAll('.portfolio-item').forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+    lucide.createIcons();
+  </script>
+</body>
+</html>

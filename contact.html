@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - GENESYS Agency</title>
+  <meta name="description" content="Contactez GENESYS Agency pour votre projet vidéo à Lomé, Togo. Devis gratuit et sans engagement. Réponse garantie sous 24h.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { orange: '#FF6B2B', gold: '#C5A572', green: '#00A86B', dark: '#0D0D0D' }
+          },
+          fontFamily: {
+            clash: ['Clash Display', 'sans-serif'],
+            jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&display=swap');
+    .lucide { display: inline-block; vertical-align: middle; }
+    input, select, textarea { transition: border-color 0.2s ease; }
+    input:focus, select:focus, textarea:focus { border-color: #FF6B2B !important; outline: none; }
+    .budget-pill { transition: all 0.2s ease; }
+  </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#050505] text-white font-jakarta antialiased">
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-[#080808]/90 backdrop-blur-md border-b border-[#1f1f1f]">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="font-clash text-xl font-bold tracking-widest">GENE<span class="text-brand-orange">S</span>YS</a>
+      <div class="flex items-center gap-8">
+        <a href="index.html" class="text-[#888] text-sm font-medium hover:text-white transition-colors">Accueil</a>
+        <a href="portfolio.html" class="text-[#888] text-sm font-medium hover:text-white transition-colors">Work</a>
+        <a href="services.html" class="text-[#888] text-sm font-medium hover:text-white transition-colors">Services</a>
+        <a href="about.html" class="text-[#888] text-sm font-medium hover:text-white transition-colors">À propos</a>
+        <a href="contact.html" class="text-white text-sm font-medium">Contact</a>
+        <a href="contact.html" class="bg-brand-orange text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:bg-orange-600 transition-colors">Demander un devis</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="py-20 border-b border-[#1a1a1a]">
+    <div class="max-w-7xl mx-auto px-6">
+      <p class="text-xs text-brand-orange tracking-widest uppercase font-semibold mb-4">Contact</p>
+      <h1 class="font-clash text-5xl font-bold text-white mb-5">Parlons de votre <span class="text-brand-orange">prochain projet.</span></h1>
+      <p class="text-lg text-[#666] max-w-xl mb-6">Réponse garantie sous 24h. Devis gratuit et sans engagement. Basés à Lomé, on travaille partout en Afrique de l'Ouest.</p>
+      <div class="flex gap-6 text-sm">
+        <div class="flex items-center gap-2 text-[#777]"><span class="w-2 h-2 bg-brand-green rounded-full"></span> Lun–Ven : 08h–18h</div>
+        <div class="flex items-center gap-2 text-[#777]"><span class="w-2 h-2 bg-brand-green rounded-full"></span> Samedi : 09h–14h</div>
+        <div class="flex items-center gap-2 text-[#777]"><span class="w-2 h-2 bg-brand-orange rounded-full"></span> WhatsApp 24/7</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT BODY -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-[1.6fr_1fr] gap-12">
+
+      <!-- FORM -->
+      <div>
+        <h2 class="font-clash text-2xl font-bold text-white mb-8">Demander un devis</h2>
+
+        <div class="grid grid-cols-2 gap-5 mb-5">
+          <div>
+            <label class="block text-xs text-[#666] font-semibold mb-2 uppercase tracking-wide">Prénom & Nom *</label>
+            <input type="text" placeholder="Kofi Adzoa" class="w-full bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-white placeholder:text-[#444] font-jakarta">
+          </div>
+          <div>
+            <label class="block text-xs text-[#666] font-semibold mb-2 uppercase tracking-wide">Entreprise</label>
+            <input type="text" placeholder="Ecobank Togo" class="w-full bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-white placeholder:text-[#444] font-jakarta">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-5 mb-5">
+          <div>
+            <label class="block text-xs text-[#666] font-semibold mb-2 uppercase tracking-wide">Email *</label>
+            <input type="email" placeholder="kofi@entreprise.tg" class="w-full bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-white placeholder:text-[#444] font-jakarta">
+          </div>
+          <div>
+            <label class="block text-xs text-[#666] font-semibold mb-2 uppercase tracking-wide">Téléphone / WhatsApp</label>
+            <input type="tel" placeholder="+228 XX XX XX XX" class="w-full bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-white placeholder:text-[#444] font-jakarta">
+          </div>
+        </div>
+
+        <div class="mb-5">
+          <label class="block text-xs text-[#666] font-semibold mb-2 uppercase tracking-wide">Type de projet *</label>
+          <select class="w-full bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-[#888] font-jakarta cursor-pointer appearance-none">
+            <option value="" disabled selected>Sélectionner un service…</option>
+            <option>Spot publicitaire</option>
+            <option>Pack PME Visibilité</option>
+            <option>Reels / TikTok</option>
+            <option>Film de mariage / événement</option>
+            <option>Production institutionnelle</option>
+            <option>Motion Design</option>
+            <option>Autre</option>
+          </select>
+        </div>
+
+        <div class="mb-5">
+          <label class="block text-xs text-[#666] font-semibold mb-3 uppercase tracking-wide">Budget estimé</label>
+          <div class="flex flex-wrap gap-2">
+            <button class="budget-pill border border-[#2a2a2a] text-[#666] bg-transparent rounded-full px-4 py-2 text-xs font-medium hover:border-[#444] hover:text-[#ccc]" onclick="selectBudget(this)">&lt; 150 000 FCFA</button>
+            <button class="budget-pill border border-brand-orange text-brand-orange bg-brand-orange/10 rounded-full px-4 py-2 text-xs font-medium" onclick="selectBudget(this)">150k – 350k FCFA</button>
+            <button class="budget-pill border border-[#2a2a2a] text-[#666] bg-transparent rounded-full px-4 py-2 text-xs font-medium hover:border-[#444] hover:text-[#ccc]" onclick="selectBudget(this)">350k – 700k FCFA</button>
+            <button class="budget-pill border border-[#2a2a2a] text-[#666] bg-transparent rounded-full px-4 py-2 text-xs font-medium hover:border-[#444] hover:text-[#ccc]" onclick="selectBudget(this)">&gt; 700 000 FCFA</button>
+            <button class="budget-pill border border-[#2a2a2a] text-[#666] bg-transparent rounded-full px-4 py-2 text-xs font-medium hover:border-[#444] hover:text-[#ccc]" onclick="selectBudget(this)">Sur devis</button>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <label class="block text-xs text-[#666] font-semibold mb-2 uppercase tracking-wide">Décrivez votre projet</label>
+          <textarea rows="5" placeholder="Parlez-nous de votre objectif, votre cible, votre deadline…" class="w-full bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-white placeholder:text-[#444] font-jakarta resize-none"></textarea>
+        </div>
+
+        <button onclick="submitForm()" class="w-full bg-brand-orange text-white font-bold py-4 rounded-lg text-sm hover:bg-orange-600 transition-colors flex items-center justify-center gap-2">
+          Envoyer ma demande <i data-lucide="send" class="w-4 h-4"></i>
+        </button>
+        <p class="text-center text-xs text-[#444] mt-3 flex items-center justify-center gap-1">
+          <i data-lucide="lock" class="w-3 h-3"></i> Vos données restent confidentielles. Réponse sous 24h.
+        </p>
+
+        <!-- SUCCESS -->
+        <div id="successMsg" class="hidden mt-5 bg-brand-green/10 border border-brand-green/30 rounded-xl p-6 text-center">
+          <i data-lucide="check-circle" class="w-10 h-10 text-brand-green mx-auto mb-3"></i>
+          <p class="font-clash text-xl font-bold text-brand-green mb-1">Message envoyé !</p>
+          <p class="text-sm text-[#666]">Thierry vous répondra dans les 24h. Merci de votre confiance.</p>
+        </div>
+      </div>
+
+      <!-- CONTACT INFOS -->
+      <div class="flex flex-col gap-5">
+        <h2 class="font-clash text-2xl font-bold text-white">Nos coordonnées</h2>
+
+        <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-5 flex items-start gap-4 hover:border-brand-orange/40 transition-colors">
+          <div class="w-10 h-10 bg-[#1a0800] border border-brand-orange/20 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i data-lucide="map-pin" class="w-5 h-5 text-brand-orange"></i>
+          </div>
+          <div>
+            <p class="text-xs text-[#555] uppercase tracking-wide font-bold mb-1">Adresse</p>
+            <p class="text-sm font-medium text-white">Lomé, Togo</p>
+            <p class="text-xs text-[#666]">Afrique de l'Ouest</p>
+          </div>
+        </div>
+
+        <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-5 flex items-start gap-4 hover:border-brand-orange/40 transition-colors">
+          <div class="w-10 h-10 bg-[#1a0800] border border-brand-orange/20 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i data-lucide="mail" class="w-5 h-5 text-brand-orange"></i>
+          </div>
+          <div>
+            <p class="text-xs text-[#555] uppercase tracking-wide font-bold mb-1">Email</p>
+            <a href="mailto:thierryamenyah1@gmail.com" class="text-sm font-medium text-white hover:text-brand-orange transition-colors">thierryamenyah1@gmail.com</a>
+            <p class="text-xs text-[#666]">Réponse sous 24h</p>
+          </div>
+        </div>
+
+        <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-5 flex items-start gap-4 hover:border-brand-orange/40 transition-colors">
+          <div class="w-10 h-10 bg-[#1a0800] border border-brand-orange/20 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i data-lucide="phone" class="w-5 h-5 text-brand-orange"></i>
+          </div>
+          <div>
+            <p class="text-xs text-[#555] uppercase tracking-wide font-bold mb-1">Téléphone / WhatsApp</p>
+            <p class="text-sm font-medium text-white">+228 XX XX XX XX</p>
+            <p class="text-xs text-[#666]">WhatsApp disponible 24/7</p>
+          </div>
+        </div>
+
+        <!-- WHATSAPP CTA -->
+        <div class="bg-gradient-to-br from-[#0a1f0a] to-[#0d0d0d] border border-brand-green/25 rounded-xl p-5 flex items-center gap-4">
+          <div class="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center flex-shrink-0">
+            <i data-lucide="message-square" class="w-6 h-6 text-white"></i>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm font-semibold text-white">Vous préférez WhatsApp ?</p>
+            <p class="text-xs text-[#666]">Envoyez-nous un message directement.</p>
+          </div>
+          <button class="bg-brand-green text-white text-xs font-bold px-4 py-2.5 rounded-lg hover:bg-green-600 transition-colors flex-shrink-0">Ouvrir →</button>
+        </div>
+
+        <!-- SOCIALS -->
+        <div>
+          <p class="text-xs text-[#555] uppercase tracking-wide font-bold mb-3">Suivez-nous</p>
+          <div class="grid grid-cols-3 gap-3">
+            <a href="#" class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-4 flex flex-col items-center gap-2 hover:border-brand-orange/40 transition-colors">
+              <i data-lucide="instagram" class="w-5 h-5 text-brand-orange"></i>
+              <p class="text-[10px] text-[#555]">@genesys.agency</p>
+            </a>
+            <a href="#" class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-4 flex flex-col items-center gap-2 hover:border-brand-orange/40 transition-colors">
+              <i data-lucide="music" class="w-5 h-5 text-brand-orange"></i>
+              <p class="text-[10px] text-[#555]">@genesys.tg</p>
+            </a>
+            <a href="#" class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-4 flex flex-col items-center gap-2 hover:border-brand-orange/40 transition-colors">
+              <i data-lucide="linkedin" class="w-5 h-5 text-brand-orange"></i>
+              <p class="text-[10px] text-[#555]">GENESYS Agency</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#080808] border-t border-[#1a1a1a] py-8">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between text-xs text-[#444]">
+      <span>© 2026 GENESYS Agency — Lomé, Togo</span>
+      <div class="flex gap-6">
+        <a href="index.html" class="hover:text-white transition-colors">Accueil</a>
+        <a href="portfolio.html" class="hover:text-white transition-colors">Portfolio</a>
+        <a href="services.html" class="hover:text-white transition-colors">Services</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function selectBudget(el) {
+      document.querySelectorAll('.budget-pill').forEach(b => {
+        b.className = 'budget-pill border border-[#2a2a2a] text-[#666] bg-transparent rounded-full px-4 py-2 text-xs font-medium hover:border-[#444] hover:text-[#ccc]';
+      });
+      el.className = 'budget-pill border border-brand-orange text-brand-orange bg-brand-orange/10 rounded-full px-4 py-2 text-xs font-medium';
+    }
+
+    function submitForm() {
+      const msg = document.getElementById('successMsg');
+      msg.classList.remove('hidden');
+      msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    lucide.createIcons();
+  </script>
+</body>
+</html>
