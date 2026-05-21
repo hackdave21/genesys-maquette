@@ -37,54 +37,55 @@
   </style>
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-[#050505] text-white font-jakarta antialiased">
+<body class="bg-white dark:bg-[#050505] text-gray-900 dark:text-white font-jakarta antialiased">
 
   <!-- NAV -->
-  <nav class="sticky top-0 z-50 bg-[#080808]/90 backdrop-blur-md border-b border-[#1f1f1f]">
+  <nav class="sticky top-0 z-50 bg-white/90 dark:bg-[#050505]/90 backdrop-blur-md border-b border-gray-200 dark:border-[#1f1f1f]">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="index.html" class="font-clash text-xl font-bold tracking-widest">GENE<span class="text-brand-orange">S</span>YS</a>
       <div class="flex items-center gap-8">
-        <a href="index.html" class="text-[#888] text-sm font-medium hover:text-white transition-colors">Accueil</a>
-        <a href="portfolio.html" class="text-[#888] text-sm font-medium hover:text-white transition-colors">Work</a>
-        <a href="services.html" class="text-[#888] text-sm font-medium hover:text-white transition-colors">Services</a>
-        <a href="about.html" class="text-white text-sm font-medium">À propos</a>
-        <a href="contact.html" class="text-[#888] text-sm font-medium hover:text-white transition-colors">Contact</a>
-        <a href="contact.html" class="bg-brand-orange text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:bg-orange-600 transition-colors">Demander un devis</a>
+        <a href="index.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">Accueil</a>
+        <a href="portfolio.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">Work</a>
+        <a href="services.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">Services</a>
+        <a href="about.html" class="text-brand-orange dark:text-brand-orange text-sm font-bold">À propos</a>
+        <a href="contact.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">Contact</a>
+        <button onclick="toggleTheme()" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a1a1a] text-gray-600 dark:text-[#888] hover:text-brand-orange transition-colors" aria-label="Toggle theme"><i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i><i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i></button>
+        <a href="contact.html" class="bg-brand-orange text-gray-900 dark:text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:bg-orange-600 transition-colors">Demander un devis</a>
       </div>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="py-20 border-b border-[#1a1a1a]">
+  <section class="py-20 border-b border-gray-200 dark:border-[#1a1a1a]">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 gap-16 items-center">
       <div>
         <p class="text-xs text-brand-orange tracking-widest uppercase font-semibold mb-4">À propos</p>
-        <h1 class="font-clash text-5xl font-bold text-white leading-tight mb-6">Nés à Lomé.<br>Pensés pour <span class="text-brand-orange">l'Afrique.</span></h1>
-        <p class="text-lg text-[#666] leading-relaxed mb-8">GENESYS est une agence de marketing créatif vidéo basée à Lomé, Togo. Notre mission : produire des vidéos qui convertissent vraiment, avec des standards internationaux au service du marché africain.</p>
+        <h1 class="font-clash text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-6">Nés à Lomé.<br>Pensés pour <span class="text-brand-orange">l'Afrique.</span></h1>
+        <p class="text-lg text-gray-500 dark:text-[#666] leading-relaxed mb-8">GENESYS est une agence de marketing créatif vidéo basée à Lomé, Togo. Notre mission : produire des vidéos qui convertissent vraiment, avec des standards internationaux au service du marché africain.</p>
         <div class="grid grid-cols-3 gap-5">
-          <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-5 text-center">
+          <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-5 text-center">
             <p class="font-clash text-3xl font-bold text-brand-orange">4 ans</p>
-            <p class="text-xs text-[#555] mt-1">D'expérience</p>
+            <p class="text-xs text-gray-500 dark:text-[#555] mt-1">D'expérience</p>
           </div>
-          <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-5 text-center">
+          <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-5 text-center">
             <p class="font-clash text-3xl font-bold text-brand-orange">120+</p>
-            <p class="text-xs text-[#555] mt-1">Projets livrés</p>
+            <p class="text-xs text-gray-500 dark:text-[#555] mt-1">Projets livrés</p>
           </div>
-          <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-5 text-center">
+          <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-5 text-center">
             <p class="font-clash text-3xl font-bold text-brand-orange">85+</p>
-            <p class="text-xs text-[#555] mt-1">Clients satisfaits</p>
+            <p class="text-xs text-gray-500 dark:text-[#555] mt-1">Clients satisfaits</p>
           </div>
         </div>
       </div>
-      <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-2xl p-10">
+      <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-2xl p-10">
         <div class="flex items-center gap-5 mb-6">
-          <div class="w-20 h-20 bg-brand-orange rounded-full flex items-center justify-center font-clash text-3xl font-bold text-white flex-shrink-0">TA</div>
+          <div class="w-20 h-20 bg-brand-orange rounded-full flex items-center justify-center font-clash text-3xl font-bold text-gray-900 dark:text-white flex-shrink-0">TA</div>
           <div>
-            <h2 class="font-clash text-xl font-bold text-white">Thierry Amenyah</h2>
+            <h2 class="font-clash text-xl font-bold text-gray-900 dark:text-white">Thierry Amenyah</h2>
             <p class="text-brand-orange text-sm">Fondateur & Directeur Créatif</p>
           </div>
         </div>
-        <blockquote class="font-caveat text-xl text-white leading-relaxed border-l-2 border-brand-orange pl-5">
+        <blockquote class="font-caveat text-xl text-gray-900 dark:text-white leading-relaxed border-l-2 border-brand-orange pl-5">
           "J'ai créé GENESYS avec une conviction simple : les entreprises africaines méritent des productions vidéo à la hauteur de leurs ambitions. Pas des vidéos 'bon marché'. Des vidéos qui font la différence."
         </blockquote>
       </div>
@@ -92,85 +93,85 @@
   </section>
 
   <!-- VALEURS -->
-  <section class="py-20 border-b border-[#1a1a1a]">
+  <section class="py-20 border-b border-gray-200 dark:border-[#1a1a1a]">
     <div class="max-w-7xl mx-auto px-6">
       <p class="text-xs text-brand-orange tracking-widest uppercase font-semibold mb-3">Nos valeurs</p>
-      <h2 class="font-clash text-3xl font-bold text-white mb-10">Ce qui nous anime</h2>
+      <h2 class="font-clash text-3xl font-bold text-gray-900 dark:text-white mb-10">Ce qui nous anime</h2>
       <div class="grid grid-cols-3 gap-6">
-        <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-8 card-hover">
-          <div class="w-12 h-12 bg-[#1a0800] border border-brand-orange/20 rounded-xl flex items-center justify-center mb-5">
+        <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-8 card-hover">
+          <div class="w-12 h-12 bg-orange-50 dark:bg-[#1a0800] border border-brand-orange/20 rounded-xl flex items-center justify-center mb-5">
             <i data-lucide="target" class="w-6 h-6 text-brand-orange"></i>
           </div>
-          <h3 class="font-clash text-xl font-bold text-white mb-3">Créativité utile</h3>
-          <p class="text-sm text-[#666] leading-relaxed">Chaque concept est pensé pour atteindre un objectif business précis, pas seulement pour être beau.</p>
+          <h3 class="font-clash text-xl font-bold text-gray-900 dark:text-white mb-3">Créativité utile</h3>
+          <p class="text-sm text-gray-500 dark:text-[#666] leading-relaxed">Chaque concept est pensé pour atteindre un objectif business précis, pas seulement pour être beau.</p>
         </div>
-        <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-8 card-hover">
-          <div class="w-12 h-12 bg-[#1a0800] border border-brand-orange/20 rounded-xl flex items-center justify-center mb-5">
+        <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-8 card-hover">
+          <div class="w-12 h-12 bg-orange-50 dark:bg-[#1a0800] border border-brand-orange/20 rounded-xl flex items-center justify-center mb-5">
             <i data-lucide="globe" class="w-6 h-6 text-brand-orange"></i>
           </div>
-          <h3 class="font-clash text-xl font-bold text-white mb-3">Ancrage africain</h3>
-          <p class="text-sm text-[#666] leading-relaxed">On comprend les codes culturels et les langues de l'Afrique de l'Ouest. On parle ewe, kabye, français et anglais.</p>
+          <h3 class="font-clash text-xl font-bold text-gray-900 dark:text-white mb-3">Ancrage africain</h3>
+          <p class="text-sm text-gray-500 dark:text-[#666] leading-relaxed">On comprend les codes culturels et les langues de l'Afrique de l'Ouest. On parle ewe, kabye, français et anglais.</p>
         </div>
-        <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-8 card-hover">
-          <div class="w-12 h-12 bg-[#1a0800] border border-brand-orange/20 rounded-xl flex items-center justify-center mb-5">
+        <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-8 card-hover">
+          <div class="w-12 h-12 bg-orange-50 dark:bg-[#1a0800] border border-brand-orange/20 rounded-xl flex items-center justify-center mb-5">
             <i data-lucide="bar-chart-3" class="w-6 h-6 text-brand-orange"></i>
           </div>
-          <h3 class="font-clash text-xl font-bold text-white mb-3">ROI mesurable</h3>
-          <p class="text-sm text-[#666] leading-relaxed">On livre des résultats que vous pouvez mesurer en FCFA. Leads, ventes, portée — chaque métrique compte.</p>
+          <h3 class="font-clash text-xl font-bold text-gray-900 dark:text-white mb-3">ROI mesurable</h3>
+          <p class="text-sm text-gray-500 dark:text-[#666] leading-relaxed">On livre des résultats que vous pouvez mesurer en FCFA. Leads, ventes, portée — chaque métrique compte.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- TIMELINE -->
-  <section class="py-20 border-b border-[#1a1a1a]">
+  <section class="py-20 border-b border-gray-200 dark:border-[#1a1a1a]">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 gap-16">
       <div>
         <p class="text-xs text-brand-orange tracking-widest uppercase font-semibold mb-3">Notre histoire</p>
-        <h2 class="font-clash text-3xl font-bold text-white mb-10">De Lomé à l'Afrique</h2>
+        <h2 class="font-clash text-3xl font-bold text-gray-900 dark:text-white mb-10">De Lomé à l'Afrique</h2>
         <div class="flex flex-col gap-0">
           <div class="timeline-line flex gap-5 pb-10">
             <div class="w-9 flex flex-col items-center flex-shrink-0">
-              <div class="w-9 h-9 bg-[#0d0d0d] border-2 border-brand-orange rounded-full flex items-center justify-center">
+              <div class="w-9 h-9 bg-gray-50 dark:bg-[#0d0d0d] border-2 border-brand-orange rounded-full flex items-center justify-center">
                 <span class="text-[10px] font-bold text-brand-orange">22</span>
               </div>
             </div>
-            <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-5 flex-1">
-              <p class="text-sm font-semibold text-white mb-1">Fondation de GENESYS à Lomé</p>
-              <p class="text-xs text-[#666]">Premiers clients : PME locales et commerces du Grand Marché de Lomé.</p>
+            <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-5 flex-1">
+              <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Fondation de GENESYS à Lomé</p>
+              <p class="text-xs text-gray-500 dark:text-[#666]">Premiers clients : PME locales et commerces du Grand Marché de Lomé.</p>
             </div>
           </div>
           <div class="timeline-line flex gap-5 pb-10">
             <div class="w-9 flex flex-col items-center flex-shrink-0">
-              <div class="w-9 h-9 bg-[#0d0d0d] border-2 border-brand-orange rounded-full flex items-center justify-center">
+              <div class="w-9 h-9 bg-gray-50 dark:bg-[#0d0d0d] border-2 border-brand-orange rounded-full flex items-center justify-center">
                 <span class="text-[10px] font-bold text-brand-orange">23</span>
               </div>
             </div>
-            <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-5 flex-1">
-              <p class="text-sm font-semibold text-white mb-1">Premier contrat institutionnel</p>
-              <p class="text-xs text-[#666]">Partenariat avec Ecobank Togo. L'agence double son équipe.</p>
+            <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-5 flex-1">
+              <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Premier contrat institutionnel</p>
+              <p class="text-xs text-gray-500 dark:text-[#666]">Partenariat avec Ecobank Togo. L'agence double son équipe.</p>
             </div>
           </div>
           <div class="timeline-line flex gap-5 pb-10">
             <div class="w-9 flex flex-col items-center flex-shrink-0">
-              <div class="w-9 h-9 bg-[#0d0d0d] border-2 border-brand-orange rounded-full flex items-center justify-center">
+              <div class="w-9 h-9 bg-gray-50 dark:bg-[#0d0d0d] border-2 border-brand-orange rounded-full flex items-center justify-center">
                 <span class="text-[10px] font-bold text-brand-orange">24</span>
               </div>
             </div>
-            <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-5 flex-1">
-              <p class="text-sm font-semibold text-white mb-1">Expansion Afrique de l'Ouest</p>
-              <p class="text-xs text-[#666]">Projets au Bénin, Ghana et Côte d'Ivoire. 50+ projets livrés.</p>
+            <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-5 flex-1">
+              <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Expansion Afrique de l'Ouest</p>
+              <p class="text-xs text-gray-500 dark:text-[#666]">Projets au Bénin, Ghana et Côte d'Ivoire. 50+ projets livrés.</p>
             </div>
           </div>
           <div class="flex gap-5">
             <div class="w-9 flex flex-col items-center flex-shrink-0">
               <div class="w-9 h-9 bg-brand-orange border-2 border-brand-orange rounded-full flex items-center justify-center">
-                <span class="text-[10px] font-bold text-white">26</span>
+                <span class="text-[10px] font-bold text-gray-900 dark:text-white">26</span>
               </div>
             </div>
-            <div class="bg-[#0d0d0d] border border-brand-orange/30 rounded-xl p-5 flex-1">
+            <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-brand-orange/30 rounded-xl p-5 flex-1">
               <p class="text-sm font-semibold text-brand-orange mb-1">Lancement du site & Showreel 2026</p>
-              <p class="text-xs text-[#666]">120+ projets, 12M+ vues, et une nouvelle identité de marque.</p>
+              <p class="text-xs text-gray-500 dark:text-[#666]">120+ projets, 12M+ vues, et une nouvelle identité de marque.</p>
             </div>
           </div>
         </div>
@@ -179,30 +180,30 @@
       <!-- EQUIPE -->
       <div>
         <p class="text-xs text-brand-orange tracking-widest uppercase font-semibold mb-3">L'équipe</p>
-        <h2 class="font-clash text-3xl font-bold text-white mb-10">Les visages derrière GENESYS</h2>
+        <h2 class="font-clash text-3xl font-bold text-gray-900 dark:text-white mb-10">Les visages derrière GENESYS</h2>
         <div class="grid grid-cols-2 gap-4">
-          <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-5 text-center card-hover">
-            <div class="w-16 h-16 rounded-full bg-brand-orange flex items-center justify-center text-2xl font-bold text-white mx-auto mb-3">TA</div>
-            <p class="text-sm font-semibold text-white">Thierry Amenyah</p>
-            <p class="text-xs text-[#555] mb-1">Fondateur</p>
+          <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-5 text-center card-hover">
+            <div class="w-16 h-16 rounded-full bg-brand-orange flex items-center justify-center text-2xl font-bold text-gray-900 dark:text-white mx-auto mb-3">TA</div>
+            <p class="text-sm font-semibold text-gray-900 dark:text-white">Thierry Amenyah</p>
+            <p class="text-xs text-gray-500 dark:text-[#555] mb-1">Fondateur</p>
             <p class="text-xs text-brand-orange">Directeur Créatif</p>
           </div>
-          <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-5 text-center card-hover">
-            <div class="w-16 h-16 rounded-full bg-[#1a1a1a] border border-[#333] flex items-center justify-center text-2xl font-bold text-[#888] mx-auto mb-3">KD</div>
-            <p class="text-sm font-semibold text-white">Komi Dossou</p>
-            <p class="text-xs text-[#555] mb-1">DOP</p>
+          <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-5 text-center card-hover">
+            <div class="w-16 h-16 rounded-full bg-gray-200 dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#333] flex items-center justify-center text-2xl font-bold text-gray-600 dark:text-[#888] mx-auto mb-3">KD</div>
+            <p class="text-sm font-semibold text-gray-900 dark:text-white">Komi Dossou</p>
+            <p class="text-xs text-gray-500 dark:text-[#555] mb-1">DOP</p>
             <p class="text-xs text-brand-orange">Caméra & Lumière</p>
           </div>
-          <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-5 text-center card-hover">
-            <div class="w-16 h-16 rounded-full bg-[#1a1a1a] border border-[#333] flex items-center justify-center text-2xl font-bold text-[#888] mx-auto mb-3">AK</div>
-            <p class="text-sm font-semibold text-white">Afi Kuma</p>
-            <p class="text-xs text-[#555] mb-1">Designer</p>
+          <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-5 text-center card-hover">
+            <div class="w-16 h-16 rounded-full bg-gray-200 dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#333] flex items-center justify-center text-2xl font-bold text-gray-600 dark:text-[#888] mx-auto mb-3">AK</div>
+            <p class="text-sm font-semibold text-gray-900 dark:text-white">Afi Kuma</p>
+            <p class="text-xs text-gray-500 dark:text-[#555] mb-1">Designer</p>
             <p class="text-xs text-brand-orange">Motion & VFX</p>
           </div>
-          <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-5 text-center card-hover">
-            <div class="w-16 h-16 rounded-full bg-[#1a1a1a] border border-[#333] flex items-center justify-center text-2xl font-bold text-[#888] mx-auto mb-3">EY</div>
-            <p class="text-sm font-semibold text-white">Edem Yatta</p>
-            <p class="text-xs text-[#555] mb-1">Ingé Son</p>
+          <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-5 text-center card-hover">
+            <div class="w-16 h-16 rounded-full bg-gray-200 dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#333] flex items-center justify-center text-2xl font-bold text-gray-600 dark:text-[#888] mx-auto mb-3">EY</div>
+            <p class="text-sm font-semibold text-gray-900 dark:text-white">Edem Yatta</p>
+            <p class="text-xs text-gray-500 dark:text-[#555] mb-1">Ingé Son</p>
             <p class="text-xs text-brand-orange">Son & Musique</p>
           </div>
         </div>
@@ -211,21 +212,21 @@
   </section>
 
   <!-- CLIENTS -->
-  <section class="py-20 border-b border-[#1a1a1a]">
+  <section class="py-20 border-b border-gray-200 dark:border-[#1a1a1a]">
     <div class="max-w-7xl mx-auto px-6">
       <p class="text-xs text-brand-orange tracking-widest uppercase font-semibold mb-3 text-center">Ils nous font confiance</p>
-      <h2 class="font-clash text-3xl font-bold text-white mb-10 text-center">85+ clients satisfaits</h2>
+      <h2 class="font-clash text-3xl font-bold text-gray-900 dark:text-white mb-10 text-center">85+ clients satisfaits</h2>
       <div class="flex flex-wrap gap-3 justify-center">
-        <span class="bg-[#0d0d0d] border border-brand-orange/30 rounded-lg px-5 py-3 text-sm text-white font-medium">Ecobank Togo</span>
-        <span class="bg-[#0d0d0d] border border-brand-orange/30 rounded-lg px-5 py-3 text-sm text-white font-medium">Hôtel Sarakawa</span>
-        <span class="bg-[#0d0d0d] border border-brand-orange/30 rounded-lg px-5 py-3 text-sm text-white font-medium">GIZ Togo</span>
-        <span class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-lg px-5 py-3 text-sm text-[#888] font-medium">ONG Espoir Togo</span>
-        <span class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-lg px-5 py-3 text-sm text-[#888] font-medium">Le Belvédère</span>
-        <span class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-lg px-5 py-3 text-sm text-[#888] font-medium">Togocom</span>
-        <span class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-lg px-5 py-3 text-sm text-[#888] font-medium">BCEAO</span>
-        <span class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-lg px-5 py-3 text-sm text-[#888] font-medium">Moov Africa</span>
-        <span class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-lg px-5 py-3 text-sm text-[#888] font-medium">UTB</span>
-        <span class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-lg px-5 py-3 text-sm text-[#888] font-medium">+ 75 autres</span>
+        <span class="bg-gray-50 dark:bg-[#0d0d0d] border border-brand-orange/30 rounded-lg px-5 py-3 text-sm text-gray-900 dark:text-white font-medium">Ecobank Togo</span>
+        <span class="bg-gray-50 dark:bg-[#0d0d0d] border border-brand-orange/30 rounded-lg px-5 py-3 text-sm text-gray-900 dark:text-white font-medium">Hôtel Sarakawa</span>
+        <span class="bg-gray-50 dark:bg-[#0d0d0d] border border-brand-orange/30 rounded-lg px-5 py-3 text-sm text-gray-900 dark:text-white font-medium">GIZ Togo</span>
+        <span class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-lg px-5 py-3 text-sm text-gray-600 dark:text-[#888] font-medium">ONG Espoir Togo</span>
+        <span class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-lg px-5 py-3 text-sm text-gray-600 dark:text-[#888] font-medium">Le Belvédère</span>
+        <span class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-lg px-5 py-3 text-sm text-gray-600 dark:text-[#888] font-medium">Togocom</span>
+        <span class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-lg px-5 py-3 text-sm text-gray-600 dark:text-[#888] font-medium">BCEAO</span>
+        <span class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-lg px-5 py-3 text-sm text-gray-600 dark:text-[#888] font-medium">Moov Africa</span>
+        <span class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-lg px-5 py-3 text-sm text-gray-600 dark:text-[#888] font-medium">UTB</span>
+        <span class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-lg px-5 py-3 text-sm text-gray-600 dark:text-[#888] font-medium">+ 75 autres</span>
       </div>
     </div>
   </section>
@@ -234,63 +235,81 @@
   <section class="bg-brand-orange py-20">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
       <div>
-        <h2 class="font-clash text-4xl font-bold text-white mb-3">Rejoignez nos 85+ clients satisfaits.</h2>
+        <h2 class="font-clash text-4xl font-bold text-gray-900 dark:text-white mb-3">Rejoignez nos 85+ clients satisfaits.</h2>
         <p class="text-orange-200 text-lg">Démarrons votre projet ensemble.</p>
       </div>
       <div class="flex gap-4 shrink-0">
         <a href="portfolio.html" class="bg-white text-brand-orange font-bold px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors">Voir notre travail</a>
-        <a href="contact.html" class="bg-transparent text-white font-semibold px-8 py-4 rounded-lg border border-white/50 hover:bg-white/10 transition-colors">Nous contacter</a>
+        <a href="contact.html" class="bg-transparent text-gray-900 dark:text-white font-semibold px-8 py-4 rounded-lg border border-gray-400 dark:border-white/50 hover:bg-gray-100 dark:hover:bg-white/10 transition-colors">Nous contacter</a>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-[#080808] border-t border-[#1a1a1a] py-16">
+  <footer class="bg-white dark:bg-[#080808] border-t border-gray-200 dark:border-[#1a1a1a] py-16">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
         <div class="col-span-1 md:col-span-2">
-          <a href="index.html" class="font-clash text-2xl font-bold text-white tracking-widest block mb-4">GENE<span class="text-brand-orange">S</span>YS</a>
-          <p class="text-sm text-[#555] leading-relaxed max-w-xs mb-6">Créativité qui convertit. Agence de marketing vidéo créatif basée à Lomé, Togo. La qualité internationale au service de l'Afrique de l'Ouest.</p>
+          <a href="index.html" class="font-clash text-2xl font-bold text-gray-900 dark:text-white tracking-widest block mb-4">GENE<span class="text-brand-orange">S</span>YS</a>
+          <p class="text-sm text-gray-500 dark:text-[#555] leading-relaxed max-w-xs mb-6">Créativité qui convertit. Agence de marketing vidéo créatif basée à Lomé, Togo. La qualité internationale au service de l'Afrique de l'Ouest.</p>
           <div class="flex gap-3">
-            <a href="#" class="flex items-center justify-center bg-[#111] border border-[#222] rounded-lg w-10 h-10 text-[#666] hover:text-white hover:border-[#444] transition-colors">
+            <a href="#" class="flex items-center justify-center bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-[#222] rounded-lg w-10 h-10 text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-[#444] transition-colors">
               <i data-lucide="instagram" class="w-5 h-5"></i>
             </a>
-            <a href="#" class="flex items-center justify-center bg-[#111] border border-[#222] rounded-lg w-10 h-10 text-[#666] hover:text-white hover:border-[#444] transition-colors">
+            <a href="#" class="flex items-center justify-center bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-[#222] rounded-lg w-10 h-10 text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-[#444] transition-colors">
               <i data-lucide="music" class="w-5 h-5"></i>
             </a>
-            <a href="#" class="flex items-center justify-center bg-[#111] border border-[#222] rounded-lg w-10 h-10 text-[#666] hover:text-white hover:border-[#444] transition-colors">
+            <a href="#" class="flex items-center justify-center bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-[#222] rounded-lg w-10 h-10 text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-[#444] transition-colors">
               <i data-lucide="linkedin" class="w-5 h-5"></i>
             </a>
-            <a href="#" class="flex items-center justify-center bg-[#111] border border-[#222] rounded-lg w-10 h-10 text-[#666] hover:text-white hover:border-[#444] transition-colors">
+            <a href="#" class="flex items-center justify-center bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-[#222] rounded-lg w-10 h-10 text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-[#444] transition-colors">
               <i data-lucide="youtube" class="w-5 h-5"></i>
             </a>
           </div>
         </div>
         <div>
-          <p class="text-xs text-[#444] uppercase tracking-widest font-bold mb-5">Navigation</p>
+          <p class="text-xs text-gray-400 dark:text-[#444] uppercase tracking-widest font-bold mb-5">Navigation</p>
           <div class="flex flex-col gap-3">
-            <a href="portfolio.html" class="text-sm text-[#666] hover:text-white transition-colors">Work / Portfolio</a>
-            <a href="services.html" class="text-sm text-[#666] hover:text-white transition-colors">Services & Tarifs</a>
-            <a href="about.html" class="text-sm text-[#666] hover:text-white transition-colors">À propos</a>
-            <a href="contact.html" class="text-sm text-[#666] hover:text-white transition-colors">Contact</a>
+            <a href="portfolio.html" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">Work / Portfolio</a>
+            <a href="services.html" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">Services & Tarifs</a>
+            <a href="about.html" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">À propos</a>
+            <a href="contact.html" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">Contact</a>
           </div>
         </div>
         <div>
-          <p class="text-xs text-[#444] uppercase tracking-widest font-bold mb-5">Contact</p>
+          <p class="text-xs text-gray-400 dark:text-[#444] uppercase tracking-widest font-bold mb-5">Contact</p>
           <div class="flex flex-col gap-3">
-            <p class="text-sm text-[#666] flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-orange"></i> Lomé, Togo</p>
-            <a href="mailto:thierryamenyah1@gmail.com" class="text-sm text-[#666] hover:text-white flex items-center gap-2 transition-colors"><i data-lucide="mail" class="w-3.5 h-3.5 text-brand-orange"></i> thierryamenyah1@gmail.com</a>
-            <p class="text-sm text-[#666] flex items-center gap-2"><i data-lucide="phone" class="w-3.5 h-3.5 text-brand-orange"></i> +228 XX XX XX XX</p>
+            <p class="text-sm text-gray-500 dark:text-[#666] flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-orange"></i> Lomé, Togo</p>
+            <a href="mailto:thierryamenyah1@gmail.com" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white flex items-center gap-2 transition-colors"><i data-lucide="mail" class="w-3.5 h-3.5 text-brand-orange"></i> thierryamenyah1@gmail.com</a>
+            <p class="text-sm text-gray-500 dark:text-[#666] flex items-center gap-2"><i data-lucide="phone" class="w-3.5 h-3.5 text-brand-orange"></i> +228 XX XX XX XX</p>
           </div>
         </div>
       </div>
-      <div class="border-t border-[#1a1a1a] pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#444]">
+      <div class="border-t border-gray-200 dark:border-[#1a1a1a] pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400 dark:text-[#444]">
         <span>© 2026 GENESYS Agency — Lomé, Togo</span>
         <span>Tous droits réservés</span>
       </div>
     </div>
   </footer>
 
-  <script>lucide.createIcons();</script>
+  <script>
+    // Theme logic
+    function toggleTheme() {
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+    
+    // Init theme
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+    }
+    
+    lucide.createIcons();</script>
 </body>
 </html>

@@ -38,92 +38,93 @@
   </style>
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-[#050505] text-white font-jakarta antialiased">
+<body class="bg-white dark:bg-[#050505] text-gray-900 dark:text-white font-jakarta antialiased">
 
   <!-- NAV -->
-  <nav class="sticky top-0 z-50 bg-[#080808]/90 backdrop-blur-md border-b border-[#1f1f1f]">
+  <nav class="sticky top-0 z-50 bg-white/90 dark:bg-[#050505]/90 backdrop-blur-md border-b border-gray-200 dark:border-[#1f1f1f]">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="index.html" class="font-clash text-xl font-bold tracking-widest">GENE<span class="text-brand-orange">S</span>YS</a>
       <div class="flex items-center gap-8">
-        <a href="index.html" class="text-[#888] text-sm font-medium hover:text-white transition-colors">Accueil</a>
-        <a href="portfolio.html" class="text-[#888] text-sm font-medium hover:text-white transition-colors">Work</a>
-        <a href="services.html" class="text-white text-sm font-medium">Services</a>
-        <a href="about.html" class="text-[#888] text-sm font-medium hover:text-white transition-colors">À propos</a>
-        <a href="contact.html" class="text-[#888] text-sm font-medium hover:text-white transition-colors">Contact</a>
-        <a href="contact.html" class="bg-brand-orange text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:bg-orange-600 transition-colors">Demander un devis</a>
+        <a href="index.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">Accueil</a>
+        <a href="portfolio.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">Work</a>
+        <a href="services.html" class="text-brand-orange dark:text-brand-orange text-sm font-bold">Services</a>
+        <a href="about.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">À propos</a>
+        <a href="contact.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">Contact</a>
+        <button onclick="toggleTheme()" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a1a1a] text-gray-600 dark:text-[#888] hover:text-brand-orange transition-colors" aria-label="Toggle theme"><i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i><i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i></button>
+        <a href="contact.html" class="bg-brand-orange text-gray-900 dark:text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:bg-orange-600 transition-colors">Demander un devis</a>
       </div>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="py-20 border-b border-[#1a1a1a]">
+  <section class="py-20 border-b border-gray-200 dark:border-[#1a1a1a]">
     <div class="max-w-7xl mx-auto px-6 text-center">
       <p class="text-xs text-brand-orange tracking-widest uppercase font-semibold mb-4">Offres & Tarifs</p>
-      <h1 class="font-clash text-5xl font-bold text-white mb-5">Des tarifs clairs.<br>Zéro <span class="text-brand-orange">mauvaise surprise.</span></h1>
-      <p class="text-lg text-[#666] max-w-2xl mx-auto mb-8">Choisissez le pack adapté à vos objectifs de croissance. Tous nos prix incluent la direction artistique, le tournage et le montage.</p>
+      <h1 class="font-clash text-5xl font-bold text-gray-900 dark:text-white mb-5">Des tarifs clairs.<br>Zéro <span class="text-brand-orange">mauvaise surprise.</span></h1>
+      <p class="text-lg text-gray-500 dark:text-[#666] max-w-2xl mx-auto mb-8">Choisissez le pack adapté à vos objectifs de croissance. Tous nos prix incluent la direction artistique, le tournage et le montage.</p>
       
       <!-- TOGGLE -->
-      <div class="inline-flex bg-[#111] border border-[#2a2a2a] rounded-full p-1">
-        <button id="btn-project" class="px-6 py-2.5 rounded-full text-sm font-semibold bg-brand-orange text-white transition-all" onclick="toggleBilling('project')">Par projet</button>
-        <button id="btn-sub" class="px-6 py-2.5 rounded-full text-sm font-semibold text-[#666] transition-all" onclick="toggleBilling('sub')">Abonnement mensuel</button>
+      <div class="inline-flex bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-[#2a2a2a] rounded-full p-1">
+        <button id="btn-project" class="px-6 py-2.5 rounded-full text-sm font-semibold bg-brand-orange text-gray-900 dark:text-white transition-all" onclick="toggleBilling('project')">Par projet</button>
+        <button id="btn-sub" class="px-6 py-2.5 rounded-full text-sm font-semibold text-gray-500 dark:text-[#666] transition-all" onclick="toggleBilling('sub')">Abonnement mensuel</button>
       </div>
     </div>
   </section>
 
   <!-- PRICING -->
-  <section class="py-20 border-b border-[#1a1a1a]">
+  <section class="py-20 border-b border-gray-200 dark:border-[#1a1a1a]">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-3 gap-6">
 
         <!-- PACK 1 -->
-        <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-2xl p-8 card-hover hover:border-[#333]">
-          <p class="text-xs text-[#555] uppercase tracking-widest font-bold mb-2">Pack Découverte</p>
-          <h2 class="font-clash text-2xl font-bold text-white mb-1">Spot PME local</h2>
+        <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-2xl p-8 card-hover hover:border-gray-300 dark:border-[#333]">
+          <p class="text-xs text-gray-500 dark:text-[#555] uppercase tracking-widest font-bold mb-2">Pack Découverte</p>
+          <h2 class="font-clash text-2xl font-bold text-gray-900 dark:text-white mb-1">Spot PME local</h2>
           <p class="price text-3xl font-bold text-brand-orange mt-4 mb-2" data-project="150 000 FCFA" data-sub="120 000 FCFA/mois">150 000 FCFA</p>
-          <p class="text-sm text-[#666] mb-6 border-b border-[#1a1a1a] pb-6">Idéal pour lancer votre premier produit ou annoncer l'ouverture d'un point de vente.</p>
+          <p class="text-sm text-gray-500 dark:text-[#666] mb-6 border-b border-gray-200 dark:border-[#1a1a1a] pb-6">Idéal pour lancer votre premier produit ou annoncer l'ouverture d'un point de vente.</p>
           <ul class="flex flex-col gap-3 mb-8">
-            <li class="flex items-center gap-2.5 text-sm text-[#888]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> 1 vidéo de 30 secondes</li>
-            <li class="flex items-center gap-2.5 text-sm text-[#888]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> Format 9:16 ou 16:9</li>
-            <li class="flex items-center gap-2.5 text-sm text-[#888]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> Tournage 1/2 journée à Lomé</li>
-            <li class="flex items-center gap-2.5 text-sm text-[#444]"><i data-lucide="minus" class="w-4 h-4 text-[#333] flex-shrink-0"></i> Scripting non inclus</li>
-            <li class="flex items-center gap-2.5 text-sm text-[#444]"><i data-lucide="minus" class="w-4 h-4 text-[#333] flex-shrink-0"></i> Sous-titres non inclus</li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600 dark:text-[#888]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> 1 vidéo de 30 secondes</li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600 dark:text-[#888]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> Format 9:16 ou 16:9</li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600 dark:text-[#888]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> Tournage 1/2 journée à Lomé</li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-400 dark:text-[#444]"><i data-lucide="minus" class="w-4 h-4 text-gray-400 dark:text-[#333] flex-shrink-0"></i> Scripting non inclus</li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-400 dark:text-[#444]"><i data-lucide="minus" class="w-4 h-4 text-gray-400 dark:text-[#333] flex-shrink-0"></i> Sous-titres non inclus</li>
           </ul>
-          <a href="contact.html" class="block w-full bg-[#1a1a1a] border border-[#2a2a2a] text-white text-sm font-bold py-3 rounded-lg text-center hover:border-brand-orange hover:text-brand-orange transition-colors">Choisir ce pack</a>
+          <a href="contact.html" class="block w-full bg-gray-200 dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#2a2a2a] text-gray-900 dark:text-white text-sm font-bold py-3 rounded-lg text-center hover:border-brand-orange hover:text-brand-orange transition-colors">Choisir ce pack</a>
         </div>
 
         <!-- PACK 2 - POPULAR -->
-        <div class="bg-[#0d0d0d] border border-brand-gold rounded-2xl p-8 card-hover relative">
+        <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-brand-gold rounded-2xl p-8 card-hover relative">
           <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-gold text-[#0d0d0d] text-xs font-bold px-4 py-1.5 rounded-full flex items-center gap-1">
             <i data-lucide="star" class="w-3 h-3 fill-current"></i> Le plus populaire
           </div>
           <p class="text-xs text-brand-gold uppercase tracking-widest font-bold mb-2 mt-2">Pack Visibilité</p>
-          <h2 class="font-clash text-2xl font-bold text-white mb-1">Réseaux Sociaux</h2>
+          <h2 class="font-clash text-2xl font-bold text-gray-900 dark:text-white mb-1">Réseaux Sociaux</h2>
           <p class="price text-3xl font-bold text-brand-orange mt-4 mb-2" data-project="250 000 FCFA" data-sub="200 000 FCFA/mois">250 000 FCFA</p>
-          <p class="text-sm text-[#666] mb-6 border-b border-[#1a1a1a] pb-6">La formule parfaite pour une présence active et engageante sur TikTok et Instagram.</p>
+          <p class="text-sm text-gray-500 dark:text-[#666] mb-6 border-b border-gray-200 dark:border-[#1a1a1a] pb-6">La formule parfaite pour une présence active et engageante sur TikTok et Instagram.</p>
           <ul class="flex flex-col gap-3 mb-8">
             <li class="flex items-center gap-2.5 text-sm text-[#aaa]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> 4 Reels / TikTok par mois</li>
             <li class="flex items-center gap-2.5 text-sm text-[#aaa]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> Écriture des scripts / concepts</li>
             <li class="flex items-center gap-2.5 text-sm text-[#aaa]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> Montage dynamique + Sound design</li>
             <li class="flex items-center gap-2.5 text-sm text-[#aaa]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> Sous-titres intégrés</li>
-            <li class="flex items-center gap-2.5 text-sm text-[#444]"><i data-lucide="minus" class="w-4 h-4 text-[#333] flex-shrink-0"></i> Sponsorisation non incluse</li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-400 dark:text-[#444]"><i data-lucide="minus" class="w-4 h-4 text-gray-400 dark:text-[#333] flex-shrink-0"></i> Sponsorisation non incluse</li>
           </ul>
-          <a href="contact.html" class="block w-full bg-brand-orange text-white text-sm font-bold py-3 rounded-lg text-center hover:bg-orange-600 transition-colors">Choisir ce pack</a>
+          <a href="contact.html" class="block w-full bg-brand-orange text-gray-900 dark:text-white text-sm font-bold py-3 rounded-lg text-center hover:bg-orange-600 transition-colors">Choisir ce pack</a>
         </div>
 
         <!-- PACK 3 -->
-        <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-2xl p-8 card-hover hover:border-[#333]">
-          <p class="text-xs text-[#555] uppercase tracking-widest font-bold mb-2">Pack Prestige</p>
-          <h2 class="font-clash text-2xl font-bold text-white mb-1">Campagne Pub & TV</h2>
+        <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-2xl p-8 card-hover hover:border-gray-300 dark:border-[#333]">
+          <p class="text-xs text-gray-500 dark:text-[#555] uppercase tracking-widest font-bold mb-2">Pack Prestige</p>
+          <h2 class="font-clash text-2xl font-bold text-gray-900 dark:text-white mb-1">Campagne Pub & TV</h2>
           <p class="price text-3xl font-bold text-brand-orange mt-4 mb-2" data-project="450 000 FCFA" data-sub="380 000 FCFA/mois">450 000 FCFA</p>
-          <p class="text-sm text-[#666] mb-6 border-b border-[#1a1a1a] pb-6">Une production premium de niveau international pour vos grandes campagnes.</p>
+          <p class="text-sm text-gray-500 dark:text-[#666] mb-6 border-b border-gray-200 dark:border-[#1a1a1a] pb-6">Une production premium de niveau international pour vos grandes campagnes.</p>
           <ul class="flex flex-col gap-3 mb-8">
-            <li class="flex items-center gap-2.5 text-sm text-[#888]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> 1 Spot Principal (45s) + 2 cutdowns</li>
-            <li class="flex items-center gap-2.5 text-sm text-[#888]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> Résolution 4K Cinématique</li>
-            <li class="flex items-center gap-2.5 text-sm text-[#888]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> Direction acteurs + Voix off Pro</li>
-            <li class="flex items-center gap-2.5 text-sm text-[#888]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> Droits d'utilisation complets</li>
-            <li class="flex items-center gap-2.5 text-sm text-[#888]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> Équipe technique complète</li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600 dark:text-[#888]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> 1 Spot Principal (45s) + 2 cutdowns</li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600 dark:text-[#888]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> Résolution 4K Cinématique</li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600 dark:text-[#888]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> Direction acteurs + Voix off Pro</li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600 dark:text-[#888]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> Droits d'utilisation complets</li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600 dark:text-[#888]"><i data-lucide="check" class="w-4 h-4 text-brand-green flex-shrink-0"></i> Équipe technique complète</li>
           </ul>
-          <a href="contact.html" class="block w-full bg-[#1a1a1a] border border-[#2a2a2a] text-white text-sm font-bold py-3 rounded-lg text-center hover:border-brand-orange hover:text-brand-orange transition-colors">Choisir ce pack</a>
+          <a href="contact.html" class="block w-full bg-gray-200 dark:bg-[#1a1a1a] border border-gray-300 dark:border-[#2a2a2a] text-gray-900 dark:text-white text-sm font-bold py-3 rounded-lg text-center hover:border-brand-orange hover:text-brand-orange transition-colors">Choisir ce pack</a>
         </div>
 
       </div>
@@ -131,41 +132,41 @@
   </section>
 
   <!-- OPTIONS A LA CARTE -->
-  <section class="py-20 border-b border-[#1a1a1a]">
+  <section class="py-20 border-b border-gray-200 dark:border-[#1a1a1a]">
     <div class="max-w-7xl mx-auto px-6">
       <p class="text-xs text-brand-orange tracking-widest uppercase font-semibold mb-3">Sur-mesure</p>
-      <h2 class="font-clash text-3xl font-bold text-white mb-10">Options à la carte</h2>
+      <h2 class="font-clash text-3xl font-bold text-gray-900 dark:text-white mb-10">Options à la carte</h2>
       <div class="grid grid-cols-4 gap-5">
-        <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-6 card-hover hover:border-brand-orange/30">
-          <div class="w-10 h-10 bg-[#1a0800] border border-brand-orange/20 rounded-lg flex items-center justify-center mb-4">
+        <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-6 card-hover hover:border-brand-orange/30">
+          <div class="w-10 h-10 bg-orange-50 dark:bg-[#1a0800] border border-brand-orange/20 rounded-lg flex items-center justify-center mb-4">
             <i data-lucide="clapperboard" class="w-5 h-5 text-brand-orange"></i>
           </div>
-          <h3 class="text-sm font-semibold text-white mb-2">DOP & Matériel Pro</h3>
-          <p class="text-xs text-[#666] leading-relaxed mb-3">Caméra RED / FX3, lumières pro, trépieds, retour écran.</p>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">DOP & Matériel Pro</h3>
+          <p class="text-xs text-gray-500 dark:text-[#666] leading-relaxed mb-3">Caméra RED / FX3, lumières pro, trépieds, retour écran.</p>
           <p class="text-xs text-brand-gold font-medium">À partir de 120 000 FCFA/jour</p>
         </div>
-        <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-6 card-hover hover:border-brand-orange/30">
-          <div class="w-10 h-10 bg-[#1a0800] border border-brand-orange/20 rounded-lg flex items-center justify-center mb-4">
+        <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-6 card-hover hover:border-brand-orange/30">
+          <div class="w-10 h-10 bg-orange-50 dark:bg-[#1a0800] border border-brand-orange/20 rounded-lg flex items-center justify-center mb-4">
             <i data-lucide="gem" class="w-5 h-5 text-brand-orange"></i>
           </div>
-          <h3 class="text-sm font-semibold text-white mb-2">Film Événementiel</h3>
-          <p class="text-xs text-[#666] leading-relaxed mb-3">Mariages, galas, concerts. Montage émotif, captation complète.</p>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Film Événementiel</h3>
+          <p class="text-xs text-gray-500 dark:text-[#666] leading-relaxed mb-3">Mariages, galas, concerts. Montage émotif, captation complète.</p>
           <p class="text-xs text-brand-gold font-medium">À partir de 200 000 FCFA</p>
         </div>
-        <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-6 card-hover hover:border-brand-orange/30">
-          <div class="w-10 h-10 bg-[#1a0800] border border-brand-orange/20 rounded-lg flex items-center justify-center mb-4">
+        <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-6 card-hover hover:border-brand-orange/30">
+          <div class="w-10 h-10 bg-orange-50 dark:bg-[#1a0800] border border-brand-orange/20 rounded-lg flex items-center justify-center mb-4">
             <i data-lucide="sparkles" class="w-5 h-5 text-brand-orange"></i>
           </div>
-          <h3 class="text-sm font-semibold text-white mb-2">Motion Design & VFX</h3>
-          <p class="text-xs text-[#666] leading-relaxed mb-3">Animations logo, titrages stylisés, transitions personnalisées.</p>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Motion Design & VFX</h3>
+          <p class="text-xs text-gray-500 dark:text-[#666] leading-relaxed mb-3">Animations logo, titrages stylisés, transitions personnalisées.</p>
           <p class="text-xs text-brand-gold font-medium">À partir de 80 000 FCFA</p>
         </div>
-        <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-6 card-hover hover:border-brand-orange/30">
-          <div class="w-10 h-10 bg-[#1a0800] border border-brand-orange/20 rounded-lg flex items-center justify-center mb-4">
+        <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-6 card-hover hover:border-brand-orange/30">
+          <div class="w-10 h-10 bg-orange-50 dark:bg-[#1a0800] border border-brand-orange/20 rounded-lg flex items-center justify-center mb-4">
             <i data-lucide="mic" class="w-5 h-5 text-brand-orange"></i>
           </div>
-          <h3 class="text-sm font-semibold text-white mb-2">Voix Off Professionnelle</h3>
-          <p class="text-xs text-[#666] leading-relaxed mb-3">Voix masculines ou féminines (français, anglais, ewe, kabye).</p>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Voix Off Professionnelle</h3>
+          <p class="text-xs text-gray-500 dark:text-[#666] leading-relaxed mb-3">Voix masculines ou féminines (français, anglais, ewe, kabye).</p>
           <p class="text-xs text-brand-gold font-medium">À partir de 50 000 FCFA</p>
         </div>
       </div>
@@ -173,49 +174,49 @@
   </section>
 
   <!-- FAQ -->
-  <section class="py-20 border-b border-[#1a1a1a]">
+  <section class="py-20 border-b border-gray-200 dark:border-[#1a1a1a]">
     <div class="max-w-4xl mx-auto px-6">
       <p class="text-xs text-brand-orange tracking-widest uppercase font-semibold mb-3 text-center">FAQ</p>
-      <h2 class="font-clash text-3xl font-bold text-white mb-10 text-center">Foire Aux Questions</h2>
+      <h2 class="font-clash text-3xl font-bold text-gray-900 dark:text-white mb-10 text-center">Foire Aux Questions</h2>
       
       <div class="flex flex-col gap-3">
-        <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl overflow-hidden faq-item">
+        <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl overflow-hidden faq-item">
           <button class="w-full p-5 flex items-center justify-between text-left font-semibold text-sm hover:text-brand-orange transition-colors" onclick="toggleFaq(this)">
             <span>Quels sont les délais de livraison ?</span>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-[#555] faq-arrow flex-shrink-0"></i>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 dark:text-[#555] faq-arrow flex-shrink-0"></i>
           </button>
           <div class="faq-body px-5">
-            <p class="text-sm text-[#666] leading-relaxed pb-5">Pour un spot publicitaire classique, le délai est généralement de 7 à 10 jours ouvrés après la validation du scénario et le tournage. Les Reels / TikTok peuvent être livrés sous 48h.</p>
+            <p class="text-sm text-gray-500 dark:text-[#666] leading-relaxed pb-5">Pour un spot publicitaire classique, le délai est généralement de 7 à 10 jours ouvrés après la validation du scénario et le tournage. Les Reels / TikTok peuvent être livrés sous 48h.</p>
           </div>
         </div>
 
-        <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl overflow-hidden faq-item">
+        <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl overflow-hidden faq-item">
           <button class="w-full p-5 flex items-center justify-between text-left font-semibold text-sm hover:text-brand-orange transition-colors" onclick="toggleFaq(this)">
             <span>Fournissez-vous les acteurs et figurants ?</span>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-[#555] faq-arrow flex-shrink-0"></i>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 dark:text-[#555] faq-arrow flex-shrink-0"></i>
           </button>
           <div class="faq-body px-5">
-            <p class="text-sm text-[#666] leading-relaxed pb-5">Oui, nous pouvons nous charger du casting de modèles, d'acteurs ou de voix off. Cette option est incluse dans le Pack Prestige, ou facturée en option dans le Pack Découverte.</p>
+            <p class="text-sm text-gray-500 dark:text-[#666] leading-relaxed pb-5">Oui, nous pouvons nous charger du casting de modèles, d'acteurs ou de voix off. Cette option est incluse dans le Pack Prestige, ou facturée en option dans le Pack Découverte.</p>
           </div>
         </div>
 
-        <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl overflow-hidden faq-item">
+        <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl overflow-hidden faq-item">
           <button class="w-full p-5 flex items-center justify-between text-left font-semibold text-sm hover:text-brand-orange transition-colors" onclick="toggleFaq(this)">
             <span>Peut-on filmer en dehors de Lomé ?</span>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-[#555] faq-arrow flex-shrink-0"></i>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 dark:text-[#555] faq-arrow flex-shrink-0"></i>
           </button>
           <div class="faq-body px-5">
-            <p class="text-sm text-[#666] leading-relaxed pb-5">Absolument. Nous travaillons principalement à Lomé, mais nous nous déplaçons régulièrement à l'intérieur du Togo (Kara, Kpalimé, Atakpamé) et dans les pays voisins (Bénin, Ghana) moyennant des frais de déplacement.</p>
+            <p class="text-sm text-gray-500 dark:text-[#666] leading-relaxed pb-5">Absolument. Nous travaillons principalement à Lomé, mais nous nous déplaçons régulièrement à l'intérieur du Togo (Kara, Kpalimé, Atakpamé) et dans les pays voisins (Bénin, Ghana) moyennant des frais de déplacement.</p>
           </div>
         </div>
 
-        <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl overflow-hidden faq-item">
+        <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl overflow-hidden faq-item">
           <button class="w-full p-5 flex items-center justify-between text-left font-semibold text-sm hover:text-brand-orange transition-colors" onclick="toggleFaq(this)">
             <span>Quelle est votre politique de révision ?</span>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-[#555] faq-arrow flex-shrink-0"></i>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 dark:text-[#555] faq-arrow flex-shrink-0"></i>
           </button>
           <div class="faq-body px-5">
-            <p class="text-sm text-[#666] leading-relaxed pb-5">Chaque projet inclut 2 tours de révision inclus dans le tarif. Des révisions supplémentaires peuvent être facturées selon le volume de modifications demandées.</p>
+            <p class="text-sm text-gray-500 dark:text-[#666] leading-relaxed pb-5">Chaque projet inclut 2 tours de révision inclus dans le tarif. Des révisions supplémentaires peuvent être facturées selon le volume de modifications demandées.</p>
           </div>
         </div>
       </div>
@@ -226,12 +227,12 @@
   <section class="bg-brand-orange py-20">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
       <div>
-        <h2 class="font-clash text-4xl font-bold text-white mb-3">Une offre sur-mesure ?</h2>
+        <h2 class="font-clash text-4xl font-bold text-gray-900 dark:text-white mb-3">Une offre sur-mesure ?</h2>
         <p class="text-orange-200 text-lg">Contactez Thierry directement — il trouvera une solution adaptée.</p>
       </div>
       <div class="flex gap-4 shrink-0">
         <a href="contact.html" class="bg-white text-brand-orange font-bold px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors">Nous contacter</a>
-        <a href="#" class="bg-transparent text-white font-semibold px-8 py-4 rounded-lg border border-white/50 hover:bg-white/10 transition-colors flex items-center gap-2">
+        <a href="#" class="bg-transparent text-gray-900 dark:text-white font-semibold px-8 py-4 rounded-lg border border-gray-400 dark:border-white/50 hover:bg-gray-100 dark:hover:bg-white/10 transition-colors flex items-center gap-2">
           <i data-lucide="message-square" class="w-5 h-5"></i> WhatsApp
         </a>
       </div>
@@ -239,46 +240,46 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-[#080808] border-t border-[#1a1a1a] py-16">
+  <footer class="bg-white dark:bg-[#080808] border-t border-gray-200 dark:border-[#1a1a1a] py-16">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
         <div class="col-span-1 md:col-span-2">
-          <a href="index.html" class="font-clash text-2xl font-bold text-white tracking-widest block mb-4">GENE<span class="text-brand-orange">S</span>YS</a>
-          <p class="text-sm text-[#555] leading-relaxed max-w-xs mb-6">Créativité qui convertit. Agence de marketing vidéo créatif basée à Lomé, Togo. La qualité internationale au service de l'Afrique de l'Ouest.</p>
+          <a href="index.html" class="font-clash text-2xl font-bold text-gray-900 dark:text-white tracking-widest block mb-4">GENE<span class="text-brand-orange">S</span>YS</a>
+          <p class="text-sm text-gray-500 dark:text-[#555] leading-relaxed max-w-xs mb-6">Créativité qui convertit. Agence de marketing vidéo créatif basée à Lomé, Togo. La qualité internationale au service de l'Afrique de l'Ouest.</p>
           <div class="flex gap-3">
-            <a href="#" class="flex items-center justify-center bg-[#111] border border-[#222] rounded-lg w-10 h-10 text-[#666] hover:text-white hover:border-[#444] transition-colors">
+            <a href="#" class="flex items-center justify-center bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-[#222] rounded-lg w-10 h-10 text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-[#444] transition-colors">
               <i data-lucide="instagram" class="w-5 h-5"></i>
             </a>
-            <a href="#" class="flex items-center justify-center bg-[#111] border border-[#222] rounded-lg w-10 h-10 text-[#666] hover:text-white hover:border-[#444] transition-colors">
+            <a href="#" class="flex items-center justify-center bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-[#222] rounded-lg w-10 h-10 text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-[#444] transition-colors">
               <i data-lucide="music" class="w-5 h-5"></i>
             </a>
-            <a href="#" class="flex items-center justify-center bg-[#111] border border-[#222] rounded-lg w-10 h-10 text-[#666] hover:text-white hover:border-[#444] transition-colors">
+            <a href="#" class="flex items-center justify-center bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-[#222] rounded-lg w-10 h-10 text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-[#444] transition-colors">
               <i data-lucide="linkedin" class="w-5 h-5"></i>
             </a>
-            <a href="#" class="flex items-center justify-center bg-[#111] border border-[#222] rounded-lg w-10 h-10 text-[#666] hover:text-white hover:border-[#444] transition-colors">
+            <a href="#" class="flex items-center justify-center bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-[#222] rounded-lg w-10 h-10 text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-[#444] transition-colors">
               <i data-lucide="youtube" class="w-5 h-5"></i>
             </a>
           </div>
         </div>
         <div>
-          <p class="text-xs text-[#444] uppercase tracking-widest font-bold mb-5">Navigation</p>
+          <p class="text-xs text-gray-400 dark:text-[#444] uppercase tracking-widest font-bold mb-5">Navigation</p>
           <div class="flex flex-col gap-3">
-            <a href="portfolio.html" class="text-sm text-[#666] hover:text-white transition-colors">Work / Portfolio</a>
-            <a href="services.html" class="text-sm text-[#666] hover:text-white transition-colors">Services & Tarifs</a>
-            <a href="about.html" class="text-sm text-[#666] hover:text-white transition-colors">À propos</a>
-            <a href="contact.html" class="text-sm text-[#666] hover:text-white transition-colors">Contact</a>
+            <a href="portfolio.html" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">Work / Portfolio</a>
+            <a href="services.html" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">Services & Tarifs</a>
+            <a href="about.html" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">À propos</a>
+            <a href="contact.html" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">Contact</a>
           </div>
         </div>
         <div>
-          <p class="text-xs text-[#444] uppercase tracking-widest font-bold mb-5">Contact</p>
+          <p class="text-xs text-gray-400 dark:text-[#444] uppercase tracking-widest font-bold mb-5">Contact</p>
           <div class="flex flex-col gap-3">
-            <p class="text-sm text-[#666] flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-orange"></i> Lomé, Togo</p>
-            <a href="mailto:thierryamenyah1@gmail.com" class="text-sm text-[#666] hover:text-white flex items-center gap-2 transition-colors"><i data-lucide="mail" class="w-3.5 h-3.5 text-brand-orange"></i> thierryamenyah1@gmail.com</a>
-            <p class="text-sm text-[#666] flex items-center gap-2"><i data-lucide="phone" class="w-3.5 h-3.5 text-brand-orange"></i> +228 XX XX XX XX</p>
+            <p class="text-sm text-gray-500 dark:text-[#666] flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-orange"></i> Lomé, Togo</p>
+            <a href="mailto:thierryamenyah1@gmail.com" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white flex items-center gap-2 transition-colors"><i data-lucide="mail" class="w-3.5 h-3.5 text-brand-orange"></i> thierryamenyah1@gmail.com</a>
+            <p class="text-sm text-gray-500 dark:text-[#666] flex items-center gap-2"><i data-lucide="phone" class="w-3.5 h-3.5 text-brand-orange"></i> +228 XX XX XX XX</p>
           </div>
         </div>
       </div>
-      <div class="border-t border-[#1a1a1a] pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#444]">
+      <div class="border-t border-gray-200 dark:border-[#1a1a1a] pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400 dark:text-[#444]">
         <span>© 2026 GENESYS Agency — Lomé, Togo</span>
         <span>Tous droits réservés</span>
       </div>
@@ -293,11 +294,11 @@
         el.textContent = el.dataset[mode === 'project' ? 'project' : 'sub'];
       });
       if (mode === 'project') {
-        btnProject.className = 'px-6 py-2.5 rounded-full text-sm font-semibold bg-brand-orange text-white transition-all';
-        btnSub.className = 'px-6 py-2.5 rounded-full text-sm font-semibold text-[#666] transition-all';
+        btnProject.className = 'px-6 py-2.5 rounded-full text-sm font-semibold bg-brand-orange text-gray-900 dark:text-white transition-all';
+        btnSub.className = 'px-6 py-2.5 rounded-full text-sm font-semibold text-gray-500 dark:text-[#666] transition-all';
       } else {
-        btnSub.className = 'px-6 py-2.5 rounded-full text-sm font-semibold bg-brand-orange text-white transition-all';
-        btnProject.className = 'px-6 py-2.5 rounded-full text-sm font-semibold text-[#666] transition-all';
+        btnSub.className = 'px-6 py-2.5 rounded-full text-sm font-semibold bg-brand-orange text-gray-900 dark:text-white transition-all';
+        btnProject.className = 'px-6 py-2.5 rounded-full text-sm font-semibold text-gray-500 dark:text-[#666] transition-all';
       }
     }
 
@@ -314,6 +315,24 @@
         arrow.classList.add('open');
         btn.closest('.faq-item').style.borderColor = '#FF6B2B';
       }
+    }
+    
+    
+    // Theme logic
+    function toggleTheme() {
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+    
+    // Init theme
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
     }
     
     lucide.createIcons();
