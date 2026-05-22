@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="assets/favicon.PNG">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription - GENESYS Agency</title>
+  <meta name="description" content="Rejoignez GENESYS Agency. Créez un compte pour suivre vos projets vidéo et demandes de devis.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { orange: '#FF6B2B', gold: '#C5A572', green: '#00A86B', dark: '#0D0D0D' }
+          },
+          fontFamily: {
+            clash: ['Clash Display', 'sans-serif'],
+            jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&display=swap');
+    .lucide { display: inline-block; vertical-align: middle; }
+    .hero-grid { background-image: radial-gradient(rgba(255,107,43,0.05) 1px, transparent 1px); background-size: 28px 28px; }
+    input { transition: all 0.25s ease; }
+    input:focus { border-color: #FF6B2B !important; outline: none; box-shadow: 0 0 0 3px rgba(255,107,43,0.15); }
+  </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white dark:bg-[#050505] text-gray-900 dark:text-white font-jakarta antialiased min-h-screen flex flex-col justify-between hero-grid relative">
+
+  <!-- TOP BAR / BACK LINK -->
+  <header class="w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between z-10">
+    <a href="index.html" class="flex items-center gap-2 text-sm text-gray-500 hover:text-brand-orange transition-colors">
+      <i data-lucide="arrow-left" class="w-4 h-4"></i> Retour à l'accueil
+    </a>
+    <button onclick="toggleTheme()" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a1a1a] text-gray-600 dark:text-[#888] hover:text-brand-orange transition-colors" aria-label="Toggle theme">
+      <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+      <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
+    </button>
+  </header>
+
+  <!-- REGISTER CARD -->
+  <main class="w-full flex-1 flex items-center justify-center p-6 z-10">
+    <div class="w-full max-w-lg bg-white/80 dark:bg-[#0d0d0d]/80 backdrop-blur-xl border border-gray-200 dark:border-[#1f1f1f] rounded-2xl p-8 shadow-xl shadow-black/5 dark:shadow-orange-950/5 relative overflow-hidden my-4">
+      <!-- Glow effect -->
+      <div class="absolute -top-24 -left-24 w-48 h-48 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <div class="relative z-10 flex flex-col items-center">
+        <!-- Logo -->
+        <a href="index.html" class="mb-8 block">
+          <img src="assets/logo.PNG" alt="GENESYS Logo" class="h-9 w-auto">
+        </a>
+
+        <div class="text-center mb-8">
+          <h1 class="font-clash text-2xl font-bold mb-2">Rejoignez-nous</h1>
+          <p class="text-xs text-gray-500 dark:text-[#666]">Créez un compte pour suivre vos projets vidéo et demandes de devis</p>
+        </div>
+
+        <form class="w-full" onsubmit="handleRegister(event)">
+          <div class="mb-4">
+            <label class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Nom complet</label>
+            <div class="relative">
+              <input type="text" required placeholder="Kofi Adzoa" class="w-full bg-gray-50 dark:bg-[#070707] border border-gray-300 dark:border-[#2a2a2a] rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#444] font-jakarta">
+              <i data-lucide="user" class="w-4 h-4 text-gray-400 dark:text-[#444] absolute left-3.5 top-3"></i>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Adresse e-mail</label>
+              <div class="relative">
+                <input type="email" required placeholder="kofi@example.tg" class="w-full bg-gray-50 dark:bg-[#070707] border border-gray-300 dark:border-[#2a2a2a] rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#444] font-jakarta">
+                <i data-lucide="mail" class="w-4 h-4 text-gray-400 dark:text-[#444] absolute left-3.5 top-3"></i>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Téléphone / WhatsApp</label>
+              <div class="relative">
+                <input type="tel" required placeholder="+228 XX XX XX XX" class="w-full bg-gray-50 dark:bg-[#070707] border border-gray-300 dark:border-[#2a2a2a] rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#444] font-jakarta">
+                <i data-lucide="phone" class="w-4 h-4 text-gray-400 dark:text-[#444] absolute left-3.5 top-3"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+            <div>
+              <label class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Mot de passe</label>
+              <div class="relative">
+                <input type="password" required placeholder="••••••••" class="w-full bg-gray-50 dark:bg-[#070707] border border-gray-300 dark:border-[#2a2a2a] rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#444] font-jakarta">
+                <i data-lucide="lock" class="w-4 h-4 text-gray-400 dark:text-[#444] absolute left-3.5 top-3"></i>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Confirmer le mot de passe</label>
+              <div class="relative">
+                <input type="password" required placeholder="••••••••" class="w-full bg-gray-50 dark:bg-[#070707] border border-gray-300 dark:border-[#2a2a2a] rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#444] font-jakarta">
+                <i data-lucide="lock" class="w-4 h-4 text-gray-400 dark:text-[#444] absolute left-3.5 top-3"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <label class="flex items-start gap-2 text-xs text-gray-500 dark:text-[#666] cursor-pointer">
+              <input type="checkbox" required class="accent-brand-orange rounded border-gray-300 dark:border-[#2a2a2a] bg-gray-50 dark:bg-[#070707] mt-0.5">
+              <span>J'accepte les <a href="#" class="text-brand-orange hover:underline font-semibold">Conditions d'utilisation</a> et la <a href="#" class="text-brand-orange hover:underline font-semibold">Politique de confidentialité</a> de GENESYS.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="w-full bg-brand-orange text-gray-900 dark:text-white font-bold py-3 rounded-lg text-sm hover:bg-orange-600 transition-colors flex items-center justify-center gap-2">
+            Créer mon compte <i data-lucide="user-plus" class="w-4 h-4"></i>
+          </button>
+        </form>
+
+        <p class="text-xs text-gray-500 dark:text-[#666] mt-6 text-center">
+          Déjà inscrit ? <a href="login.html" class="text-brand-orange hover:underline font-semibold">Se connecter</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- MINIMAL FOOTER -->
+  <footer class="w-full py-6 text-center text-xs text-gray-400 dark:text-[#444] z-10 border-t border-gray-200/50 dark:border-[#1f1f1f]/50 bg-white/50 dark:bg-[#050505]/50">
+    © 2026 GENESYS Agency — Lomé, Togo. Tous droits réservés.
+  </footer>
+
+  <script>
+    function handleRegister(e) {
+      e.preventDefault();
+      // Mock registration redirection to login
+      window.location.href = 'login.html';
+    }
+
+    // Theme logic
+    function toggleTheme() {
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+    
+    // Init theme
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+    }
+    
+    lucide.createIcons();
+  </script>
+</body>
+</html>
