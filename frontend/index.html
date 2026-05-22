@@ -54,23 +54,50 @@
       <a href="index.html" class="block">
         <img src="assets/logo.PNG" alt="GENESYS" class="h-7 w-auto">
       </a>
-      <div class="flex items-center gap-8">
+      
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-8">
         <a href="index.html" class="text-brand-orange dark:text-brand-orange text-sm font-bold">Accueil</a>
-        <a href="portfolio.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">Work</a>
+        <a href="portfolio.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">Portfolio</a>
         <a href="services.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">Services</a>
         <a href="about.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">À propos</a>
-        <a href="contact.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">Contact</a>
+        <!-- <a href="contact.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">Contact</a> -->
         <a href="login.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors flex items-center gap-1.5"><i data-lucide="user" class="w-4 h-4"></i> Connexion</a>
         <button onclick="toggleTheme()" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a1a1a] text-gray-600 dark:text-[#888] hover:text-brand-orange transition-colors" aria-label="Toggle theme"><i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i><i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i></button>
         <a href="contact.html" class="bg-brand-orange text-gray-900 dark:text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:bg-orange-600 transition-colors">Demander un devis</a>
       </div>
+
+      <!-- Mobile Controls (visible on mobile only) -->
+      <div class="flex md:hidden items-center gap-4">
+        <button onclick="toggleTheme()" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a1a1a] text-gray-600 dark:text-[#888] hover:text-brand-orange transition-colors" aria-label="Toggle theme">
+          <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+          <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
+        </button>
+        <button onclick="toggleMobileMenu()" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a1a1a] text-gray-600 dark:text-[#888] hover:text-brand-orange transition-colors" aria-label="Toggle mobile menu">
+          <i id="burgerIcon" data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
     </div>
-  </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white/95 dark:bg-[#050505]/95 backdrop-blur-md border-b border-gray-200 dark:border-[#1f1f1f] px-6 py-6 transition-all duration-300">
+      <div class="flex flex-col gap-4">
+        <a href="index.html" class="text-brand-orange dark:text-brand-orange text-base font-bold">Accueil</a>
+        <a href="portfolio.html" class="text-gray-600 dark:text-[#888] text-base font-medium hover:text-gray-900 dark:text-white transition-colors">Portfolio</a>
+        <a href="services.html" class="text-gray-600 dark:text-[#888] text-base font-medium hover:text-gray-900 dark:text-white transition-colors">Services</a>
+        <a href="about.html" class="text-gray-600 dark:text-[#888] text-base font-medium hover:text-gray-900 dark:text-white transition-colors">À propos</a>
+        <!-- <a href="contact.html" class="text-gray-600 dark:text-[#888] text-base font-medium hover:text-gray-900 dark:text-white transition-colors">Contact</a> -->
+        <a href="login.html" class="text-gray-600 dark:text-[#888] text-base font-medium hover:text-gray-900 dark:text-white transition-colors flex items-center gap-1.5"><i data-lucide="user" class="w-4.5 h-4.5"></i> Connexion</a>
+        <div class="border-t border-gray-200 dark:border-[#1f1f1f] pt-4 mt-2">
+          <a href="contact.html" class="block text-center bg-brand-orange text-gray-900 dark:text-white text-sm font-semibold py-3 rounded-md hover:bg-orange-600 transition-colors">Demander un devis</a>
+        </div>
+      </div>
+    </div>
 
   <!-- HERO -->
   <section class="hero-grid min-h-[90vh] flex items-center relative overflow-hidden border-b border-gray-200 dark:border-[#1a1a1a]">
     <div class="absolute inset-0 bg-gradient-to-b from-white dark:from-[#050505] via-transparent to-white dark:to-[#050505] pointer-events-none"></div>
-    <div class="max-w-7xl mx-auto px-6 py-24 grid grid-cols-2 gap-16 items-center relative z-10">
+    <div class="max-w-7xl mx-auto px-6 py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
       <div>
         
         <h1 class="font-clash text-5xl xl:text-6xl font-bold leading-[1.1] text-gray-900 dark:text-white mb-6">
@@ -105,7 +132,7 @@
         </div>
 
         <!-- STATS -->
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-4 card-hover">
             <div class="font-clash text-3xl font-bold text-brand-orange mb-1">120+</div>
             <div class="text-xs text-gray-500 dark:text-[#666]">Projets livrés</div>
@@ -136,7 +163,7 @@
         </a>
       </div>
       
-      <div class="grid grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- CARD 1 -->
         <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl overflow-hidden card-hover cursor-pointer group">
           <div class="h-52 bg-gradient-to-br from-orange-50 dark:from-[#1a0a00] to-white dark:to-[#0d0d0d] flex items-center justify-center relative">
@@ -210,7 +237,7 @@
         </a>
       </div>
 
-      <div class="grid grid-cols-4 gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-6 card-hover">
           <div class="w-10 h-10 bg-orange-50 dark:bg-[#1a0800] border border-brand-orange/20 rounded-lg flex items-center justify-center mb-5">
             <i data-lucide="target" class="w-5 h-5 text-brand-orange"></i>
@@ -259,7 +286,7 @@
       <p class="text-xs text-brand-orange tracking-widest uppercase font-semibold mb-3">Témoignages</p>
       <h2 class="font-clash text-4xl font-bold text-gray-900 dark:text-white mb-12">Ce que disent nos clients</h2>
       
-      <div class="grid grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-8">
           <div class="flex gap-1 mb-4">
             <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i>
@@ -301,7 +328,7 @@
 
   <!-- CTA BAND -->
   <section class="bg-brand-orange py-20">
-    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left">
       <div>
         <h2 class="font-clash text-4xl font-bold text-gray-900 dark:text-white mb-3">Prêt à créer des vidéos qui convertissent vraiment ?</h2>
         <p class="text-orange-200 text-lg">Réponse garantie sous 24h. Devis gratuit et sans engagement.</p>
@@ -342,7 +369,7 @@
         <div>
           <p class="text-xs text-gray-400 dark:text-[#444] uppercase tracking-widest font-bold mb-5">Navigation</p>
           <div class="flex flex-col gap-3">
-            <a href="portfolio.html" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">Work / Portfolio</a>
+            <a href="portfolio.html" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">Portfolio / Portfolio</a>
             <a href="services.html" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">Services & Tarifs</a>
             <a href="about.html" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">À propos</a>
             <a href="contact.html" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">Contact</a>
@@ -380,6 +407,19 @@
     // Init theme
     if (localStorage.getItem('theme') === 'light') {
       document.documentElement.classList.remove('dark');
+    }
+    
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('burgerIcon');
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        menu.classList.add('hidden');
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
     }
     
     lucide.createIcons();</script>

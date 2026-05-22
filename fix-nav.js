@@ -3,7 +3,7 @@ const path = require('path');
 
 const files = [
   { name: 'frontend/index.html', active: '>Accueil</a>' },
-  { name: 'frontend/portfolio.html', active: '>Work</a>' },
+  { name: 'frontend/portfolio.html', active: '>Portfolio</a>' },
   { name: 'frontend/services.html', active: '>Services</a>' },
   { name: 'frontend/about.html', active: '>À propos</a>' },
   { name: 'frontend/contact.html', active: '>Contact</a>' }
