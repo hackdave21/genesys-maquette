@@ -1,0 +1,15 @@
+[build]
+  # Tout le site est dans frontend/ (y compris admin/ dedans)
+  publish = "frontend"
+
+# Redirection /admin → page de login admin
+[[redirects]]
+  from = "/admin"
+  to = "/admin/login.html"
+  status = 302
+
+# Page 404 personnalisée (optionnel)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 404
