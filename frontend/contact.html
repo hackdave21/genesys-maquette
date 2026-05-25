@@ -380,11 +380,13 @@
       </div>
     </div>
     <!-- Floating Button -->
-    <button onclick="toggleChatbot()" id="chatbot-btn" class="w-14 h-14 bg-gradient-to-r from-brand-orange to-orange-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300 relative group">
-      <i data-lucide="message-circle" class="w-6 h-6 chatbot-icon-open"></i>
-      <i data-lucide="x" class="w-6 h-6 hidden chatbot-icon-close"></i>
-      <span class="absolute -top-1 -right-1 w-4 h-4 bg-[#00A86B] rounded-full border-2 border-white dark:border-[#050505]" style="animation: pulse 2s infinite;"></span>
-    </button>
+   <button onclick="toggleChatbot()" id="chatbot-btn" class="w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300 relative group bg-transparent border-0 p-0">
+  <img src="assets/chatbot.png" alt="GENESYS Assistant" class="chatbot-icon-open w-16 h-16 object-contain drop-shadow-lg">
+  <div class="chatbot-icon-close hidden w-14 h-14 bg-gradient-to-r from-brand-orange to-orange-500 rounded-full flex items-center justify-center">
+    <i data-lucide="x" class="w-6 h-6 text-white"></i>
+  </div>
+  <span class="absolute -top-1 -right-1 w-4 h-4 bg-[#00A86B] rounded-full border-2 border-white dark:border-[#050505]" style="animation: pulse 2s infinite;"></span>
+</button>
   </div>
 
   <style>
