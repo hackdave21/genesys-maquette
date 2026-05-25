@@ -9,6 +9,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
@@ -22,6 +23,7 @@
       }
     }
   </script>
+  <link rel="stylesheet" href="admin-theme.css">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&display=swap');
@@ -84,6 +86,10 @@
         </div>
         <button class="bg-brand-orange text-white text-xs font-bold px-4 py-2 rounded-lg flex items-center gap-1.5 hover:bg-orange-600 transition-colors shadow-sm shadow-orange-100">
           <i data-lucide="plus" class="w-3.5 h-3.5"></i> Nouveau Projet
+        </button>
+        <button onclick="toggleAdminTheme()" class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-400 hover:text-brand-orange transition-colors" aria-label="Changer de thème">
+          <i data-lucide="sun" class="w-4 h-4 theme-icon-sun"></i>
+          <i data-lucide="moon" class="w-4 h-4 theme-icon-moon"></i>
         </button>
         <div class="flex items-center gap-2">
           <div class="w-8 h-8 bg-brand-orange rounded-full flex items-center justify-center text-xs font-bold text-white">TA</div>
@@ -342,6 +348,23 @@
       }
     }
     
+    // Admin theme toggle
+    function toggleAdminTheme() {
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('admin-theme', 'light');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('admin-theme', 'dark');
+      }
+      lucide.createIcons();
+    }
+    // Init admin theme
+    if (localStorage.getItem('admin-theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+
     lucide.createIcons();
   </script>
 </body>

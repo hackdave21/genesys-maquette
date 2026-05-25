@@ -136,5 +136,76 @@
     
     lucide.createIcons();
   </script>
+
+  <!-- CHATBOT WIDGET -->
+  <div id="chatbot-widget" class="fixed bottom-6 right-6 z-[9999]">
+    <!-- Chat Panel (hidden by default) -->
+    <div id="chatbot-panel" class="hidden mb-4 w-80 rounded-2xl shadow-2xl overflow-hidden border border-gray-200 dark:border-[#1f1f1f]">
+      <div class="bg-gradient-to-r from-brand-orange to-orange-500 p-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 bg-white/20 rounded-full flex items-center justify-center">
+            <i data-lucide="bot" class="w-5 h-5 text-white"></i>
+          </div>
+          <div>
+            <p class="text-sm font-bold text-white">GENESYS Assistant</p>
+            <p class="text-[11px] text-orange-100">En ligne • Réponse rapide</p>
+          </div>
+        </div>
+        <button onclick="toggleChatbot()" class="text-white/70 hover:text-white transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="bg-white dark:bg-[#0d0d0d] p-4 h-64 overflow-y-auto flex flex-col gap-3">
+        <div class="bg-orange-50 dark:bg-[#1a0a00] rounded-2xl rounded-tl-sm p-3.5 max-w-[85%] self-start">
+          <p class="text-sm text-gray-700 dark:text-[#ccc]">👋 Bonjour ! Je suis l'assistant GENESYS.</p>
+          <p class="text-[10px] text-gray-400 dark:text-[#555] mt-1.5">Maintenant</p>
+        </div>
+        <div class="bg-orange-50 dark:bg-[#1a0a00] rounded-2xl rounded-tl-sm p-3.5 max-w-[85%] self-start">
+          <p class="text-sm text-gray-700 dark:text-[#ccc]">Posez-moi vos questions sur nos services, tarifs, ou demandez un devis rapide ! 🎬</p>
+          <p class="text-[10px] text-gray-400 dark:text-[#555] mt-1.5">Maintenant</p>
+        </div>
+      </div>
+      <div class="bg-white dark:bg-[#0d0d0d] p-3 border-t border-gray-200 dark:border-[#1f1f1f]">
+        <div class="flex gap-2">
+          <input type="text" placeholder="Tapez votre message..." class="flex-1 bg-gray-50 dark:bg-[#070707] border border-gray-200 dark:border-[#2a2a2a] rounded-xl px-3.5 py-2.5 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#555] focus:border-brand-orange outline-none transition-colors">
+          <button class="bg-brand-orange text-white rounded-xl px-3.5 py-2.5 hover:bg-orange-600 transition-colors">
+            <i data-lucide="send" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Floating Button -->
+    <button onclick="toggleChatbot()" id="chatbot-btn" class="w-14 h-14 bg-gradient-to-r from-brand-orange to-orange-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300 relative group">
+      <i data-lucide="message-circle" class="w-6 h-6 chatbot-icon-open"></i>
+      <i data-lucide="x" class="w-6 h-6 hidden chatbot-icon-close"></i>
+      <span class="absolute -top-1 -right-1 w-4 h-4 bg-[#00A86B] rounded-full border-2 border-white dark:border-[#050505]" style="animation: pulse 2s infinite;"></span>
+    </button>
+  </div>
+
+  <style>
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.15); }
+    }
+  </style>
+
+  <script>
+    function toggleChatbot() {
+      const panel = document.getElementById('chatbot-panel');
+      const iconOpen = document.querySelector('.chatbot-icon-open');
+      const iconClose = document.querySelector('.chatbot-icon-close');
+      if (panel.classList.contains('hidden')) {
+        panel.classList.remove('hidden');
+        iconOpen.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+      } else {
+        panel.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      }
+      lucide.createIcons();
+    }
+  </script>
+
 </body>
 </html>

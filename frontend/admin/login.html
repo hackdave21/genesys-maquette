@@ -9,6 +9,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
@@ -22,6 +23,7 @@
       }
     }
   </script>
+  <link rel="stylesheet" href="admin-theme.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -40,6 +42,14 @@
 <body class="bg-slate-50 text-slate-900 font-jakarta antialiased min-h-screen flex flex-col justify-between hero-grid relative">
 
   <!-- LOGIN CARD -->
+  <!-- Theme Toggle -->
+  <div class="fixed top-4 right-4 z-50">
+    <button onclick="toggleAdminTheme()" class="w-9 h-9 flex items-center justify-center rounded-full bg-white border border-slate-200 text-slate-400 hover:text-brand-orange transition-colors shadow-sm" aria-label="Changer de thème">
+      <i data-lucide="sun" class="w-4 h-4 theme-icon-sun"></i>
+      <i data-lucide="moon" class="w-4 h-4 theme-icon-moon"></i>
+    </button>
+  </div>
+
   <main class="w-full flex-1 flex items-center justify-center p-6 z-10">
     <div class="w-full max-w-md bg-white border border-slate-200 rounded-2xl p-8 shadow-2xl shadow-slate-200/80 relative overflow-hidden">
       <!-- Glow effect behind -->
@@ -104,6 +114,23 @@
       window.location.href = 'dashboard.html';
     }
     
+    // Admin theme toggle
+    function toggleAdminTheme() {
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('admin-theme', 'light');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('admin-theme', 'dark');
+      }
+      lucide.createIcons();
+    }
+    // Init admin theme
+    if (localStorage.getItem('admin-theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+
     lucide.createIcons();
   </script>
 </body>
