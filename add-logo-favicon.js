@@ -10,9 +10,9 @@ const frontendFiles = [
 ];
 
 const adminFiles = [
-  'admin/dashboard.html',
-  'admin/devis.html',
-  'admin/projets.html'
+  'frontend/admin/dashboard.html',
+  'frontend/admin/devis.html',
+  'frontend/admin/projets.html'
 ];
 
 // Process frontend files
@@ -37,7 +37,7 @@ frontendFiles.forEach(fileName => {
   content = content.replace(
     /<a href="index\.html" class="font-clash text-xl font-bold tracking-widest">GENE<span class="text-brand-orange">S<\/span>YS<\/a>/g,
     `<a href="index.html" class="block">
-        <img src="assets/logo.PNG" alt="GENESYS" class="h-7 w-auto dark:brightness-0 dark:invert transition-all duration-300">
+        <img src="assets/logo.PNG" alt="GENESYS" class="h-7 w-auto dark:invert dark:hue-rotate-180 transition-all duration-300">
       </a>`
   );
 
@@ -45,7 +45,7 @@ frontendFiles.forEach(fileName => {
   content = content.replace(
     /<a href="index\.html" class="font-clash text-2xl font-bold text-gray-900 dark:text-white tracking-widest block mb-4">GENE<span class="text-brand-orange">S<\/span>YS<\/a>/g,
     `<a href="index.html" class="block mb-4">
-            <img src="assets/logo.PNG" alt="GENESYS" class="h-8 w-auto dark:brightness-0 dark:invert transition-all duration-300">
+            <img src="assets/logo.PNG" alt="GENESYS" class="h-8 w-auto dark:invert dark:hue-rotate-180 transition-all duration-300">
           </a>`
   );
 

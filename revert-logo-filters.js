@@ -10,9 +10,9 @@ const frontendFiles = [
 ];
 
 const adminFiles = [
-  'admin/dashboard.html',
-  'admin/devis.html',
-  'admin/projets.html'
+  'frontend/admin/dashboard.html',
+  'frontend/admin/devis.html',
+  'frontend/admin/projets.html'
 ];
 
 // Process frontend files
@@ -27,13 +27,13 @@ frontendFiles.forEach(fileName => {
 
   // Revert filters on h-7 logo (nav)
   content = content.replace(
-    /class="h-7 w-auto dark:brightness-0 dark:invert transition-all duration-300"/g,
+    /class="h-7 w-auto dark:invert dark:hue-rotate-180 transition-all duration-300"/g,
     'class="h-7 w-auto"'
   );
 
   // Revert filters on h-8 logo (footer)
   content = content.replace(
-    /class="h-8 w-auto dark:brightness-0 dark:invert transition-all duration-300"/g,
+    /class="h-8 w-auto dark:invert dark:hue-rotate-180 transition-all duration-300"/g,
     'class="h-8 w-auto"'
   );
 

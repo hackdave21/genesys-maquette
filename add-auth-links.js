@@ -10,9 +10,9 @@ const frontendFiles = [
 ];
 
 const adminFiles = [
-  'admin/dashboard.html',
-  'admin/devis.html',
-  'admin/projets.html'
+  'frontend/admin/dashboard.html',
+  'frontend/admin/devis.html',
+  'frontend/admin/projets.html'
 ];
 
 // Process frontend files to insert Connexion link before theme toggle button
