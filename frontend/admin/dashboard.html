@@ -16,7 +16,6 @@
             brand: { orange: '#FF6B2B', gold: '#C5A572', green: '#00A86B' }
           },
           fontFamily: {
-            clash: ['Clash Display', 'sans-serif'],
             jakarta: ['Plus Jakarta Sans', 'sans-serif'],
           }
         }
@@ -25,7 +24,7 @@
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&display=swap');
+    
     .lucide { display: inline-block; vertical-align: middle; }
     html, body { height: 100%; }
   </style>
@@ -92,7 +91,7 @@
         <button onclick="toggleSidebar()" class="md:hidden text-[#888] hover:text-white transition-colors p-1" title="Menu">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
-        <h1 class="font-clash text-base md:text-lg font-bold">Tableau de bord</h1>
+        <h1 class="font-jakarta text-base md:text-lg font-bold">Tableau de bord</h1>
       </div>
       <div class="flex items-center gap-3">
         <button class="text-[#666] hover:text-white transition-colors"><i data-lucide="bell" class="w-4 h-4"></i></button>
@@ -117,7 +116,7 @@
           <div class="flex justify-between items-start mb-3">
             <div>
               <p class="text-[10px] text-[#555] uppercase tracking-wide font-bold mb-1">Chiffre d'affaires</p>
-              <p class="font-clash text-2xl font-bold text-white">3.4M FCFA</p>
+              <p class="font-jakarta text-2xl font-bold text-white">3.4M FCFA</p>
             </div>
             <div class="w-9 h-9 bg-brand-orange/10 rounded-lg flex items-center justify-center">
               <i data-lucide="banknote" class="w-5 h-5 text-brand-orange"></i>
@@ -130,7 +129,7 @@
           <div class="flex justify-between items-start mb-3">
             <div>
               <p class="text-[10px] text-[#555] uppercase tracking-wide font-bold mb-1">Devis Reçus</p>
-              <p class="font-clash text-2xl font-bold text-white">12 demandes</p>
+              <p class="font-jakarta text-2xl font-bold text-white">12 demandes</p>
             </div>
             <div class="w-9 h-9 bg-brand-gold/10 rounded-lg flex items-center justify-center">
               <i data-lucide="clipboard-list" class="w-5 h-5 text-brand-gold"></i>
@@ -143,7 +142,7 @@
           <div class="flex justify-between items-start mb-3">
             <div>
               <p class="text-[10px] text-[#555] uppercase tracking-wide font-bold mb-1">Projets en cours</p>
-              <p class="font-clash text-2xl font-bold text-white">8 actifs</p>
+              <p class="font-jakarta text-2xl font-bold text-white">8 actifs</p>
             </div>
             <div class="w-9 h-9 bg-purple-500/10 rounded-lg flex items-center justify-center">
               <i data-lucide="clapperboard" class="w-5 h-5 text-purple-400"></i>
@@ -156,7 +155,7 @@
           <div class="flex justify-between items-start mb-3">
             <div>
               <p class="text-[10px] text-[#555] uppercase tracking-wide font-bold mb-1">Taux Conversion</p>
-              <p class="font-clash text-2xl font-bold text-white">28.4%</p>
+              <p class="font-jakarta text-2xl font-bold text-white">28.4%</p>
             </div>
             <div class="w-9 h-9 bg-brand-green/10 rounded-lg flex items-center justify-center">
               <i data-lucide="trending-up" class="w-5 h-5 text-brand-green"></i>
@@ -171,7 +170,7 @@
         <!-- CHART -->
         <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-5">
           <div class="flex justify-between items-center mb-5">
-            <h2 class="font-clash text-base font-bold">CA Généré par Mois (FCFA)</h2>
+            <h2 class="font-jakarta text-base font-bold">CA Généré par Mois (FCFA)</h2>
             <span class="text-xs text-[#555]">Semestre 2026</span>
           </div>
           <div class="h-40 flex items-end gap-3 px-2">
@@ -211,7 +210,7 @@
         <!-- RECENT ACTIVITY -->
         <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-5">
           <div class="flex justify-between items-center mb-5">
-            <h2 class="font-clash text-base font-bold">Activité récente</h2>
+            <h2 class="font-jakarta text-base font-bold">Activité récente</h2>
             <button class="text-xs text-brand-orange hover:underline">Tout voir</button>
           </div>
           <div class="flex flex-col gap-4">
@@ -242,7 +241,7 @@
       <!-- TABLE -->
       <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-4 md:p-5">
         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-5">
-          <h2 class="font-clash text-base font-bold">Dernières demandes de devis</h2>
+          <h2 class="font-jakarta text-base font-bold">Dernières demandes de devis</h2>
           <div class="flex flex-wrap items-center gap-2">
             <div class="relative flex items-center flex-1 sm:flex-initial">
               <input type="text" placeholder="Rechercher..." class="w-full sm:w-auto bg-[#111] border border-[#2a2a2a] rounded-lg pl-8 pr-3 py-2 text-xs text-white placeholder:text-[#555] font-jakarta focus:border-brand-orange outline-none">
