@@ -34,13 +34,24 @@
 </head>
 <body class="bg-[#070707] text-white font-jakarta antialiased h-screen flex overflow-hidden">
 
+  <!-- Sidebar Backdrop -->
+  <div id="sidebar-backdrop" class="fixed inset-0 bg-black/60 z-40 hidden transition-opacity duration-300" onclick="toggleSidebar()"></div>
+
+  <!-- Detail Backdrop -->
+  <div id="detail-backdrop" class="fixed inset-0 bg-black/60 z-40 hidden transition-opacity duration-300" onclick="closeDetail()"></div>
+
   <!-- SIDEBAR -->
-  <aside class="w-56 bg-[#0d0d0d] border-r border-[#1f1f1f] flex flex-col flex-shrink-0">
-    <div class="p-5 border-b border-[#1f1f1f]">
-      <a href="../index.html" class="block mb-2">
-        <img src="assets/logo.PNG" alt="GENESYS" class="h-7 w-auto">
-      </a>
-      <span class="text-[10px] text-[#444] uppercase tracking-widest font-medium">Admin Panel</span>
+  <aside id="sidebar" class="w-56 bg-[#0d0d0d] border-r border-[#1f1f1f] flex flex-col flex-shrink-0 fixed inset-y-0 left-0 z-50 -translate-x-full md:translate-x-0 md:static transition-transform duration-300 ease-in-out">
+    <div class="p-5 border-b border-[#1f1f1f] flex items-center justify-between">
+      <div>
+        <a href="../index.html" class="block mb-2">
+          <img src="assets/logo.PNG" alt="GENESYS" class="h-7 w-auto">
+        </a>
+        <span class="text-[10px] text-[#444] uppercase tracking-widest font-medium">Admin Panel</span>
+      </div>
+      <button onclick="toggleSidebar()" class="md:hidden text-[#888] hover:text-white p-1" title="Fermer le menu">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
     </div>
     <nav class="flex-1 p-4 flex flex-col gap-1 overflow-y-auto">
       <p class="text-[9px] text-[#333] uppercase tracking-widest font-bold px-3 py-2">Général</p>
@@ -76,14 +87,19 @@
 
   <!-- MAIN -->
   <div class="flex-1 flex flex-col overflow-hidden">
-    <header class="h-14 bg-[#0a0a0a] border-b border-[#1a1a1a] px-6 flex items-center justify-between flex-shrink-0">
-      <h1 class="font-clash text-lg font-bold">Demandes de Devis</h1>
+    <header class="h-14 bg-[#0a0a0a] border-b border-[#1a1a1a] px-4 md:px-6 flex items-center justify-between flex-shrink-0">
+      <div class="flex items-center gap-3">
+        <button onclick="toggleSidebar()" class="md:hidden text-[#888] hover:text-white transition-colors p-1" title="Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+        <h1 class="font-clash text-base md:text-lg font-bold">Demandes de Devis</h1>
+      </div>
       <div class="flex items-center gap-3">
         <button class="text-[#666] hover:text-white transition-colors"><i data-lucide="bell" class="w-4 h-4"></i></button>
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2 md:gap-4">
           <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-brand-orange rounded-full flex items-center justify-center text-xs font-bold">TA</div>
-            <span class="text-sm text-[#888]">Thierry Amenyah</span>
+            <div class="w-7 h-7 md:w-8 md:h-8 bg-brand-orange rounded-full flex items-center justify-center text-xs font-bold">TA</div>
+            <span class="text-xs md:text-sm text-[#888] hidden sm:inline">Thierry Amenyah</span>
           </div>
           <a href="login.html" class="text-[#666] hover:text-red-400 transition-colors" title="Déconnexion">
             <i data-lucide="log-out" class="w-4 h-4"></i>
@@ -98,24 +114,27 @@
       <!-- LIST PANEL -->
       <div class="flex-1 overflow-y-auto p-5 flex flex-col gap-4">
         <!-- FILTERS -->
-        <div class="flex gap-2 flex-wrap">
-          <button class="f-pill bg-brand-orange/10 border border-brand-orange text-brand-orange px-4 py-1.5 rounded-full text-xs font-semibold" onclick="filterDevis(this,'all')">
-            Tous <span class="bg-brand-orange text-white rounded-full px-1.5 ml-1 text-[9px]">12</span>
-          </button>
-          <button class="f-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors" onclick="filterDevis(this,'Nouveau')">Nouveau</button>
-          <button class="f-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors" onclick="filterDevis(this,'Envoyé')">Devis Envoyé</button>
-          <button class="f-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors" onclick="filterDevis(this,'Accepté')">Accepté</button>
-          <button class="f-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors" onclick="filterDevis(this,'Refusé')">Refusé</button>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 flex-wrap">
+          <div class="flex gap-2 flex-wrap items-center">
+            <button class="f-pill bg-brand-orange/10 border border-brand-orange text-brand-orange px-4 py-1.5 rounded-full text-xs font-semibold" onclick="filterDevis(this,'all')">
+              Tous <span class="bg-brand-orange text-white rounded-full px-1.5 ml-1 text-[9px]">12</span>
+            </button>
+            <button class="f-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors" onclick="filterDevis(this,'Nouveau')">Nouveau</button>
+            <button class="f-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors" onclick="filterDevis(this,'Envoyé')">Devis Envoyé</button>
+            <button class="f-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors" onclick="filterDevis(this,'Accepté')">Accepté</button>
+            <button class="f-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors" onclick="filterDevis(this,'Refusé')">Refusé</button>
+          </div>
 
-          <div class="relative flex items-center ml-auto">
-            <input type="text" placeholder="Rechercher..." class="bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg pl-8 pr-3 py-2 text-xs text-white placeholder:text-[#555] font-jakarta focus:border-brand-orange outline-none">
+          <div class="relative flex items-center w-full sm:w-auto sm:ml-auto">
+            <input type="text" placeholder="Rechercher..." class="w-full sm:w-auto bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg pl-8 pr-3 py-2 text-xs text-white placeholder:text-[#555] font-jakarta focus:border-brand-orange outline-none">
             <i data-lucide="search" class="w-3.5 h-3.5 text-[#555] absolute left-2.5"></i>
           </div>
         </div>
 
         <!-- TABLE -->
         <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl overflow-hidden">
-          <table class="w-full border-collapse">
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[700px] border-collapse">
             <thead>
               <tr class="border-b border-[#1a1a1a]">
                 <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold">Client</th>
@@ -183,11 +202,12 @@
 
             </tbody>
           </table>
+          </div>
         </div>
 
         <!-- PAGINATION -->
-        <div class="flex justify-between items-center text-xs text-[#555]">
-          <span>Affichage de 1 à 6 sur 12 demandes</span>
+        <div class="flex flex-col sm:flex-row gap-3 justify-between items-center text-xs text-[#555]">
+          <span class="text-center sm:text-left">Affichage de 1 à 6 sur 12 demandes</span>
           <div class="flex gap-2 items-center">
             <button class="px-3 py-1.5 border border-[#2a2a2a] rounded text-[#666] hover:border-[#444] hover:text-white transition-colors">Précédent</button>
             <button class="px-3 py-1.5 bg-brand-orange text-white rounded font-bold">1</button>
@@ -198,13 +218,16 @@
       </div>
 
       <!-- DETAIL PANEL -->
-      <div class="w-80 border-l border-[#1a1a1a] bg-[#0a0a0a] p-5 overflow-y-auto flex-shrink-0 flex flex-col gap-4">
-        <div>
-          <p class="text-[10px] text-[#555] uppercase tracking-wide font-bold mb-1">Détails de la demande</p>
-          <h2 class="font-clash text-base font-bold text-white flex items-center gap-2" id="det-title">
-            <i data-lucide="clipboard-list" class="w-4 h-4 text-brand-orange"></i> Hotel Sarakawa
-          </h2>
+      <div id="detail-panel" class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-[#0a0a0a] border-l border-[#1a1a1a] p-5 overflow-y-auto flex flex-col gap-4 transition-transform duration-300 ease-in-out translate-x-full lg:translate-x-0 lg:static lg:w-80 lg:z-auto lg:flex-shrink-0">
+        <div class="flex justify-between items-center mb-1">
+          <p class="text-[10px] text-[#555] uppercase tracking-wide font-bold">Détails de la demande</p>
+          <button onclick="closeDetail()" class="lg:hidden text-[#888] hover:text-white p-1" title="Fermer les détails">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
         </div>
+        <h2 class="font-clash text-base font-bold text-white flex items-center gap-2" id="det-title">
+          <i data-lucide="clipboard-list" class="w-4 h-4 text-brand-orange"></i> Hotel Sarakawa
+        </h2>
 
         <div class="flex flex-col gap-0 bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl overflow-hidden">
           <div class="flex justify-between p-3.5 border-b border-[#111]">
@@ -258,6 +281,25 @@
   </div>
 
   <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (sidebar.classList.contains('-translate-x-full')) {
+        sidebar.classList.remove('-translate-x-full');
+        backdrop.classList.remove('hidden');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+      }
+    }
+
+    function closeDetail() {
+      const detail = document.getElementById('detail-panel');
+      const backdrop = document.getElementById('detail-backdrop');
+      detail.classList.add('translate-x-full');
+      backdrop.classList.add('hidden');
+    }
+
     function filterDevis(el, status) {
       document.querySelectorAll('.f-pill').forEach(b => {
         b.className = 'f-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors';
@@ -298,6 +340,12 @@
       st.className = `${badge} text-[10px] font-bold px-2.5 py-1 rounded-full inline-flex items-center gap-1`;
       st.innerHTML = `<span class="w-1.5 h-1.5 rounded-full ${dot}"></span>${status}`;
       
+      // Open detail drawer on mobile
+      const detail = document.getElementById('detail-panel');
+      const detailBackdrop = document.getElementById('detail-backdrop');
+      detail.classList.remove('translate-x-full');
+      detailBackdrop.classList.remove('hidden');
+
       lucide.createIcons();
     }
 

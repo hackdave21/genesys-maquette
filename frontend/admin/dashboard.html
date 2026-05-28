@@ -33,13 +33,21 @@
 </head>
 <body class="bg-[#070707] text-white font-jakarta antialiased h-screen flex overflow-hidden">
 
+  <!-- Sidebar Backdrop -->
+  <div id="sidebar-backdrop" class="fixed inset-0 bg-black/60 z-40 hidden transition-opacity duration-300" onclick="toggleSidebar()"></div>
+
   <!-- SIDEBAR -->
-  <aside class="w-56 bg-[#0d0d0d] border-r border-[#1f1f1f] flex flex-col flex-shrink-0">
-    <div class="p-5 border-b border-[#1f1f1f]">
-      <a href="../index.html" class="block mb-2">
-        <img src="assets/logo.PNG" alt="GENESYS" class="h-7 w-auto">
-      </a>
-      <span class="text-[10px] text-[#444] uppercase tracking-widest font-medium">Admin Panel</span>
+  <aside id="sidebar" class="w-56 bg-[#0d0d0d] border-r border-[#1f1f1f] flex flex-col flex-shrink-0 fixed inset-y-0 left-0 z-50 -translate-x-full md:translate-x-0 md:static transition-transform duration-300 ease-in-out">
+    <div class="p-5 border-b border-[#1f1f1f] flex items-center justify-between">
+      <div>
+        <a href="../index.html" class="block mb-2">
+          <img src="assets/logo.PNG" alt="GENESYS" class="h-7 w-auto">
+        </a>
+        <span class="text-[10px] text-[#444] uppercase tracking-widest font-medium">Admin Panel</span>
+      </div>
+      <button onclick="toggleSidebar()" class="md:hidden text-[#888] hover:text-white p-1" title="Fermer le menu">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
     </div>
     
     <nav class="flex-1 p-4 flex flex-col gap-1 overflow-y-auto">
@@ -79,14 +87,19 @@
   <!-- MAIN -->
   <div class="flex-1 flex flex-col overflow-hidden">
     <!-- TOP BAR -->
-    <header class="h-14 bg-[#0a0a0a] border-b border-[#1a1a1a] px-6 flex items-center justify-between flex-shrink-0">
-      <h1 class="font-clash text-lg font-bold">Tableau de bord</h1>
+    <header class="h-14 bg-[#0a0a0a] border-b border-[#1a1a1a] px-4 md:px-6 flex items-center justify-between flex-shrink-0">
+      <div class="flex items-center gap-3">
+        <button onclick="toggleSidebar()" class="md:hidden text-[#888] hover:text-white transition-colors p-1" title="Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+        <h1 class="font-clash text-base md:text-lg font-bold">Tableau de bord</h1>
+      </div>
       <div class="flex items-center gap-3">
         <button class="text-[#666] hover:text-white transition-colors"><i data-lucide="bell" class="w-4 h-4"></i></button>
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2 md:gap-4">
           <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-brand-orange rounded-full flex items-center justify-center text-xs font-bold">TA</div>
-            <span class="text-sm text-[#888]">Thierry Amenyah</span>
+            <div class="w-7 h-7 md:w-8 md:h-8 bg-brand-orange rounded-full flex items-center justify-center text-xs font-bold">TA</div>
+            <span class="text-xs md:text-sm text-[#888] hidden sm:inline">Thierry Amenyah</span>
           </div>
           <a href="login.html" class="text-[#666] hover:text-red-400 transition-colors" title="Déconnexion">
             <i data-lucide="log-out" class="w-4 h-4"></i>
@@ -99,7 +112,7 @@
     <main class="flex-1 overflow-y-auto p-6 bg-[#070707]">
 
       <!-- KPI GRID -->
-      <div class="grid grid-cols-4 gap-4 mb-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-5 hover:border-brand-orange/30 transition-colors">
           <div class="flex justify-between items-start mb-3">
             <div>
@@ -154,7 +167,7 @@
       </div>
 
       <!-- CHART & ACTIVITY -->
-      <div class="grid grid-cols-[2fr_1fr] gap-5 mb-5">
+      <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-5 mb-5">
         <!-- CHART -->
         <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-5">
           <div class="flex justify-between items-center mb-5">
@@ -227,18 +240,19 @@
       </div>
 
       <!-- TABLE -->
-      <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-5">
-        <div class="flex justify-between items-center mb-5">
+      <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl p-4 md:p-5">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-5">
           <h2 class="font-clash text-base font-bold">Dernières demandes de devis</h2>
-          <div class="flex gap-3">
-            <div class="relative flex items-center">
-              <input type="text" placeholder="Rechercher..." class="bg-[#111] border border-[#2a2a2a] rounded-lg pl-8 pr-3 py-2 text-xs text-white placeholder:text-[#555] font-jakarta focus:border-brand-orange outline-none">
+          <div class="flex flex-wrap items-center gap-2">
+            <div class="relative flex items-center flex-1 sm:flex-initial">
+              <input type="text" placeholder="Rechercher..." class="w-full sm:w-auto bg-[#111] border border-[#2a2a2a] rounded-lg pl-8 pr-3 py-2 text-xs text-white placeholder:text-[#555] font-jakarta focus:border-brand-orange outline-none">
               <i data-lucide="search" class="w-3.5 h-3.5 text-[#555] absolute left-2.5"></i>
             </div>
-            <a href="devis.html" class="bg-[#1a1a1a] border border-[#2a2a2a] text-[#888] hover:text-white px-3 py-2 rounded-lg text-xs font-medium transition-colors">Voir tous les devis</a>
+            <a href="devis.html" class="bg-[#1a1a1a] border border-[#2a2a2a] text-[#888] hover:text-white px-3 py-2 rounded-lg text-xs font-medium transition-colors whitespace-nowrap">Voir tous les devis</a>
           </div>
         </div>
-        <table class="w-full border-collapse">
+        <div class="overflow-x-auto -mx-4 md:-mx-5 px-4 md:px-5">
+          <table class="w-full min-w-[600px] border-collapse">
           <thead>
             <tr class="border-b border-[#1a1a1a]">
               <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-2.5 px-3 font-bold">Client</th>
@@ -277,10 +291,24 @@
           </tbody>
         </table>
       </div>
+    </div>
 
-    </main>
+  </main>
   </div>
 
-  <script>lucide.createIcons();</script>
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (sidebar.classList.contains('-translate-x-full')) {
+        sidebar.classList.remove('-translate-x-full');
+        backdrop.classList.remove('hidden');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+      }
+    }
+    lucide.createIcons();
+  </script>
 </body>
 </html>
