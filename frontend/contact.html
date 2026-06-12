@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr" class="dark">
+
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="assets/favicon.PNG">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - GENESYS Agency</title>
-  <meta name="description" content="Contactez GENESYS Agency pour votre projet vidéo à Lomé, Togo. Devis gratuit et sans engagement. Réponse garantie sous 24h.">
-  
+  <meta name="description"
+    content="Contactez GENESYS Agency pour votre projet vidéo à Lomé, Togo. Devis gratuit et sans engagement. Réponse garantie sous 24h.">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -25,74 +27,125 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <style>
-    
-    .lucide { display: inline-block; vertical-align: middle; }
-    input, select, textarea { transition: border-color 0.2s ease; }
-    input:focus, select:focus, textarea:focus { border-color: #FF6B2B !important; outline: none; }
-    .budget-pill { transition: all 0.2s ease; }
+    .lucide {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    input,
+    select,
+    textarea {
+      transition: border-color 0.2s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #FF6B2B !important;
+      outline: none;
+    }
+
+    .budget-pill {
+      transition: all 0.2s ease;
+    }
   </style>
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body class="bg-white dark:bg-[#050505] text-gray-900 dark:text-white font-jakarta antialiased pt-16">
 
   <!-- NAV -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/70 dark:bg-[#050505]/70 backdrop-blur-xl backdrop-saturate-150 border-b border-gray-200/50 dark:border-[#1f1f1f]/60 shadow-sm">
+  <nav
+    class="fixed top-0 left-0 right-0 z-50 bg-white/70 dark:bg-[#050505]/70 backdrop-blur-xl backdrop-saturate-150 border-b border-gray-200/50 dark:border-[#1f1f1f]/60 shadow-sm">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="index.html" class="block">
-        <img src="assets/logo.PNG" alt="GENESYS" class="h-7 w-auto dark:invert dark:hue-rotate-180 transition-all duration-300">
+        <img src="assets/logo.PNG" alt="GENESYS"
+          class="h-7 w-auto dark:invert dark:hue-rotate-180 transition-all duration-300">
       </a>
-      
+
       <!-- Desktop Nav Links -->
       <div class="hidden md:flex items-center gap-8">
-        <a href="index.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">Accueil</a>
-        <a href="portfolio.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">Portfolio</a>
-        <a href="services.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">Services</a>
-        <a href="about.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">À propos</a>
+        <a href="index.html"
+          class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">Accueil</a>
+        <a href="portfolio.html"
+          class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">Portfolio</a>
+        <a href="services.html"
+          class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">Services</a>
+        <a href="about.html"
+          class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors">À
+          propos</a>
         <!-- <a href="contact.html" class="text-brand-orange dark:text-brand-orange text-sm font-bold">Contact</a> -->
-        <a href="login.html" class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors flex items-center gap-1.5"><i data-lucide="user" class="w-4 h-4"></i> Connexion</a>
-        <button onclick="toggleTheme()" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a1a1a] text-gray-600 dark:text-[#888] hover:text-brand-orange transition-colors" aria-label="Toggle theme"><i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i><i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i></button>
-        <a href="contact.html" class="bg-brand-orange text-gray-900 dark:text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:bg-orange-600 transition-colors">Demander un devis</a>
+        <a href="login.html"
+          class="text-gray-600 dark:text-[#888] text-sm font-medium hover:text-gray-900 dark:text-white transition-colors flex items-center gap-1.5"><i
+            data-lucide="user" class="w-4 h-4"></i> Connexion</a>
+        <button onclick="toggleTheme()"
+          class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a1a1a] text-gray-600 dark:text-[#888] hover:text-brand-orange transition-colors"
+          aria-label="Toggle theme"><i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i><i data-lucide="sun"
+            class="w-4 h-4 block dark:hidden"></i></button>
+        <a href="contact.html"
+          class="bg-brand-orange text-gray-900 dark:text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:bg-orange-600 transition-colors">Demander
+          un devis</a>
       </div>
 
       <!-- Mobile Controls (visible on mobile only) -->
       <div class="flex md:hidden items-center gap-4">
-        <button onclick="toggleTheme()" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a1a1a] text-gray-600 dark:text-[#888] hover:text-brand-orange transition-colors" aria-label="Toggle theme">
+        <button onclick="toggleTheme()"
+          class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a1a1a] text-gray-600 dark:text-[#888] hover:text-brand-orange transition-colors"
+          aria-label="Toggle theme">
           <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
           <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
         </button>
-        <button onclick="toggleMobileMenu()" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a1a1a] text-gray-600 dark:text-[#888] hover:text-brand-orange transition-colors" aria-label="Toggle mobile menu">
+        <button onclick="toggleMobileMenu()"
+          class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a1a1a] text-gray-600 dark:text-[#888] hover:text-brand-orange transition-colors"
+          aria-label="Toggle mobile menu">
           <i id="burgerIcon" data-lucide="menu" class="w-5 h-5"></i>
         </button>
       </div>
     </div>
 
     <!-- Mobile Dropdown Menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white/95 dark:bg-[#050505]/95 backdrop-blur-md border-b border-gray-200 dark:border-[#1f1f1f] px-6 py-6 transition-all duration-300">
+    <div id="mobileMenu"
+      class="hidden md:hidden bg-white/95 dark:bg-[#050505]/95 backdrop-blur-md border-b border-gray-200 dark:border-[#1f1f1f] px-6 py-6 transition-all duration-300">
       <div class="flex flex-col gap-4">
-        <a href="index.html" class="text-gray-600 dark:text-[#888] text-base font-medium hover:text-gray-900 dark:text-white transition-colors">Accueil</a>
-        <a href="portfolio.html" class="text-gray-600 dark:text-[#888] text-base font-medium hover:text-gray-900 dark:text-white transition-colors">Portfolio</a>
-        <a href="services.html" class="text-gray-600 dark:text-[#888] text-base font-medium hover:text-gray-900 dark:text-white transition-colors">Services</a>
-        <a href="about.html" class="text-gray-600 dark:text-[#888] text-base font-medium hover:text-gray-900 dark:text-white transition-colors">À propos</a>
+        <a href="index.html"
+          class="text-gray-600 dark:text-[#888] text-base font-medium hover:text-gray-900 dark:text-white transition-colors">Accueil</a>
+        <a href="portfolio.html"
+          class="text-gray-600 dark:text-[#888] text-base font-medium hover:text-gray-900 dark:text-white transition-colors">Portfolio</a>
+        <a href="services.html"
+          class="text-gray-600 dark:text-[#888] text-base font-medium hover:text-gray-900 dark:text-white transition-colors">Services</a>
+        <a href="about.html"
+          class="text-gray-600 dark:text-[#888] text-base font-medium hover:text-gray-900 dark:text-white transition-colors">À
+          propos</a>
         <!-- <a href="contact.html" class="text-brand-orange dark:text-brand-orange text-base font-bold">Contact</a> -->
-        <a href="login.html" class="text-gray-600 dark:text-[#888] text-base font-medium hover:text-gray-900 dark:text-white transition-colors flex items-center gap-1.5"><i data-lucide="user" class="w-4.5 h-4.5"></i> Connexion</a>
+        <a href="login.html"
+          class="text-gray-600 dark:text-[#888] text-base font-medium hover:text-gray-900 dark:text-white transition-colors flex items-center gap-1.5"><i
+            data-lucide="user" class="w-4.5 h-4.5"></i> Connexion</a>
         <div class="border-t border-gray-200 dark:border-[#1f1f1f] pt-4 mt-2">
-          <a href="contact.html" class="block text-center bg-brand-orange text-gray-900 dark:text-white text-sm font-semibold py-3 rounded-md hover:bg-orange-600 transition-colors">Demander un devis</a>
+          <a href="contact.html"
+            class="block text-center bg-brand-orange text-gray-900 dark:text-white text-sm font-semibold py-3 rounded-md hover:bg-orange-600 transition-colors">Demander
+            un devis</a>
         </div>
       </div>
     </div>
-</nav>
+  </nav>
   <!-- HERO -->
   <section class="py-20 border-b border-gray-200 dark:border-[#1a1a1a]">
     <div class="max-w-7xl mx-auto px-6">
       <p class="text-xs text-brand-orange tracking-widest uppercase font-semibold mb-4">Contact</p>
-      <h1 class="font-jakarta text-5xl font-bold text-gray-900 dark:text-white mb-5">Parlons de votre <span class="text-brand-orange">prochain projet.</span></h1>
-      <p class="text-lg text-gray-500 dark:text-[#666] max-w-xl mb-6">Réponse garantie sous 24h. Devis gratuit et sans engagement. Basés à Lomé, on travaille partout en Afrique de l'Ouest.</p>
+      <h1 class="font-jakarta text-5xl font-bold text-gray-900 dark:text-white mb-5">Parlons de votre <span
+          class="text-brand-orange">prochain projet.</span></h1>
+      <p class="text-lg text-gray-500 dark:text-[#666] max-w-xl mb-6">Réponse garantie sous 24h. Devis gratuit et sans
+        engagement. Basés à Lomé, on travaille partout en Afrique de l'Ouest.</p>
       <div class="flex gap-6 text-sm">
-        <div class="flex items-center gap-2 text-gray-600 dark:text-[#777]"><span class="w-2 h-2 bg-brand-green rounded-full"></span> Lun–Ven : 08h–18h</div>
-        <div class="flex items-center gap-2 text-gray-600 dark:text-[#777]"><span class="w-2 h-2 bg-brand-green rounded-full"></span> Samedi : 09h–14h</div>
-        <div class="flex items-center gap-2 text-gray-600 dark:text-[#777]"><span class="w-2 h-2 bg-brand-orange rounded-full"></span> WhatsApp 24/7</div>
+        <div class="flex items-center gap-2 text-gray-600 dark:text-[#777]"><span
+            class="w-2 h-2 bg-brand-green rounded-full"></span> Lun–Ven : 08h–18h</div>
+        <div class="flex items-center gap-2 text-gray-600 dark:text-[#777]"><span
+            class="w-2 h-2 bg-brand-green rounded-full"></span> Samedi : 09h–14h</div>
+        <div class="flex items-center gap-2 text-gray-600 dark:text-[#777]"><span
+            class="w-2 h-2 bg-brand-orange rounded-full"></span> WhatsApp 24/7</div>
       </div>
     </div>
   </section>
@@ -107,29 +160,41 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
           <div>
-            <label class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Prénom & Nom *</label>
-            <input type="text" placeholder="Kofi Adzoa" class="w-full bg-gray-50 dark:bg-[#0d0d0d] border border-gray-300 dark:border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:text-[#444] font-jakarta">
+            <label
+              class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Prénom &
+              Nom *</label>
+            <input type="text" placeholder="Kofi Adzoa"
+              class="w-full bg-gray-50 dark:bg-[#0d0d0d] border border-gray-300 dark:border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:text-[#444] font-jakarta">
           </div>
           <div>
-            <label class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Entreprise</label>
-            <input type="text" placeholder="Ecobank Togo" class="w-full bg-gray-50 dark:bg-[#0d0d0d] border border-gray-300 dark:border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:text-[#444] font-jakarta">
+            <label
+              class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Entreprise</label>
+            <input type="text" placeholder="Ecobank Togo"
+              class="w-full bg-gray-50 dark:bg-[#0d0d0d] border border-gray-300 dark:border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:text-[#444] font-jakarta">
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
           <div>
-            <label class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Email *</label>
-            <input type="email" placeholder="kofi@entreprise.tg" class="w-full bg-gray-50 dark:bg-[#0d0d0d] border border-gray-300 dark:border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:text-[#444] font-jakarta">
+            <label class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Email
+              *</label>
+            <input type="email" placeholder="kofi@entreprise.tg"
+              class="w-full bg-gray-50 dark:bg-[#0d0d0d] border border-gray-300 dark:border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:text-[#444] font-jakarta">
           </div>
           <div>
-            <label class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Téléphone / WhatsApp</label>
-            <input type="tel" placeholder="+228 XX XX XX XX" class="w-full bg-gray-50 dark:bg-[#0d0d0d] border border-gray-300 dark:border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:text-[#444] font-jakarta">
+            <label
+              class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Téléphone
+              / WhatsApp</label>
+            <input type="tel" placeholder="+228 XX XX XX XX"
+              class="w-full bg-gray-50 dark:bg-[#0d0d0d] border border-gray-300 dark:border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:text-[#444] font-jakarta">
           </div>
         </div>
 
         <div class="mb-5">
-          <label class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Type de projet *</label>
-          <select class="w-full bg-gray-50 dark:bg-[#0d0d0d] border border-gray-300 dark:border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-gray-600 dark:text-[#888] font-jakarta cursor-pointer appearance-none">
+          <label class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Type de
+            projet *</label>
+          <select
+            class="w-full bg-gray-50 dark:bg-[#0d0d0d] border border-gray-300 dark:border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-gray-600 dark:text-[#888] font-jakarta cursor-pointer appearance-none">
             <option value="" disabled selected>Sélectionner un service…</option>
             <option>Spot publicitaire</option>
             <option>Pack PME Visibilité</option>
@@ -142,22 +207,37 @@
         </div>
 
         <div class="mb-5">
-          <label class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-3 uppercase tracking-wide">Budget estimé</label>
+          <label class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-3 uppercase tracking-wide">Budget
+            estimé</label>
           <div class="flex flex-wrap gap-2">
-            <button class="budget-pill border border-gray-300 dark:border-[#2a2a2a] text-gray-500 dark:text-[#666] bg-transparent rounded-full px-4 py-2 text-xs font-medium hover:border-gray-400 dark:hover:border-[#444] hover:text-[#ccc]" onclick="selectBudget(this)">&lt; 150 000 FCFA</button>
-            <button class="budget-pill border border-brand-orange text-brand-orange bg-brand-orange/10 rounded-full px-4 py-2 text-xs font-medium" onclick="selectBudget(this)">150k – 350k FCFA</button>
-            <button class="budget-pill border border-gray-300 dark:border-[#2a2a2a] text-gray-500 dark:text-[#666] bg-transparent rounded-full px-4 py-2 text-xs font-medium hover:border-gray-400 dark:hover:border-[#444] hover:text-[#ccc]" onclick="selectBudget(this)">350k – 700k FCFA</button>
-            <button class="budget-pill border border-gray-300 dark:border-[#2a2a2a] text-gray-500 dark:text-[#666] bg-transparent rounded-full px-4 py-2 text-xs font-medium hover:border-gray-400 dark:hover:border-[#444] hover:text-[#ccc]" onclick="selectBudget(this)">&gt; 700 000 FCFA</button>
-            <button class="budget-pill border border-gray-300 dark:border-[#2a2a2a] text-gray-500 dark:text-[#666] bg-transparent rounded-full px-4 py-2 text-xs font-medium hover:border-gray-400 dark:hover:border-[#444] hover:text-[#ccc]" onclick="selectBudget(this)">Sur devis</button>
+            <button
+              class="budget-pill border border-gray-300 dark:border-[#2a2a2a] text-gray-500 dark:text-[#666] bg-transparent rounded-full px-4 py-2 text-xs font-medium hover:border-gray-400 dark:hover:border-[#444] hover:text-[#ccc]"
+              onclick="selectBudget(this)">&lt; 150 000 FCFA</button>
+            <button
+              class="budget-pill border border-brand-orange text-brand-orange bg-brand-orange/10 rounded-full px-4 py-2 text-xs font-medium"
+              onclick="selectBudget(this)">150k – 350k FCFA</button>
+            <button
+              class="budget-pill border border-gray-300 dark:border-[#2a2a2a] text-gray-500 dark:text-[#666] bg-transparent rounded-full px-4 py-2 text-xs font-medium hover:border-gray-400 dark:hover:border-[#444] hover:text-[#ccc]"
+              onclick="selectBudget(this)">350k – 700k FCFA</button>
+            <button
+              class="budget-pill border border-gray-300 dark:border-[#2a2a2a] text-gray-500 dark:text-[#666] bg-transparent rounded-full px-4 py-2 text-xs font-medium hover:border-gray-400 dark:hover:border-[#444] hover:text-[#ccc]"
+              onclick="selectBudget(this)">&gt; 700 000 FCFA</button>
+            <button
+              class="budget-pill border border-gray-300 dark:border-[#2a2a2a] text-gray-500 dark:text-[#666] bg-transparent rounded-full px-4 py-2 text-xs font-medium hover:border-gray-400 dark:hover:border-[#444] hover:text-[#ccc]"
+              onclick="selectBudget(this)">Sur devis</button>
           </div>
         </div>
 
         <div class="mb-6">
-          <label class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Décrivez votre projet</label>
-          <textarea rows="5" placeholder="Parlez-nous de votre objectif, votre cible, votre deadline…" class="w-full bg-gray-50 dark:bg-[#0d0d0d] border border-gray-300 dark:border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:text-[#444] font-jakarta resize-none"></textarea>
+          <label
+            class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Décrivez
+            votre projet</label>
+          <textarea rows="5" placeholder="Parlez-nous de votre objectif, votre cible, votre deadline…"
+            class="w-full bg-gray-50 dark:bg-[#0d0d0d] border border-gray-300 dark:border-[#2a2a2a] rounded-lg px-4 py-3 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:text-[#444] font-jakarta resize-none"></textarea>
         </div>
 
-        <button onclick="submitForm()" class="w-full bg-brand-orange text-gray-900 dark:text-white font-bold py-4 rounded-lg text-sm hover:bg-orange-600 transition-colors flex items-center justify-center gap-2">
+        <button onclick="submitForm()"
+          class="w-full bg-brand-orange text-gray-900 dark:text-white font-bold py-4 rounded-lg text-sm hover:bg-orange-600 transition-colors flex items-center justify-center gap-2">
           Envoyer ma demande <i data-lucide="send" class="w-4 h-4"></i>
         </button>
         <p class="text-center text-xs text-gray-400 dark:text-[#444] mt-3 flex items-center justify-center gap-1">
@@ -165,10 +245,12 @@
         </p>
 
         <!-- SUCCESS -->
-        <div id="successMsg" class="hidden mt-5 bg-brand-green/10 border border-brand-green/30 rounded-xl p-6 text-center">
+        <div id="successMsg"
+          class="hidden mt-5 bg-brand-green/10 border border-brand-green/30 rounded-xl p-6 text-center">
           <i data-lucide="check-circle" class="w-10 h-10 text-brand-green mx-auto mb-3"></i>
           <p class="font-jakarta text-xl font-bold text-brand-green mb-1">Message envoyé !</p>
-          <p class="text-sm text-gray-500 dark:text-[#666]">Thierry vous répondra dans les 24h. Merci de votre confiance.</p>
+          <p class="text-sm text-gray-500 dark:text-[#666]">Thierry vous répondra dans les 24h. Merci de votre
+            confiance.</p>
         </div>
       </div>
 
@@ -176,8 +258,10 @@
       <div class="flex flex-col gap-5">
         <h2 class="font-jakarta text-2xl font-bold text-gray-900 dark:text-white">Nos coordonnées</h2>
 
-        <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-5 flex items-start gap-4 hover:border-brand-orange/40 transition-colors">
-          <div class="w-10 h-10 bg-orange-50 dark:bg-[#1a0800] border border-brand-orange/20 rounded-lg flex items-center justify-center flex-shrink-0">
+        <div
+          class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-5 flex items-start gap-4 hover:border-brand-orange/40 transition-colors">
+          <div
+            class="w-10 h-10 bg-orange-50 dark:bg-[#1a0800] border border-brand-orange/20 rounded-lg flex items-center justify-center flex-shrink-0">
             <i data-lucide="map-pin" class="w-5 h-5 text-brand-orange"></i>
           </div>
           <div>
@@ -187,30 +271,37 @@
           </div>
         </div>
 
-        <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-5 flex items-start gap-4 hover:border-brand-orange/40 transition-colors">
-          <div class="w-10 h-10 bg-orange-50 dark:bg-[#1a0800] border border-brand-orange/20 rounded-lg flex items-center justify-center flex-shrink-0">
+        <div
+          class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-5 flex items-start gap-4 hover:border-brand-orange/40 transition-colors">
+          <div
+            class="w-10 h-10 bg-orange-50 dark:bg-[#1a0800] border border-brand-orange/20 rounded-lg flex items-center justify-center flex-shrink-0">
             <i data-lucide="mail" class="w-5 h-5 text-brand-orange"></i>
           </div>
           <div>
             <p class="text-xs text-gray-500 dark:text-[#555] uppercase tracking-wide font-bold mb-1">Email</p>
-            <a href="mailto:thierryamenyah1@gmail.com" class="text-sm font-medium text-gray-900 dark:text-white hover:text-brand-orange transition-colors">thierryamenyah1@gmail.com</a>
+            <a href="mailto:thierryamenyah1@gmail.com"
+              class="text-sm font-medium text-gray-900 dark:text-white hover:text-brand-orange transition-colors">thierryamenyah1@gmail.com</a>
             <p class="text-xs text-gray-500 dark:text-[#666]">Réponse sous 24h</p>
           </div>
         </div>
 
-        <div class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-5 flex items-start gap-4 hover:border-brand-orange/40 transition-colors">
-          <div class="w-10 h-10 bg-orange-50 dark:bg-[#1a0800] border border-brand-orange/20 rounded-lg flex items-center justify-center flex-shrink-0">
+        <div
+          class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-5 flex items-start gap-4 hover:border-brand-orange/40 transition-colors">
+          <div
+            class="w-10 h-10 bg-orange-50 dark:bg-[#1a0800] border border-brand-orange/20 rounded-lg flex items-center justify-center flex-shrink-0">
             <i data-lucide="phone" class="w-5 h-5 text-brand-orange"></i>
           </div>
           <div>
-            <p class="text-xs text-gray-500 dark:text-[#555] uppercase tracking-wide font-bold mb-1">Téléphone / WhatsApp</p>
+            <p class="text-xs text-gray-500 dark:text-[#555] uppercase tracking-wide font-bold mb-1">Téléphone /
+              WhatsApp</p>
             <p class="text-sm font-medium text-gray-900 dark:text-white">+228 XX XX XX XX</p>
             <p class="text-xs text-gray-500 dark:text-[#666]">WhatsApp disponible 24/7</p>
           </div>
         </div>
 
         <!-- WHATSAPP CTA -->
-        <div class="bg-gradient-to-br from-[#0a1f0a] to-white dark:to-[#0d0d0d] border border-brand-green/25 rounded-xl p-5 flex items-center gap-4">
+        <div
+          class="bg-gradient-to-br from-[#0a1f0a] to-white dark:to-[#0d0d0d] border border-brand-green/25 rounded-xl p-5 flex items-center gap-4">
           <div class="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center flex-shrink-0">
             <i data-lucide="message-square" class="w-6 h-6 text-gray-900 dark:text-white"></i>
           </div>
@@ -218,22 +309,27 @@
             <p class="text-sm font-semibold text-gray-900 dark:text-white">Vous préférez WhatsApp ?</p>
             <p class="text-xs text-gray-500 dark:text-[#666]">Envoyez-nous un message directement.</p>
           </div>
-          <button class="bg-brand-green text-gray-900 dark:text-white text-xs font-bold px-4 py-2.5 rounded-lg hover:bg-green-600 transition-colors flex-shrink-0">Ouvrir →</button>
+          <button
+            class="bg-brand-green text-gray-900 dark:text-white text-xs font-bold px-4 py-2.5 rounded-lg hover:bg-green-600 transition-colors flex-shrink-0">Ouvrir
+            →</button>
         </div>
 
         <!-- SOCIALS -->
         <div>
           <p class="text-xs text-gray-500 dark:text-[#555] uppercase tracking-wide font-bold mb-3">Suivez-nous</p>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <a href="#" class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-4 flex flex-col items-center gap-2 hover:border-brand-orange/40 transition-colors">
+            <a href="#"
+              class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-4 flex flex-col items-center gap-2 hover:border-brand-orange/40 transition-colors">
               <i data-lucide="instagram" class="w-5 h-5 text-brand-orange"></i>
               <p class="text-[10px] text-gray-500 dark:text-[#555]">@genesys.agency</p>
             </a>
-            <a href="#" class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-4 flex flex-col items-center gap-2 hover:border-brand-orange/40 transition-colors">
+            <a href="#"
+              class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-4 flex flex-col items-center gap-2 hover:border-brand-orange/40 transition-colors">
               <i data-lucide="music" class="w-5 h-5 text-brand-orange"></i>
               <p class="text-[10px] text-gray-500 dark:text-[#555]">@genesys.tg</p>
             </a>
-            <a href="#" class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-4 flex flex-col items-center gap-2 hover:border-brand-orange/40 transition-colors">
+            <a href="#"
+              class="bg-gray-50 dark:bg-[#0d0d0d] border border-gray-200 dark:border-[#1f1f1f] rounded-xl p-4 flex flex-col items-center gap-2 hover:border-brand-orange/40 transition-colors">
               <i data-lucide="linkedin" class="w-5 h-5 text-brand-orange"></i>
               <p class="text-[10px] text-gray-500 dark:text-[#555]">GENESYS Agency</p>
             </a>
@@ -250,20 +346,26 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
         <div class="col-span-1 md:col-span-2">
           <a href="index.html" class="block mb-4">
-            <img src="assets/logo.PNG" alt="GENESYS" class="h-8 w-auto dark:invert dark:hue-rotate-180 transition-all duration-300">
+            <img src="assets/logo.PNG" alt="GENESYS"
+              class="h-8 w-auto dark:invert dark:hue-rotate-180 transition-all duration-300">
           </a>
-          <p class="text-sm text-gray-500 dark:text-[#555] leading-relaxed max-w-xs mb-6">Créativité qui convertit. Agence de marketing vidéo créatif basée à Lomé, Togo. La qualité internationale au service de l'Afrique de l'Ouest.</p>
+          <p class="text-sm text-gray-500 dark:text-[#555] leading-relaxed max-w-xs mb-6">Nous ne vendons pas des
+            vidéos. Nous vendons des résultats. La vidéo n'est que notre arme</p>
           <div class="flex gap-3">
-            <a href="#" class="flex items-center justify-center bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-[#222] rounded-lg w-10 h-10 text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-[#444] transition-colors">
+            <a href="#"
+              class="flex items-center justify-center bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-[#222] rounded-lg w-10 h-10 text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-[#444] transition-colors">
               <i data-lucide="instagram" class="w-5 h-5"></i>
             </a>
-            <a href="#" class="flex items-center justify-center bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-[#222] rounded-lg w-10 h-10 text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-[#444] transition-colors">
+            <a href="#"
+              class="flex items-center justify-center bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-[#222] rounded-lg w-10 h-10 text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-[#444] transition-colors">
               <i data-lucide="music" class="w-5 h-5"></i>
             </a>
-            <a href="#" class="flex items-center justify-center bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-[#222] rounded-lg w-10 h-10 text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-[#444] transition-colors">
+            <a href="#"
+              class="flex items-center justify-center bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-[#222] rounded-lg w-10 h-10 text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-[#444] transition-colors">
               <i data-lucide="linkedin" class="w-5 h-5"></i>
             </a>
-            <a href="#" class="flex items-center justify-center bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-[#222] rounded-lg w-10 h-10 text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-[#444] transition-colors">
+            <a href="#"
+              class="flex items-center justify-center bg-gray-100 dark:bg-[#111] border border-gray-300 dark:border-[#222] rounded-lg w-10 h-10 text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-[#444] transition-colors">
               <i data-lucide="youtube" class="w-5 h-5"></i>
             </a>
           </div>
@@ -271,22 +373,34 @@
         <div>
           <p class="text-xs text-gray-400 dark:text-[#444] uppercase tracking-widest font-bold mb-5">Navigation</p>
           <div class="flex flex-col gap-3">
-            <a href="portfolio.html" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">Portfolio / Portfolio</a>
-            <a href="services.html" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">Services & Tarifs</a>
-            <a href="about.html" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">À propos</a>
-            <a href="contact.html" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">Contact</a>
+            <a href="portfolio.html"
+              class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">Portfolio
+              / Portfolio</a>
+            <a href="services.html"
+              class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">Services
+              & Tarifs</a>
+            <a href="about.html"
+              class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">À
+              propos</a>
+            <a href="contact.html"
+              class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white transition-colors">Contact</a>
           </div>
         </div>
         <div>
           <p class="text-xs text-gray-400 dark:text-[#444] uppercase tracking-widest font-bold mb-5">Contact</p>
           <div class="flex flex-col gap-3">
-            <p class="text-sm text-gray-500 dark:text-[#666] flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-orange"></i> Lomé, Togo</p>
-            <a href="mailto:thierryamenyah1@gmail.com" class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white flex items-center gap-2 transition-colors"><i data-lucide="mail" class="w-3.5 h-3.5 text-brand-orange"></i> thierryamenyah1@gmail.com</a>
-            <p class="text-sm text-gray-500 dark:text-[#666] flex items-center gap-2"><i data-lucide="phone" class="w-3.5 h-3.5 text-brand-orange"></i> +228 XX XX XX XX</p>
+            <p class="text-sm text-gray-500 dark:text-[#666] flex items-center gap-2"><i data-lucide="map-pin"
+                class="w-3.5 h-3.5 text-brand-orange"></i> Lomé, Togo</p>
+            <a href="mailto:thierryamenyah1@gmail.com"
+              class="text-sm text-gray-500 dark:text-[#666] hover:text-gray-900 dark:text-white flex items-center gap-2 transition-colors"><i
+                data-lucide="mail" class="w-3.5 h-3.5 text-brand-orange"></i> thierryamenyah1@gmail.com</a>
+            <p class="text-sm text-gray-500 dark:text-[#666] flex items-center gap-2"><i data-lucide="phone"
+                class="w-3.5 h-3.5 text-brand-orange"></i> +228 XX XX XX XX</p>
           </div>
         </div>
       </div>
-      <div class="border-t border-gray-200 dark:border-[#1a1a1a] pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400 dark:text-[#444]">
+      <div
+        class="border-t border-gray-200 dark:border-[#1a1a1a] pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400 dark:text-[#444]">
         <span>© 2026 GENESYS Agency — Lomé, Togo</span>
         <span>Tous droits réservés</span>
       </div>
@@ -307,7 +421,7 @@
       msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
-    
+
     // Theme logic
     function toggleTheme() {
       const html = document.documentElement;
@@ -319,12 +433,12 @@
         localStorage.setItem('theme', 'dark');
       }
     }
-    
+
     // Init theme
     if (localStorage.getItem('theme') === 'light') {
       document.documentElement.classList.remove('dark');
     }
-    
+
     function toggleMobileMenu() {
       const menu = document.getElementById('mobileMenu');
       const icon = document.getElementById('burgerIcon');
@@ -337,14 +451,15 @@
       }
       lucide.createIcons();
     }
-    
+
     lucide.createIcons();
   </script>
 
   <!-- CHATBOT WIDGET -->
   <div id="chatbot-widget" class="fixed bottom-6 right-6 z-[9999]">
     <!-- Chat Panel (hidden by default) -->
-    <div id="chatbot-panel" class="hidden mb-4 w-80 rounded-2xl shadow-2xl overflow-hidden border border-gray-200 dark:border-[#1f1f1f]">
+    <div id="chatbot-panel"
+      class="hidden mb-4 w-80 rounded-2xl shadow-2xl overflow-hidden border border-gray-200 dark:border-[#1f1f1f]">
       <div class="bg-gradient-to-r from-brand-orange to-orange-500 p-4 flex items-center justify-between">
         <div class="flex items-center gap-3">
           <div class="w-9 h-9 bg-white/20 rounded-full flex items-center justify-center">
@@ -365,13 +480,15 @@
           <p class="text-[10px] text-gray-400 dark:text-[#555] mt-1.5">Maintenant</p>
         </div>
         <div class="bg-orange-50 dark:bg-[#1a0a00] rounded-2xl rounded-tl-sm p-3.5 max-w-[85%] self-start">
-          <p class="text-sm text-gray-700 dark:text-[#ccc]">Posez-moi vos questions sur nos services, tarifs, ou demandez un devis rapide ! 🎬</p>
+          <p class="text-sm text-gray-700 dark:text-[#ccc]">Posez-moi vos questions sur nos services, tarifs, ou
+            demandez un devis rapide ! 🎬</p>
           <p class="text-[10px] text-gray-400 dark:text-[#555] mt-1.5">Maintenant</p>
         </div>
       </div>
       <div class="bg-white dark:bg-[#0d0d0d] p-3 border-t border-gray-200 dark:border-[#1f1f1f]">
         <div class="flex gap-2">
-          <input type="text" placeholder="Tapez votre message..." class="flex-1 bg-gray-50 dark:bg-[#070707] border border-gray-200 dark:border-[#2a2a2a] rounded-xl px-3.5 py-2.5 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#555] focus:border-brand-orange outline-none transition-colors">
+          <input type="text" placeholder="Tapez votre message..."
+            class="flex-1 bg-gray-50 dark:bg-[#070707] border border-gray-200 dark:border-[#2a2a2a] rounded-xl px-3.5 py-2.5 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#555] focus:border-brand-orange outline-none transition-colors">
           <button class="bg-brand-orange text-white rounded-xl px-3.5 py-2.5 hover:bg-orange-600 transition-colors">
             <i data-lucide="send" class="w-4 h-4"></i>
           </button>
@@ -379,19 +496,33 @@
       </div>
     </div>
     <!-- Floating Button -->
-   <button onclick="toggleChatbot()" id="chatbot-btn" class="w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300 relative group bg-transparent border-0 p-0">
-  <img src="assets/chatbot.png" alt="GENESYS Assistant" class="chatbot-icon-open w-16 h-16 object-contain drop-shadow-lg">
-  <div class="chatbot-icon-close hidden w-14 h-14 bg-gradient-to-r from-brand-orange to-orange-500 rounded-full flex items-center justify-center">
-    <i data-lucide="x" class="w-6 h-6 text-white"></i>
-  </div>
-  <span class="absolute -top-1 -right-1 w-4 h-4 bg-[#00A86B] rounded-full border-2 border-white dark:border-[#050505]" style="animation: pulse 2s infinite;"></span>
-</button>
+    <button onclick="toggleChatbot()" id="chatbot-btn"
+      class="w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300 relative group bg-transparent border-0 p-0">
+      <img src="assets/chatbot.png" alt="GENESYS Assistant"
+        class="chatbot-icon-open w-16 h-16 object-contain drop-shadow-lg">
+      <div
+        class="chatbot-icon-close hidden w-14 h-14 bg-gradient-to-r from-brand-orange to-orange-500 rounded-full flex items-center justify-center">
+        <i data-lucide="x" class="w-6 h-6 text-white"></i>
+      </div>
+      <span
+        class="absolute -top-1 -right-1 w-4 h-4 bg-[#00A86B] rounded-full border-2 border-white dark:border-[#050505]"
+        style="animation: pulse 2s infinite;"></span>
+    </button>
   </div>
 
   <style>
     @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.7; transform: scale(1.15); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.7;
+        transform: scale(1.15);
+      }
     }
   </style>
 
@@ -414,4 +545,5 @@
   </script>
 
 </body>
+
 </html>
