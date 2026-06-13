@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr" class="dark">
+
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="assets/favicon.PNG">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Connexion - GENESYS Agency</title>
-  <meta name="description" content="Connectez-vous à votre espace client GENESYS. Accédez à vos projets et devis en cours.">
-  
+  <title>Connexion - GENESYS House</title>
+  <meta name="description"
+    content="Connectez-vous à votre espace client GENESYS. Accédez à vos projets et devis en cours.">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -25,24 +27,44 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <style>
-    
-    .lucide { display: inline-block; vertical-align: middle; }
-    .hero-grid { background-image: radial-gradient(rgba(255,107,43,0.05) 1px, transparent 1px); background-size: 28px 28px; }
-    input { transition: all 0.25s ease; }
-    input:focus { border-color: #FF6B2B !important; outline: none; box-shadow: 0 0 0 3px rgba(255,107,43,0.15); }
+    .lucide {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .hero-grid {
+      background-image: radial-gradient(rgba(255, 107, 43, 0.05) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    input {
+      transition: all 0.25s ease;
+    }
+
+    input:focus {
+      border-color: #FF6B2B !important;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 107, 43, 0.15);
+    }
   </style>
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-white dark:bg-[#050505] text-gray-900 dark:text-white font-jakarta antialiased min-h-screen flex flex-col justify-between hero-grid relative">
+
+<body
+  class="bg-white dark:bg-[#050505] text-gray-900 dark:text-white font-jakarta antialiased min-h-screen flex flex-col justify-between hero-grid relative">
 
   <!-- TOP BAR / BACK LINK -->
   <header class="w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between z-10">
-    <a href="index.html" class="flex items-center gap-2 text-sm text-gray-500 hover:text-brand-orange transition-colors">
+    <a href="index.html"
+      class="flex items-center gap-2 text-sm text-gray-500 hover:text-brand-orange transition-colors">
       <i data-lucide="arrow-left" class="w-4 h-4"></i> Retour à l'accueil
     </a>
-    <button onclick="toggleTheme()" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a1a1a] text-gray-600 dark:text-[#888] hover:text-brand-orange transition-colors" aria-label="Toggle theme">
+    <button onclick="toggleTheme()"
+      class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a1a1a] text-gray-600 dark:text-[#888] hover:text-brand-orange transition-colors"
+      aria-label="Toggle theme">
       <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
       <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
     </button>
@@ -50,63 +72,76 @@
 
   <!-- LOGIN CARD -->
   <main class="w-full flex-1 flex items-center justify-center p-6 z-10">
-    <div class="w-full max-w-md bg-white/80 dark:bg-[#0d0d0d]/80 backdrop-blur-xl border border-gray-200 dark:border-[#1f1f1f] rounded-2xl p-8 shadow-xl shadow-black/5 dark:shadow-orange-950/5 relative overflow-hidden">
+    <div
+      class="w-full max-w-md bg-white/80 dark:bg-[#0d0d0d]/80 backdrop-blur-xl border border-gray-200 dark:border-[#1f1f1f] rounded-2xl p-8 shadow-xl shadow-black/5 dark:shadow-orange-950/5 relative overflow-hidden">
       <!-- Glow effect -->
-      <div class="absolute -top-24 -left-24 w-48 h-48 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none"></div>
-      
+      <div class="absolute -top-24 -left-24 w-48 h-48 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none">
+      </div>
+
       <div class="relative z-10 flex flex-col items-center">
         <!-- Logo -->
         <a href="index.html" class="mb-8 block">
-          <img src="assets/logo.PNG" alt="GENESYS Logo" class="h-9 w-auto dark:invert dark:hue-rotate-180 transition-all duration-300">
+          <img src="assets/logo.PNG" alt="GENESYS Logo"
+            class="h-9 w-auto dark:invert dark:hue-rotate-180 transition-all duration-300">
         </a>
 
         <div class="text-center mb-8">
           <h1 class="font-jakarta text-2xl font-bold mb-2">Bon retour !</h1>
-          <p class="text-xs text-gray-500 dark:text-[#666]">Entrez vos identifiants pour accéder à votre espace client</p>
+          <p class="text-xs text-gray-500 dark:text-[#666]">Entrez vos identifiants pour accéder à votre espace client
+          </p>
         </div>
 
         <form class="w-full" onsubmit="handleLogin(event)">
           <div class="mb-5">
-            <label class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Adresse e-mail</label>
+            <label
+              class="block text-xs text-gray-500 dark:text-[#666] font-semibold mb-2 uppercase tracking-wide">Adresse
+              e-mail</label>
             <div class="relative">
-              <input type="email" required placeholder="kofi@example.tg" class="w-full bg-gray-50 dark:bg-[#070707] border border-gray-300 dark:border-[#2a2a2a] rounded-lg pl-10 pr-4 py-3 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#444] font-jakarta">
+              <input type="email" required placeholder="kofi@example.tg"
+                class="w-full bg-gray-50 dark:bg-[#070707] border border-gray-300 dark:border-[#2a2a2a] rounded-lg pl-10 pr-4 py-3 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#444] font-jakarta">
               <i data-lucide="mail" class="w-4 h-4 text-gray-400 dark:text-[#444] absolute left-3.5 top-3.5"></i>
             </div>
           </div>
 
           <div class="mb-6">
             <div class="flex justify-between items-center mb-2">
-              <label class="block text-xs text-gray-500 dark:text-[#666] font-semibold uppercase tracking-wide">Mot de passe</label>
+              <label class="block text-xs text-gray-500 dark:text-[#666] font-semibold uppercase tracking-wide">Mot de
+                passe</label>
               <a href="#" class="text-xs text-brand-orange hover:underline">Mot de passe oublié ?</a>
             </div>
             <div class="relative">
-              <input type="password" required placeholder="••••••••" class="w-full bg-gray-50 dark:bg-[#070707] border border-gray-300 dark:border-[#2a2a2a] rounded-lg pl-10 pr-4 py-3 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#444] font-jakarta">
+              <input type="password" required placeholder="••••••••"
+                class="w-full bg-gray-50 dark:bg-[#070707] border border-gray-300 dark:border-[#2a2a2a] rounded-lg pl-10 pr-4 py-3 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#444] font-jakarta">
               <i data-lucide="lock" class="w-4 h-4 text-gray-400 dark:text-[#444] absolute left-3.5 top-3.5"></i>
             </div>
           </div>
 
           <div class="flex items-center justify-between mb-8">
             <label class="flex items-center gap-2 text-xs text-gray-500 dark:text-[#666] cursor-pointer">
-              <input type="checkbox" class="accent-brand-orange rounded border-gray-300 dark:border-[#2a2a2a] bg-gray-50 dark:bg-[#070707]">
+              <input type="checkbox"
+                class="accent-brand-orange rounded border-gray-300 dark:border-[#2a2a2a] bg-gray-50 dark:bg-[#070707]">
               <span>Se souvenir de moi</span>
             </label>
           </div>
 
-          <button type="submit" class="w-full bg-brand-orange text-gray-900 dark:text-white font-bold py-3.5 rounded-lg text-sm hover:bg-orange-600 transition-colors flex items-center justify-center gap-2">
+          <button type="submit"
+            class="w-full bg-brand-orange text-gray-900 dark:text-white font-bold py-3.5 rounded-lg text-sm hover:bg-orange-600 transition-colors flex items-center justify-center gap-2">
             Se connecter <i data-lucide="log-in" class="w-4 h-4"></i>
           </button>
         </form>
 
         <p class="text-xs text-gray-500 dark:text-[#666] mt-6 text-center">
-          Nouveau sur GENESYS ? <a href="register.html" class="text-brand-orange hover:underline font-semibold">Créer un compte</a>
+          Nouveau sur GENESYS ? <a href="register.html" class="text-brand-orange hover:underline font-semibold">Créer un
+            compte</a>
         </p>
       </div>
     </div>
   </main>
 
   <!-- MINIMAL FOOTER -->
-  <footer class="w-full py-6 text-center text-xs text-gray-400 dark:text-[#444] z-10 border-t border-gray-200/50 dark:border-[#1f1f1f]/50 bg-white/50 dark:bg-[#050505]/50">
-    © 2026 GENESYS Agency — Lomé, Togo. Tous droits réservés.
+  <footer
+    class="w-full py-6 text-center text-xs text-gray-400 dark:text-[#444] z-10 border-t border-gray-200/50 dark:border-[#1f1f1f]/50 bg-white/50 dark:bg-[#050505]/50">
+    © 2026 GENESYS House — Lomé, Togo. Tous droits réservés.
   </footer>
 
   <script>
@@ -127,19 +162,20 @@
         localStorage.setItem('theme', 'dark');
       }
     }
-    
+
     // Init theme
     if (localStorage.getItem('theme') === 'light') {
       document.documentElement.classList.remove('dark');
     }
-    
+
     lucide.createIcons();
   </script>
 
   <!-- CHATBOT WIDGET -->
   <div id="chatbot-widget" class="fixed bottom-6 right-6 z-[9999]">
     <!-- Chat Panel (hidden by default) -->
-    <div id="chatbot-panel" class="hidden mb-4 w-80 rounded-2xl shadow-2xl overflow-hidden border border-gray-200 dark:border-[#1f1f1f]">
+    <div id="chatbot-panel"
+      class="hidden mb-4 w-80 rounded-2xl shadow-2xl overflow-hidden border border-gray-200 dark:border-[#1f1f1f]">
       <div class="bg-gradient-to-r from-brand-orange to-orange-500 p-4 flex items-center justify-between">
         <div class="flex items-center gap-3">
           <div class="w-9 h-9 bg-white/20 rounded-full flex items-center justify-center">
@@ -160,13 +196,15 @@
           <p class="text-[10px] text-gray-400 dark:text-[#555] mt-1.5">Maintenant</p>
         </div>
         <div class="bg-orange-50 dark:bg-[#1a0a00] rounded-2xl rounded-tl-sm p-3.5 max-w-[85%] self-start">
-          <p class="text-sm text-gray-700 dark:text-[#ccc]">Posez-moi vos questions sur nos services, tarifs, ou demandez un devis rapide ! 🎬</p>
+          <p class="text-sm text-gray-700 dark:text-[#ccc]">Posez-moi vos questions sur nos services, tarifs, ou
+            demandez un devis rapide ! 🎬</p>
           <p class="text-[10px] text-gray-400 dark:text-[#555] mt-1.5">Maintenant</p>
         </div>
       </div>
       <div class="bg-white dark:bg-[#0d0d0d] p-3 border-t border-gray-200 dark:border-[#1f1f1f]">
         <div class="flex gap-2">
-          <input type="text" placeholder="Tapez votre message..." class="flex-1 bg-gray-50 dark:bg-[#070707] border border-gray-200 dark:border-[#2a2a2a] rounded-xl px-3.5 py-2.5 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#555] focus:border-brand-orange outline-none transition-colors">
+          <input type="text" placeholder="Tapez votre message..."
+            class="flex-1 bg-gray-50 dark:bg-[#070707] border border-gray-200 dark:border-[#2a2a2a] rounded-xl px-3.5 py-2.5 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#555] focus:border-brand-orange outline-none transition-colors">
           <button class="bg-brand-orange text-white rounded-xl px-3.5 py-2.5 hover:bg-orange-600 transition-colors">
             <i data-lucide="send" class="w-4 h-4"></i>
           </button>
@@ -174,19 +212,33 @@
       </div>
     </div>
     <!-- Floating Button -->
-   <button onclick="toggleChatbot()" id="chatbot-btn" class="w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300 relative group bg-transparent border-0 p-0">
-  <img src="assets/chatbot.png" alt="GENESYS Assistant" class="chatbot-icon-open w-16 h-16 object-contain drop-shadow-lg">
-  <div class="chatbot-icon-close hidden w-14 h-14 bg-gradient-to-r from-brand-orange to-orange-500 rounded-full flex items-center justify-center">
-    <i data-lucide="x" class="w-6 h-6 text-white"></i>
-  </div>
-  <span class="absolute -top-1 -right-1 w-4 h-4 bg-[#00A86B] rounded-full border-2 border-white dark:border-[#050505]" style="animation: pulse 2s infinite;"></span>
-</button>
+    <button onclick="toggleChatbot()" id="chatbot-btn"
+      class="w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300 relative group bg-transparent border-0 p-0">
+      <img src="assets/chatbot.png" alt="GENESYS Assistant"
+        class="chatbot-icon-open w-16 h-16 object-contain drop-shadow-lg">
+      <div
+        class="chatbot-icon-close hidden w-14 h-14 bg-gradient-to-r from-brand-orange to-orange-500 rounded-full flex items-center justify-center">
+        <i data-lucide="x" class="w-6 h-6 text-white"></i>
+      </div>
+      <span
+        class="absolute -top-1 -right-1 w-4 h-4 bg-[#00A86B] rounded-full border-2 border-white dark:border-[#050505]"
+        style="animation: pulse 2s infinite;"></span>
+    </button>
   </div>
 
   <style>
     @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.7; transform: scale(1.15); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.7;
+        transform: scale(1.15);
+      }
     }
   </style>
 
@@ -209,4 +261,5 @@
   </script>
 
 </body>
+
 </html>
