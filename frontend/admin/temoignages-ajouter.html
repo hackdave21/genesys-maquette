@@ -222,27 +222,7 @@
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <!-- Rating -->
-            <div>
-              <label class="block text-xs font-bold uppercase tracking-wider text-[#666] mb-2">Note de
-                Satisfaction</label>
-              <div class="flex items-center gap-2 mt-1">
-                <input type="hidden" id="rating" value="5">
-                <div class="flex gap-1" id="star-container">
-                  <button type="button" onclick="setRating(1)" class="star-btn text-brand-orange" title="1 étoile"><i
-                      data-lucide="star" class="w-7 h-7 fill-current"></i></button>
-                  <button type="button" onclick="setRating(2)" class="star-btn text-brand-orange" title="2 étoiles"><i
-                      data-lucide="star" class="w-7 h-7 fill-current"></i></button>
-                  <button type="button" onclick="setRating(3)" class="star-btn text-brand-orange" title="3 étoiles"><i
-                      data-lucide="star" class="w-7 h-7 fill-current"></i></button>
-                  <button type="button" onclick="setRating(4)" class="star-btn text-brand-orange" title="4 étoiles"><i
-                      data-lucide="star" class="w-7 h-7 fill-current"></i></button>
-                  <button type="button" onclick="setRating(5)" class="star-btn text-brand-orange" title="5 étoiles"><i
-                      data-lucide="star" class="w-7 h-7 fill-current"></i></button>
-                </div>
-                <span class="text-sm font-semibold text-[#888] ml-2" id="rating-label">5.0 / 5</span>
-              </div>
-            </div>
+        
 
             <!-- Status -->
             <div>
@@ -255,67 +235,7 @@
               </select>
             </div>
           </div>
-
-          <!-- Avatar / Photo selection -->
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-[#666] mb-3">Avatar du client</label>
-            <div class="flex flex-wrap items-center gap-4">
-              <!-- Preview -->
-              <div
-                class="relative w-16 h-16 rounded-full overflow-hidden border border-[#2a2a2a] bg-[#111] flex items-center justify-center flex-shrink-0">
-                <img id="avatar-preview"
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop"
-                  alt="Aperçu" class="w-full h-full object-cover">
-              </div>
-
-              <!-- Options presets -->
-              <div class="flex flex-col gap-2">
-                <span class="text-[10px] text-[#555] font-semibold">Choisir parmi nos presets :</span>
-                <div class="flex gap-2" id="presets-container">
-                  <button type="button"
-                    onclick="selectPreset('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop', this)"
-                    class="preset-btn w-9 h-9 rounded-full overflow-hidden border-2 border-brand-orange ring-1 ring-black">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop"
-                      class="w-full h-full object-cover" alt="Preset 1">
-                  </button>
-                  <button type="button"
-                    onclick="selectPreset('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop', this)"
-                    class="preset-btn w-9 h-9 rounded-full overflow-hidden border-2 border-transparent hover:border-gray-500">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop"
-                      class="w-full h-full object-cover" alt="Preset 2">
-                  </button>
-                  <button type="button"
-                    onclick="selectPreset('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop', this)"
-                    class="preset-btn w-9 h-9 rounded-full overflow-hidden border-2 border-transparent hover:border-gray-500">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop"
-                      class="w-full h-full object-cover" alt="Preset 3">
-                  </button>
-                  <button type="button"
-                    onclick="selectPreset('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop', this)"
-                    class="preset-btn w-9 h-9 rounded-full overflow-hidden border-2 border-transparent hover:border-gray-500">
-                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop"
-                      class="w-full h-full object-cover" alt="Preset 4">
-                  </button>
-                </div>
-              </div>
-
-              <!-- Manual URL or simulated upload -->
-              <div class="flex-1 min-w-[200px] flex flex-col gap-2">
-                <span class="text-[10px] text-[#555] font-semibold">Ou insérer un lien d'image personnalisé :</span>
-                <input type="text" id="avatar-url" placeholder="https://exemple.com/photo.jpg"
-                  oninput="updateAvatarFromUrl(this.value)"
-                  class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-1.5 text-xs text-white placeholder:text-[#444] font-jakarta focus:border-brand-orange outline-none transition-colors">
-              </div>
-            </div>
-          </div>
-
-          <!-- Date field -->
-          <div>
-            <label for="date" class="block text-xs font-bold uppercase tracking-wider text-[#666] mb-2">Date du
-              témoignage</label>
-            <input type="date" id="date"
-              class="w-full max-w-[200px] bg-[#111] border border-[#2a2a2a] rounded-lg px-4 py-2 text-sm text-white font-jakarta focus:border-brand-orange outline-none transition-colors">
-          </div>
+          
 
           <!-- Submit Buttons -->
           <div class="pt-4 border-t border-[#1f1f1f] flex items-center justify-between gap-4">
@@ -339,14 +259,6 @@
 
   <script src="assets/admin-common.js"></script>
   <script>
-    // Set default date to today
-    document.addEventListener("DOMContentLoaded", () => {
-      const today = new Date().toISOString().split('T')[0];
-      document.getElementById('date').value = today;
-    });
-
-    let currentAvatarUrl = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop';
-
     // Toggle Mobile Sidebar
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar');
@@ -360,50 +272,6 @@
       }
     }
 
-    // Interactive Star Rating
-    function setRating(ratingValue) {
-      document.getElementById('rating').value = ratingValue;
-      document.getElementById('rating-label').textContent = `${ratingValue}.0 / 5`;
-
-      const buttons = document.querySelectorAll('#star-container button');
-      buttons.forEach((btn, idx) => {
-        const starIcon = btn.querySelector('svg') || btn;
-        if (idx < ratingValue) {
-          btn.className = 'star-btn text-brand-orange';
-          btn.innerHTML = '<i data-lucide="star" class="w-7 h-7 fill-current"></i>';
-        } else {
-          btn.className = 'star-btn text-[#333] hover:text-[#555]';
-          btn.innerHTML = '<i data-lucide="star" class="w-7 h-7"></i>';
-        }
-      });
-      lucide.createIcons();
-    }
-
-    // Avatar Selection presets
-    function selectPreset(url, element) {
-      currentAvatarUrl = url;
-      document.getElementById('avatar-preview').src = url;
-      document.getElementById('avatar-url').value = '';
-
-      // Update active border style on buttons
-      document.querySelectorAll('.preset-btn').forEach(btn => {
-        btn.className = 'preset-btn w-9 h-9 rounded-full overflow-hidden border-2 border-transparent hover:border-gray-500';
-      });
-      element.className = 'preset-btn w-9 h-9 rounded-full overflow-hidden border-2 border-brand-orange ring-1 ring-black';
-    }
-
-    function updateAvatarFromUrl(url) {
-      if (url.trim()) {
-        currentAvatarUrl = url;
-        document.getElementById('avatar-preview').src = url;
-
-        // Remove active preset border
-        document.querySelectorAll('.preset-btn').forEach(btn => {
-          btn.className = 'preset-btn w-9 h-9 rounded-full overflow-hidden border-2 border-transparent hover:border-gray-500';
-        });
-      }
-    }
-
     // Save Testimonial to LocalStorage
     function saveTestimonial(e) {
       e.preventDefault();
@@ -411,9 +279,7 @@
       const name = document.getElementById('name').value.trim();
       const company = document.getElementById('company').value.trim();
       const text = document.getElementById('text').value.trim();
-      const rating = parseInt(document.getElementById('rating').value);
       const status = document.getElementById('status').value;
-      const date = document.getElementById('date').value;
 
       if (!name || !text) {
         showToast("Veuillez remplir les champs obligatoires", "error");
@@ -425,10 +291,7 @@
         name,
         company: company || "Client",
         text,
-        rating,
-        date,
-        status,
-        avatar: currentAvatarUrl
+        status
       };
 
       // Fetch list and save
@@ -447,17 +310,6 @@
 
       // Reset form
       document.getElementById('form-testimonial').reset();
-      setRating(5);
-
-      // Reset preset selection to first preset
-      const firstPresetBtn = document.querySelector('.preset-btn');
-      if (firstPresetBtn) {
-        firstPresetBtn.click();
-      }
-
-      // Re-fill date
-      const today = new Date().toISOString().split('T')[0];
-      document.getElementById('date').value = today;
 
       // Redirect after a short delay
       setTimeout(() => {

@@ -251,17 +251,6 @@
                 <option value="archive">Archivé (masqué)</option>
               </select>
             </div>
-
-            <!-- Options (Featured) -->
-            <div class="flex items-center h-full pt-6">
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" id="featured"
-                  class="w-4 h-4 rounded text-brand-orange bg-[#111] border-[#2a2a2a] focus:ring-brand-orange focus:ring-opacity-25 focus:ring-2 outline-none">
-                <span class="text-xs font-medium text-white flex items-center gap-1.5">
-                  <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-current"></i> Mettre en avant sur l'accueil
-                </span>
-              </label>
-            </div>
           </div>
 
           <!-- Thumbnail Image Selector -->
@@ -277,14 +266,13 @@
                   class="w-full h-full object-cover" alt="Miniature">
               </div>
 
-              <!-- Link -->
+              <!-- File Upload -->
               <div class="flex-1 w-full space-y-3">
-                <p class="text-[10px] text-[#555] font-semibold">Lien de la miniature :</p>
-                <input type="text" id="thumbnail" placeholder="https://images.unsplash.com/photo-..."
-                  oninput="document.getElementById('thumb-preview').src = this.value"
-                  class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-2 text-xs text-white placeholder:text-[#444] font-jakarta focus:border-brand-orange outline-none transition-colors">
-                <p class="text-[9px] text-[#444]">Note : Une miniature par défaut adaptée à la catégorie a été suggérée.
-                  Vous pouvez la remplacer par le lien de votre choix.</p>
+                <p class="text-[10px] text-[#555] font-semibold">Sélectionnez une image :</p>
+                <input type="file" id="thumbnail" accept="image/*"
+                  class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-2 text-xs text-white font-jakarta focus:border-brand-orange outline-none transition-colors cursor-pointer file:bg-brand-orange file:text-white file:border-0 file:px-3 file:py-1.5 file:rounded file:cursor-pointer file:mr-2 file:text-xs file:font-semibold hover:file:bg-orange-600">
+                <p class="text-[9px] text-[#444]">Formats acceptés: JPG, PNG, GIF, WebP (max 5 MB)</p>
+                <input type="hidden" id="thumbnail-data">
               </div>
             </div>
           </div>
@@ -333,9 +321,34 @@
 
     function suggestThumbnail(cat) {
       const suggested = categoryThumbnails[cat] || categoryThumbnails['Publicité'];
-      document.getElementById('thumbnail').value = suggested;
+      document.getElementById('thumbnail-data').value = suggested;
       document.getElementById('thumb-preview').src = suggested;
     }
+
+    // Handle file upload for thumbnail
+    document.addEventListener('DOMContentLoaded', () => {
+      const fileInput = document.getElementById('thumbnail');
+      fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          if (file.size > 5 * 1024 * 1024) {
+            showToast("Le fichier dépasse 5 MB", "error");
+            fileInput.value = '';
+            return;
+          }
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const dataUrl = event.target.result;
+            document.getElementById('thumbnail-data').value = dataUrl;
+            document.getElementById('thumb-preview').src = dataUrl;
+            showToast("Image chargée avec succès", "success");
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      suggestThumbnail('Publicité');
+    });
 
     // Helper to parse YouTube or Vimeo links and get clean Embed URL
     function parseVideoEmbed(url) {
@@ -390,7 +403,7 @@
       const url = document.getElementById('url').value.trim();
       const status = document.getElementById('status').value;
       const featured = document.getElementById('featured').checked;
-      const thumbnail = document.getElementById('thumbnail').value.trim();
+      const thumbnail = document.getElementById('thumbnail-data').value.trim();
 
       if (!title || !url) {
         showToast("Veuillez remplir les champs obligatoires", "error");

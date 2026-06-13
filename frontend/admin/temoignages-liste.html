@@ -247,16 +247,13 @@
             <table class="w-full min-w-[800px] border-collapse">
               <thead>
                 <tr class="border-b border-[#1a1a1a] bg-[#090909]">
-                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-12"></th>
-                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[25%]">
+                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[30%]">
                     Client</th>
-                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[45%]">
+                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[50%]">
                     Témoignage</th>
-                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[12%]">Note
-                  </th>
-                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[10%]">
+                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[15%]">
                     Statut</th>
-                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-24">Actions
+                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold">Actions
                   </th>
                 </tr>
               </thead>
@@ -312,45 +309,14 @@
               class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3.5 py-2 text-xs text-white focus:border-brand-orange outline-none resize-none"></textarea>
           </div>
 
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Note</label>
-              <input type="hidden" id="edit-rating" value="5">
-              <div class="flex gap-1" id="edit-star-container">
-                <!-- Stars rendered via script -->
-              </div>
-            </div>
-            <div>
-              <label for="edit-status"
-                class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Statut</label>
-              <select id="edit-status"
-                class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-2 text-xs text-white focus:border-brand-orange outline-none">
-                <option value="published">Publié</option>
-                <option value="draft">Brouillon</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Avatar Preset Selector in Edit -->
           <div>
-            <label class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Avatar</label>
-            <div class="flex items-center gap-3">
-              <img id="edit-avatar-preview" src=""
-                class="w-12 h-12 rounded-full object-cover border border-[#2a2a2a] bg-[#111]">
-              <div class="flex-1 flex flex-col gap-1">
-                <input type="text" id="edit-avatar-url"
-                  oninput="document.getElementById('edit-avatar-preview').src = this.value"
-                  class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-1.5 text-[11px] text-white focus:border-brand-orange outline-none"
-                  placeholder="Lien de la photo">
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <label for="edit-date"
-              class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Date</label>
-            <input type="date" id="edit-date"
-              class="w-full max-w-[150px] bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-1.5 text-xs text-white focus:border-brand-orange outline-none">
+            <label for="edit-status"
+              class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Statut</label>
+            <select id="edit-status"
+              class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-2 text-xs text-white focus:border-brand-orange outline-none">
+              <option value="published">Publié</option>
+              <option value="draft">Brouillon</option>
+            </select>
           </div>
 
           <div class="pt-6 border-t border-[#1a1a1a] flex gap-2 justify-end">
@@ -441,34 +407,17 @@
         const tr = document.createElement('tr');
         tr.className = 'border-b border-[#111] hover:bg-[#111]/30 transition-colors';
 
-        // Star rating string
-        let stars = '';
-        for (let i = 1; i <= 5; i++) {
-          const fill = i <= item.rating ? 'fill-current text-brand-orange' : 'text-[#333]';
-          stars += `<i data-lucide="star" class="w-3.5 h-3.5 inline ${fill}"></i>`;
-        }
-
         const isPublished = item.status === 'published';
         const badgeClass = isPublished ? 'bg-brand-green/15 text-brand-green' : 'bg-yellow-500/15 text-yellow-500';
         const badgeLabel = isPublished ? 'Publié' : 'Brouillon';
 
         tr.innerHTML = `
-          <td class="py-3 px-4">
-            <div class="w-8 h-8 rounded-full overflow-hidden border border-[#2a2a2a] bg-[#111]">
-              <img src="${item.avatar || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop'}" class="w-full h-full object-cover" alt="">
-            </div>
-          </td>
           <td class="py-3 px-4 text-sm font-semibold text-white">
             ${item.name}
             <span class="block text-[11px] font-normal text-[#555] mt-0.5">${item.company}</span>
           </td>
           <td class="py-3 px-4 text-xs text-[#888] pr-8 leading-relaxed max-w-[400px] truncate" title="${item.text}">
             "${item.text}"
-          </td>
-          <td class="py-3 px-4 text-xs font-semibold whitespace-nowrap">
-            <div class="flex items-center gap-1">
-              ${stars}
-            </div>
           </td>
           <td class="py-3 px-4">
             <button onclick="toggleItemStatus('${item.id}')" title="Cliquer pour changer de statut" class="${badgeClass} text-[10px] font-bold px-2.5 py-1 rounded-full cursor-pointer hover:scale-105 transition-transform">
@@ -541,14 +490,7 @@
       document.getElementById('edit-name').value = item.name;
       document.getElementById('edit-company').value = item.company;
       document.getElementById('edit-text').value = item.text;
-      document.getElementById('edit-rating').value = item.rating;
       document.getElementById('edit-status').value = item.status;
-      document.getElementById('edit-date').value = item.date || new Date().toISOString().split('T')[0];
-
-      document.getElementById('edit-avatar-url').value = item.avatar;
-      document.getElementById('edit-avatar-preview').src = item.avatar || '';
-
-      setupEditStars(item.rating);
 
       const drawer = document.getElementById('edit-drawer');
       const backdrop = document.getElementById('drawer-backdrop');
@@ -589,10 +531,7 @@
       const name = document.getElementById('edit-name').value.trim();
       const company = document.getElementById('edit-company').value.trim();
       const text = document.getElementById('edit-text').value.trim();
-      const rating = parseInt(document.getElementById('edit-rating').value);
       const status = document.getElementById('edit-status').value;
-      const date = document.getElementById('edit-date').value;
-      const avatar = document.getElementById('edit-avatar-url').value.trim();
 
       if (!name || !text) {
         showToast("Veuillez remplir les champs obligatoires", "error");
@@ -607,10 +546,7 @@
           name,
           company,
           text,
-          rating,
-          status,
-          date,
-          avatar
+          status
         };
         saveTestimonials(list);
         closeEditDrawer();
