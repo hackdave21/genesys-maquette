@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr" class="dark">
+
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="assets/favicon.PNG">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Liste des Témoignages - GENESYS Admin</title>
-  
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -22,40 +23,71 @@
       }
     }
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <style>
-    .lucide { display: inline-block; vertical-align: middle; }
-    html, body { height: 100%; }
-    .star-btn { transition: transform 0.15s ease; }
-    .star-btn:hover { transform: scale(1.2); }
+    .lucide {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    .star-btn {
+      transition: transform 0.15s ease;
+    }
+
+    .star-btn:hover {
+      transform: scale(1.2);
+    }
+
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
   </style>
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body class="bg-[#070707] text-white font-jakarta antialiased h-screen flex overflow-hidden">
 
   <!-- Sidebar Backdrop -->
-  <div id="sidebar-backdrop" class="fixed inset-0 bg-black/60 z-40 hidden transition-opacity duration-300" onclick="toggleSidebar()"></div>
+  <div id="sidebar-backdrop" class="fixed inset-0 bg-black/60 z-40 hidden transition-opacity duration-300"
+    onclick="toggleSidebar()"></div>
 
   <!-- Detail/Edit Drawer Backdrop -->
-  <div id="drawer-backdrop" class="fixed inset-0 bg-black/60 z-40 hidden transition-opacity duration-300" onclick="closeEditDrawer()"></div>
+  <div id="drawer-backdrop" class="fixed inset-0 bg-black/60 z-40 hidden transition-opacity duration-300"
+    onclick="closeEditDrawer()"></div>
 
   <!-- Delete Modal Backdrop -->
-  <div id="delete-modal-backdrop" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300">
+  <div id="delete-modal-backdrop"
+    class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300">
     <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-2xl p-6 w-full max-w-sm max-h-[85vh] overflow-y-auto">
       <div class="w-12 h-12 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-4 text-red-500">
         <i data-lucide="alert-triangle" class="w-6 h-6"></i>
       </div>
       <h3 class="text-center font-bold text-base mb-2">Supprimer le témoignage ?</h3>
-      <p class="text-center text-xs text-[#555] mb-6">Cette action est irréversible. Le témoignage sera retiré du site définitivement.</p>
+      <p class="text-center text-xs text-[#555] mb-6">Cette action est irréversible. Le témoignage sera retiré du site
+        définitivement.</p>
       <div class="flex gap-2">
-        <button onclick="closeDeleteModal()" class="flex-1 bg-transparent border border-[#2a2a2a] text-[#888] hover:text-white hover:border-[#444] text-xs font-semibold py-2.5 rounded-lg transition-colors">Annuler</button>
-        <button id="btn-confirm-delete" class="flex-1 bg-red-600 text-white text-xs font-bold py-2.5 rounded-lg hover:bg-red-700 transition-colors">Supprimer</button>
+        <button onclick="closeDeleteModal()"
+          class="flex-1 bg-transparent border border-[#2a2a2a] text-[#888] hover:text-white hover:border-[#444] text-xs font-semibold py-2.5 rounded-lg transition-colors">Annuler</button>
+        <button id="btn-confirm-delete"
+          class="flex-1 bg-red-600 text-white text-xs font-bold py-2.5 rounded-lg hover:bg-red-700 transition-colors">Supprimer</button>
       </div>
     </div>
   </div>
 
   <!-- SIDEBAR -->
-  <aside id="sidebar" class="w-56 bg-[#0d0d0d] border-r border-[#1f1f1f] flex flex-col flex-shrink-0 fixed inset-y-0 left-0 z-50 -translate-x-full md:translate-x-0 md:static transition-transform duration-300 ease-in-out">
+  <aside id="sidebar"
+    class="w-56 bg-[#0d0d0d] border-r border-[#1f1f1f] flex flex-col flex-shrink-0 fixed inset-y-0 left-0 z-50 -translate-x-full md:translate-x-0 md:static transition-transform duration-300 ease-in-out">
     <div class="p-5 border-b border-[#1f1f1f] flex items-center justify-between">
       <div>
         <a href="../index.html" class="block mb-2">
@@ -67,36 +99,44 @@
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
     </div>
-    
-    <nav class="flex-1 p-4 flex flex-col gap-1 overflow-y-auto">
+
+    <nav class="flex-1 p-4 flex flex-col gap-1 overflow-y-auto hide-scrollbar">
       <p class="text-[9px] text-[#333] uppercase tracking-widest font-bold px-3 py-2">Général</p>
-      <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+      <a href="dashboard.html"
+        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
         <i data-lucide="bar-chart-3" class="w-4 h-4"></i> Tableau de bord
       </a>
-      <a href="devis.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+      <a href="devis.html"
+        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
         <i data-lucide="clipboard-list" class="w-4 h-4"></i> Demandes de Devis
       </a>
-      <a href="projets.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+      <a href="projets.html"
+        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
         <i data-lucide="clapperboard" class="w-4 h-4"></i> Projets & Kanban
       </a>
-      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+      <a href="#"
+        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
         <i data-lucide="users" class="w-4 h-4"></i> Clients & Contacts
       </a>
-      
+
       <p class="text-[9px] text-[#333] uppercase tracking-widest font-bold px-3 py-2 mt-3">Contenu Site</p>
       <!-- Témoignages -->
       <div>
-        <button onclick="toggleSubmenu('submenu-temoignages')" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <button onclick="toggleSubmenu('submenu-temoignages')"
+          class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
           <span class="flex items-center gap-3">
             <i data-lucide="message-square" class="w-4 h-4"></i> Témoignages
           </span>
-          <i data-lucide="chevron-down" id="arrow-temoignages" class="w-3.5 h-3.5 transition-transform duration-200"></i>
+          <i data-lucide="chevron-down" id="arrow-temoignages"
+            class="w-3.5 h-3.5 transition-transform duration-200"></i>
         </button>
         <div id="submenu-temoignages" class="hidden flex-col gap-1 pl-9 mt-1">
-          <a href="temoignages-ajouter.html" class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
+          <a href="temoignages-ajouter.html"
+            class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
             Ajouter un témoignage
           </a>
-          <a href="temoignages-liste.html" class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
+          <a href="temoignages-liste.html"
+            class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
             Liste témoignages
           </a>
         </div>
@@ -104,32 +144,34 @@
 
       <!-- Vidéos -->
       <div>
-        <button onclick="toggleSubmenu('submenu-videos')" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <button onclick="toggleSubmenu('submenu-videos')"
+          class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
           <span class="flex items-center gap-3">
             <i data-lucide="video" class="w-4 h-4"></i> Vidéos
           </span>
           <i data-lucide="chevron-down" id="arrow-videos" class="w-3.5 h-3.5 transition-transform duration-200"></i>
         </button>
         <div id="submenu-videos" class="hidden flex-col gap-1 pl-9 mt-1">
-          <a href="videos-ajouter.html" class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
+          <a href="videos-ajouter.html"
+            class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
             Ajouter une vidéo
           </a>
-          <a href="videos-liste.html" class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
+          <a href="videos-liste.html"
+            class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
             Liste vidéos
           </a>
         </div>
       </div>
 
-      <!-- Packs -->
-      <a href="packs.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
-        <i data-lucide="package" class="w-4 h-4"></i> Packs & Tarifs
-      </a>
+
 
       <div class="mt-auto pt-4 border-t border-[#1a1a1a]">
-        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <a href="#"
+          class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
           <i data-lucide="settings" class="w-4 h-4"></i> Configuration
         </a>
-        <a href="../index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <a href="../index.html"
+          class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
           <i data-lucide="external-link" class="w-4 h-4"></i> Voir le site
         </a>
       </div>
@@ -139,18 +181,23 @@
   <!-- MAIN -->
   <div class="flex-1 flex flex-col overflow-hidden">
     <!-- TOP BAR -->
-    <header class="h-14 bg-[#0a0a0a] border-b border-[#1a1a1a] px-4 md:px-6 flex items-center justify-between flex-shrink-0">
+    <header
+      class="h-14 bg-[#0a0a0a] border-b border-[#1a1a1a] px-4 md:px-6 flex items-center justify-between flex-shrink-0">
       <div class="flex items-center gap-3">
-        <button onclick="toggleSidebar()" class="md:hidden text-[#888] hover:text-white transition-colors p-1" title="Menu">
+        <button onclick="toggleSidebar()" class="md:hidden text-[#888] hover:text-white transition-colors p-1"
+          title="Menu">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
         <h1 class="font-jakarta text-base md:text-lg font-bold">Gestion des Témoignages</h1>
       </div>
       <div class="flex items-center gap-3">
-        <button class="text-[#666] hover:text-white transition-colors"><i data-lucide="bell" class="w-4 h-4"></i></button>
+        <button class="text-[#666] hover:text-white transition-colors"><i data-lucide="bell"
+            class="w-4 h-4"></i></button>
         <div class="flex items-center gap-2 md:gap-4">
           <div class="flex items-center gap-2">
-            <div class="w-7 h-7 md:w-8 md:h-8 bg-brand-orange rounded-full flex items-center justify-center text-xs font-bold">TA</div>
+            <div
+              class="w-7 h-7 md:w-8 md:h-8 bg-brand-orange rounded-full flex items-center justify-center text-xs font-bold">
+              TA</div>
             <span class="text-xs md:text-sm text-[#888] hidden sm:inline">Thierry Amenyah</span>
           </div>
           <a href="login.html" class="text-[#666] hover:text-red-400 transition-colors" title="Déconnexion">
@@ -168,19 +215,27 @@
         <!-- FILTERS & SEARCH -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 flex-wrap">
           <div class="flex gap-2 flex-wrap items-center">
-            <button class="f-pill bg-brand-orange/10 border border-brand-orange text-brand-orange px-4 py-1.5 rounded-full text-xs font-semibold" onclick="filterStatus(this,'all')">
+            <button
+              class="f-pill bg-brand-orange/10 border border-brand-orange text-brand-orange px-4 py-1.5 rounded-full text-xs font-semibold"
+              onclick="filterStatus(this,'all')">
               Tous <span id="count-all" class="bg-brand-orange text-white rounded-full px-1.5 ml-1 text-[9px]">0</span>
             </button>
-            <button class="f-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors" onclick="filterStatus(this,'published')">Publiés</button>
-            <button class="f-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors" onclick="filterStatus(this,'draft')">Brouillons</button>
+            <button
+              class="f-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors"
+              onclick="filterStatus(this,'published')">Publiés</button>
+            <button
+              class="f-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors"
+              onclick="filterStatus(this,'draft')">Brouillons</button>
           </div>
 
           <div class="flex items-center gap-2 w-full sm:w-auto">
             <div class="relative flex items-center flex-1 sm:flex-initial">
-              <input type="text" id="search-input" oninput="renderList()" placeholder="Rechercher un client..." class="w-full sm:w-auto bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg pl-8 pr-3 py-2 text-xs text-white placeholder:text-[#555] font-jakarta focus:border-brand-orange outline-none">
+              <input type="text" id="search-input" oninput="renderList()" placeholder="Rechercher un client..."
+                class="w-full sm:w-auto bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg pl-8 pr-3 py-2 text-xs text-white placeholder:text-[#555] font-jakarta focus:border-brand-orange outline-none">
               <i data-lucide="search" class="w-3.5 h-3.5 text-[#555] absolute left-2.5"></i>
             </div>
-            <a href="temoignages-ajouter.html" class="bg-brand-orange text-white text-xs font-bold px-3.5 py-2 rounded-lg flex items-center gap-1.5 hover:bg-orange-600 transition-colors whitespace-nowrap">
+            <a href="temoignages-ajouter.html"
+              class="bg-brand-orange text-white text-xs font-bold px-3.5 py-2 rounded-lg flex items-center gap-1.5 hover:bg-orange-600 transition-colors whitespace-nowrap">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Nouveau
             </a>
           </div>
@@ -193,11 +248,16 @@
               <thead>
                 <tr class="border-b border-[#1a1a1a] bg-[#090909]">
                   <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-12"></th>
-                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[25%]">Client</th>
-                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[45%]">Témoignage</th>
-                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[12%]">Note</th>
-                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[10%]">Statut</th>
-                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-24">Actions</th>
+                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[25%]">
+                    Client</th>
+                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[45%]">
+                    Témoignage</th>
+                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[12%]">Note
+                  </th>
+                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[10%]">
+                    Statut</th>
+                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-24">Actions
+                  </th>
                 </tr>
               </thead>
               <tbody id="testimonials-table-body">
@@ -215,7 +275,8 @@
       </div>
 
       <!-- EDIT DRAWER PANEL -->
-      <div id="edit-drawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-[#0a0a0a] border-l border-[#1a1a1a] p-6 overflow-y-auto flex flex-col gap-6 transition-transform duration-300 ease-in-out translate-x-full">
+      <div id="edit-drawer"
+        class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-[#0a0a0a] border-l border-[#1a1a1a] p-6 overflow-y-auto flex flex-col gap-6 transition-transform duration-300 ease-in-out translate-x-full">
         <div class="flex justify-between items-center pb-4 border-b border-[#1a1a1a]">
           <div>
             <h2 class="font-jakarta text-base font-bold text-white">Modifier le Témoignage</h2>
@@ -228,20 +289,27 @@
 
         <form id="form-edit" onsubmit="updateTestimonial(event)" class="space-y-4 flex-1">
           <input type="hidden" id="edit-id">
-          
+
           <div>
-            <label for="edit-name" class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Nom du Client *</label>
-            <input type="text" id="edit-name" required class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3.5 py-2 text-xs text-white focus:border-brand-orange outline-none">
-          </div>
-          
-          <div>
-            <label for="edit-company" class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Entreprise & Fonction</label>
-            <input type="text" id="edit-company" class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3.5 py-2 text-xs text-white focus:border-brand-orange outline-none">
+            <label for="edit-name" class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Nom
+              du Client *</label>
+            <input type="text" id="edit-name" required
+              class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3.5 py-2 text-xs text-white focus:border-brand-orange outline-none">
           </div>
 
           <div>
-            <label for="edit-text" class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Témoignage *</label>
-            <textarea id="edit-text" required rows="5" class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3.5 py-2 text-xs text-white focus:border-brand-orange outline-none resize-none"></textarea>
+            <label for="edit-company"
+              class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Entreprise &
+              Fonction</label>
+            <input type="text" id="edit-company"
+              class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3.5 py-2 text-xs text-white focus:border-brand-orange outline-none">
+          </div>
+
+          <div>
+            <label for="edit-text"
+              class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Témoignage *</label>
+            <textarea id="edit-text" required rows="5"
+              class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3.5 py-2 text-xs text-white focus:border-brand-orange outline-none resize-none"></textarea>
           </div>
 
           <div class="grid grid-cols-2 gap-4">
@@ -253,8 +321,10 @@
               </div>
             </div>
             <div>
-              <label for="edit-status" class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Statut</label>
-              <select id="edit-status" class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-2 text-xs text-white focus:border-brand-orange outline-none">
+              <label for="edit-status"
+                class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Statut</label>
+              <select id="edit-status"
+                class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-2 text-xs text-white focus:border-brand-orange outline-none">
                 <option value="published">Publié</option>
                 <option value="draft">Brouillon</option>
               </select>
@@ -265,21 +335,30 @@
           <div>
             <label class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Avatar</label>
             <div class="flex items-center gap-3">
-              <img id="edit-avatar-preview" src="" class="w-12 h-12 rounded-full object-cover border border-[#2a2a2a] bg-[#111]">
+              <img id="edit-avatar-preview" src=""
+                class="w-12 h-12 rounded-full object-cover border border-[#2a2a2a] bg-[#111]">
               <div class="flex-1 flex flex-col gap-1">
-                <input type="text" id="edit-avatar-url" oninput="document.getElementById('edit-avatar-preview').src = this.value" class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-1.5 text-[11px] text-white focus:border-brand-orange outline-none" placeholder="Lien de la photo">
+                <input type="text" id="edit-avatar-url"
+                  oninput="document.getElementById('edit-avatar-preview').src = this.value"
+                  class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-1.5 text-[11px] text-white focus:border-brand-orange outline-none"
+                  placeholder="Lien de la photo">
               </div>
             </div>
           </div>
 
           <div>
-            <label for="edit-date" class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Date</label>
-            <input type="date" id="edit-date" class="w-full max-w-[150px] bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-1.5 text-xs text-white focus:border-brand-orange outline-none">
+            <label for="edit-date"
+              class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Date</label>
+            <input type="date" id="edit-date"
+              class="w-full max-w-[150px] bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-1.5 text-xs text-white focus:border-brand-orange outline-none">
           </div>
 
           <div class="pt-6 border-t border-[#1a1a1a] flex gap-2 justify-end">
-            <button type="button" onclick="closeEditDrawer()" class="bg-transparent border border-[#2a2a2a] text-[#888] hover:text-white hover:border-[#444] text-xs font-semibold px-4 py-2.5 rounded-lg transition-colors">Annuler</button>
-            <button type="submit" class="bg-brand-orange text-white text-xs font-bold px-5 py-2.5 rounded-lg hover:bg-orange-600 transition-colors">Mettre à jour</button>
+            <button type="button" onclick="closeEditDrawer()"
+              class="bg-transparent border border-[#2a2a2a] text-[#888] hover:text-white hover:border-[#444] text-xs font-semibold px-4 py-2.5 rounded-lg transition-colors">Annuler</button>
+            <button type="submit"
+              class="bg-brand-orange text-white text-xs font-bold px-5 py-2.5 rounded-lg hover:bg-orange-600 transition-colors">Mettre
+              à jour</button>
           </div>
 
         </form>
@@ -335,12 +414,12 @@
       const list = getTestimonials();
       const tbody = document.getElementById('testimonials-table-body');
       const search = document.getElementById('search-input').value.toLowerCase();
-      
+
       // Update count badge
       document.getElementById('count-all').textContent = list.length;
-      
+
       tbody.innerHTML = '';
-      
+
       const filtered = list.filter(item => {
         const matchesStatus = filterVal === 'all' || item.status === filterVal;
         const matchesSearch = item.name.toLowerCase().includes(search) || item.company.toLowerCase().includes(search);
@@ -356,7 +435,7 @@
       }
 
       // Sort by date or id desc
-      filtered.sort((a,b) => b.id.localeCompare(a.id));
+      filtered.sort((a, b) => b.id.localeCompare(a.id));
 
       filtered.forEach(item => {
         const tr = document.createElement('tr');
@@ -465,7 +544,7 @@
       document.getElementById('edit-rating').value = item.rating;
       document.getElementById('edit-status').value = item.status;
       document.getElementById('edit-date').value = item.date || new Date().toISOString().split('T')[0];
-      
+
       document.getElementById('edit-avatar-url').value = item.avatar;
       document.getElementById('edit-avatar-preview').src = item.avatar || '';
 
@@ -541,4 +620,5 @@
     }
   </script>
 </body>
+
 </html>
