@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="assets/favicon.PNG">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des Témoignages - GENESYS Admin</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { orange: '#FF6B2B', gold: '#C5A572', green: '#00A86B' }
+          },
+          fontFamily: {
+            jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .lucide { display: inline-block; vertical-align: middle; }
+    html, body { height: 100%; }
+    .star-btn { transition: transform 0.15s ease; }
+    .star-btn:hover { transform: scale(1.2); }
+  </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#070707] text-white font-jakarta antialiased h-screen flex overflow-hidden">
+
+  <!-- Sidebar Backdrop -->
+  <div id="sidebar-backdrop" class="fixed inset-0 bg-black/60 z-40 hidden transition-opacity duration-300" onclick="toggleSidebar()"></div>
+
+  <!-- Detail/Edit Drawer Backdrop -->
+  <div id="drawer-backdrop" class="fixed inset-0 bg-black/60 z-40 hidden transition-opacity duration-300" onclick="closeEditDrawer()"></div>
+
+  <!-- Delete Modal Backdrop -->
+  <div id="delete-modal-backdrop" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300">
+    <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-2xl p-6 w-full max-w-sm max-h-[85vh] overflow-y-auto">
+      <div class="w-12 h-12 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-4 text-red-500">
+        <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+      </div>
+      <h3 class="text-center font-bold text-base mb-2">Supprimer le témoignage ?</h3>
+      <p class="text-center text-xs text-[#555] mb-6">Cette action est irréversible. Le témoignage sera retiré du site définitivement.</p>
+      <div class="flex gap-2">
+        <button onclick="closeDeleteModal()" class="flex-1 bg-transparent border border-[#2a2a2a] text-[#888] hover:text-white hover:border-[#444] text-xs font-semibold py-2.5 rounded-lg transition-colors">Annuler</button>
+        <button id="btn-confirm-delete" class="flex-1 bg-red-600 text-white text-xs font-bold py-2.5 rounded-lg hover:bg-red-700 transition-colors">Supprimer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="w-56 bg-[#0d0d0d] border-r border-[#1f1f1f] flex flex-col flex-shrink-0 fixed inset-y-0 left-0 z-50 -translate-x-full md:translate-x-0 md:static transition-transform duration-300 ease-in-out">
+    <div class="p-5 border-b border-[#1f1f1f] flex items-center justify-between">
+      <div>
+        <a href="../index.html" class="block mb-2">
+          <img src="assets/logo.PNG" alt="GENESYS" class="h-7 w-auto">
+        </a>
+        <span class="text-[10px] text-[#444] uppercase tracking-widest font-medium">Admin Panel</span>
+      </div>
+      <button onclick="toggleSidebar()" class="md:hidden text-[#888] hover:text-white p-1" title="Fermer le menu">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+    
+    <nav class="flex-1 p-4 flex flex-col gap-1 overflow-y-auto">
+      <p class="text-[9px] text-[#333] uppercase tracking-widest font-bold px-3 py-2">Général</p>
+      <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <i data-lucide="bar-chart-3" class="w-4 h-4"></i> Tableau de bord
+      </a>
+      <a href="devis.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <i data-lucide="clipboard-list" class="w-4 h-4"></i> Demandes de Devis
+      </a>
+      <a href="projets.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <i data-lucide="clapperboard" class="w-4 h-4"></i> Projets & Kanban
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <i data-lucide="users" class="w-4 h-4"></i> Clients & Contacts
+      </a>
+      
+      <p class="text-[9px] text-[#333] uppercase tracking-widest font-bold px-3 py-2 mt-3">Contenu Site</p>
+      <!-- Témoignages -->
+      <div>
+        <button onclick="toggleSubmenu('submenu-temoignages')" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+          <span class="flex items-center gap-3">
+            <i data-lucide="message-square" class="w-4 h-4"></i> Témoignages
+          </span>
+          <i data-lucide="chevron-down" id="arrow-temoignages" class="w-3.5 h-3.5 transition-transform duration-200"></i>
+        </button>
+        <div id="submenu-temoignages" class="hidden flex-col gap-1 pl-9 mt-1">
+          <a href="temoignages-ajouter.html" class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
+            Ajouter un témoignage
+          </a>
+          <a href="temoignages-liste.html" class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
+            Liste témoignages
+          </a>
+        </div>
+      </div>
+
+      <!-- Vidéos -->
+      <div>
+        <button onclick="toggleSubmenu('submenu-videos')" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+          <span class="flex items-center gap-3">
+            <i data-lucide="video" class="w-4 h-4"></i> Vidéos
+          </span>
+          <i data-lucide="chevron-down" id="arrow-videos" class="w-3.5 h-3.5 transition-transform duration-200"></i>
+        </button>
+        <div id="submenu-videos" class="hidden flex-col gap-1 pl-9 mt-1">
+          <a href="videos-ajouter.html" class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
+            Ajouter une vidéo
+          </a>
+          <a href="videos-liste.html" class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
+            Liste vidéos
+          </a>
+        </div>
+      </div>
+
+      <!-- Packs -->
+      <a href="packs.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <i data-lucide="package" class="w-4 h-4"></i> Packs & Tarifs
+      </a>
+
+      <div class="mt-auto pt-4 border-t border-[#1a1a1a]">
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+          <i data-lucide="settings" class="w-4 h-4"></i> Configuration
+        </a>
+        <a href="../index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+          <i data-lucide="external-link" class="w-4 h-4"></i> Voir le site
+        </a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="flex-1 flex flex-col overflow-hidden">
+    <!-- TOP BAR -->
+    <header class="h-14 bg-[#0a0a0a] border-b border-[#1a1a1a] px-4 md:px-6 flex items-center justify-between flex-shrink-0">
+      <div class="flex items-center gap-3">
+        <button onclick="toggleSidebar()" class="md:hidden text-[#888] hover:text-white transition-colors p-1" title="Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+        <h1 class="font-jakarta text-base md:text-lg font-bold">Gestion des Témoignages</h1>
+      </div>
+      <div class="flex items-center gap-3">
+        <button class="text-[#666] hover:text-white transition-colors"><i data-lucide="bell" class="w-4 h-4"></i></button>
+        <div class="flex items-center gap-2 md:gap-4">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 md:w-8 md:h-8 bg-brand-orange rounded-full flex items-center justify-center text-xs font-bold">TA</div>
+            <span class="text-xs md:text-sm text-[#888] hidden sm:inline">Thierry Amenyah</span>
+          </div>
+          <a href="login.html" class="text-[#666] hover:text-red-400 transition-colors" title="Déconnexion">
+            <i data-lucide="log-out" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <div class="flex-1 overflow-hidden flex">
+
+      <!-- LIST PANEL -->
+      <div class="flex-1 overflow-y-auto p-5 flex flex-col gap-4">
+        <!-- FILTERS & SEARCH -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 flex-wrap">
+          <div class="flex gap-2 flex-wrap items-center">
+            <button class="f-pill bg-brand-orange/10 border border-brand-orange text-brand-orange px-4 py-1.5 rounded-full text-xs font-semibold" onclick="filterStatus(this,'all')">
+              Tous <span id="count-all" class="bg-brand-orange text-white rounded-full px-1.5 ml-1 text-[9px]">0</span>
+            </button>
+            <button class="f-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors" onclick="filterStatus(this,'published')">Publiés</button>
+            <button class="f-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors" onclick="filterStatus(this,'draft')">Brouillons</button>
+          </div>
+
+          <div class="flex items-center gap-2 w-full sm:w-auto">
+            <div class="relative flex items-center flex-1 sm:flex-initial">
+              <input type="text" id="search-input" oninput="renderList()" placeholder="Rechercher un client..." class="w-full sm:w-auto bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg pl-8 pr-3 py-2 text-xs text-white placeholder:text-[#555] font-jakarta focus:border-brand-orange outline-none">
+              <i data-lucide="search" class="w-3.5 h-3.5 text-[#555] absolute left-2.5"></i>
+            </div>
+            <a href="temoignages-ajouter.html" class="bg-brand-orange text-white text-xs font-bold px-3.5 py-2 rounded-lg flex items-center gap-1.5 hover:bg-orange-600 transition-colors whitespace-nowrap">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i> Nouveau
+            </a>
+          </div>
+        </div>
+
+        <!-- TABLE FOR TESTIMONIALS -->
+        <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[800px] border-collapse">
+              <thead>
+                <tr class="border-b border-[#1a1a1a] bg-[#090909]">
+                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-12"></th>
+                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[25%]">Client</th>
+                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[45%]">Témoignage</th>
+                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[12%]">Note</th>
+                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-[10%]">Statut</th>
+                  <th class="text-left text-[#555] text-[10px] uppercase tracking-wide py-3 px-4 font-bold w-24">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="testimonials-table-body">
+                <!-- Dynamically filled -->
+              </tbody>
+            </table>
+          </div>
+          <!-- Empty State -->
+          <div id="empty-state" class="hidden flex-col items-center justify-center py-12 px-4">
+            <i data-lucide="message-square" class="w-12 h-12 text-[#333] mb-3"></i>
+            <p class="text-sm font-semibold text-[#888]">Aucun témoignage trouvé</p>
+            <p class="text-xs text-[#555] mt-1">Modifiez vos critères de recherche ou ajoutez-en un nouveau.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDIT DRAWER PANEL -->
+      <div id="edit-drawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-[#0a0a0a] border-l border-[#1a1a1a] p-6 overflow-y-auto flex flex-col gap-6 transition-transform duration-300 ease-in-out translate-x-full">
+        <div class="flex justify-between items-center pb-4 border-b border-[#1a1a1a]">
+          <div>
+            <h2 class="font-jakarta text-base font-bold text-white">Modifier le Témoignage</h2>
+            <p class="text-[10px] text-[#555] mt-0.5">Mettez à jour les informations du client</p>
+          </div>
+          <button onclick="closeEditDrawer()" class="text-[#888] hover:text-white p-1" title="Fermer">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <form id="form-edit" onsubmit="updateTestimonial(event)" class="space-y-4 flex-1">
+          <input type="hidden" id="edit-id">
+          
+          <div>
+            <label for="edit-name" class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Nom du Client *</label>
+            <input type="text" id="edit-name" required class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3.5 py-2 text-xs text-white focus:border-brand-orange outline-none">
+          </div>
+          
+          <div>
+            <label for="edit-company" class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Entreprise & Fonction</label>
+            <input type="text" id="edit-company" class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3.5 py-2 text-xs text-white focus:border-brand-orange outline-none">
+          </div>
+
+          <div>
+            <label for="edit-text" class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Témoignage *</label>
+            <textarea id="edit-text" required rows="5" class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3.5 py-2 text-xs text-white focus:border-brand-orange outline-none resize-none"></textarea>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Note</label>
+              <input type="hidden" id="edit-rating" value="5">
+              <div class="flex gap-1" id="edit-star-container">
+                <!-- Stars rendered via script -->
+              </div>
+            </div>
+            <div>
+              <label for="edit-status" class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Statut</label>
+              <select id="edit-status" class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-2 text-xs text-white focus:border-brand-orange outline-none">
+                <option value="published">Publié</option>
+                <option value="draft">Brouillon</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Avatar Preset Selector in Edit -->
+          <div>
+            <label class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Avatar</label>
+            <div class="flex items-center gap-3">
+              <img id="edit-avatar-preview" src="" class="w-12 h-12 rounded-full object-cover border border-[#2a2a2a] bg-[#111]">
+              <div class="flex-1 flex flex-col gap-1">
+                <input type="text" id="edit-avatar-url" oninput="document.getElementById('edit-avatar-preview').src = this.value" class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-1.5 text-[11px] text-white focus:border-brand-orange outline-none" placeholder="Lien de la photo">
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label for="edit-date" class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Date</label>
+            <input type="date" id="edit-date" class="w-full max-w-[150px] bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-1.5 text-xs text-white focus:border-brand-orange outline-none">
+          </div>
+
+          <div class="pt-6 border-t border-[#1a1a1a] flex gap-2 justify-end">
+            <button type="button" onclick="closeEditDrawer()" class="bg-transparent border border-[#2a2a2a] text-[#888] hover:text-white hover:border-[#444] text-xs font-semibold px-4 py-2.5 rounded-lg transition-colors">Annuler</button>
+            <button type="submit" class="bg-brand-orange text-white text-xs font-bold px-5 py-2.5 rounded-lg hover:bg-orange-600 transition-colors">Mettre à jour</button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="assets/admin-common.js"></script>
+  <script>
+    let filterVal = 'all';
+    let currentDeleteId = null;
+
+    // Load and render list
+    document.addEventListener("DOMContentLoaded", () => {
+      renderList();
+    });
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (sidebar.classList.contains('-translate-x-full')) {
+        sidebar.classList.remove('-translate-x-full');
+        backdrop.classList.remove('hidden');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+      }
+    }
+
+    function getTestimonials() {
+      try {
+        return JSON.parse(localStorage.getItem('genesys_testimonials')) || [];
+      } catch (err) {
+        return [];
+      }
+    }
+
+    function saveTestimonials(list) {
+      localStorage.setItem('genesys_testimonials', JSON.stringify(list));
+    }
+
+    function filterStatus(el, val) {
+      document.querySelectorAll('.f-pill').forEach(b => {
+        b.className = 'f-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors';
+      });
+      el.className = 'f-pill bg-brand-orange/10 border border-brand-orange text-brand-orange px-4 py-1.5 rounded-full text-xs font-semibold';
+      filterVal = val;
+      renderList();
+    }
+
+    function renderList() {
+      const list = getTestimonials();
+      const tbody = document.getElementById('testimonials-table-body');
+      const search = document.getElementById('search-input').value.toLowerCase();
+      
+      // Update count badge
+      document.getElementById('count-all').textContent = list.length;
+      
+      tbody.innerHTML = '';
+      
+      const filtered = list.filter(item => {
+        const matchesStatus = filterVal === 'all' || item.status === filterVal;
+        const matchesSearch = item.name.toLowerCase().includes(search) || item.company.toLowerCase().includes(search);
+        return matchesStatus && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        document.getElementById('empty-state').classList.remove('hidden');
+        document.getElementById('empty-state').classList.add('flex');
+      } else {
+        document.getElementById('empty-state').classList.add('hidden');
+        document.getElementById('empty-state').classList.remove('flex');
+      }
+
+      // Sort by date or id desc
+      filtered.sort((a,b) => b.id.localeCompare(a.id));
+
+      filtered.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.className = 'border-b border-[#111] hover:bg-[#111]/30 transition-colors';
+
+        // Star rating string
+        let stars = '';
+        for (let i = 1; i <= 5; i++) {
+          const fill = i <= item.rating ? 'fill-current text-brand-orange' : 'text-[#333]';
+          stars += `<i data-lucide="star" class="w-3.5 h-3.5 inline ${fill}"></i>`;
+        }
+
+        const isPublished = item.status === 'published';
+        const badgeClass = isPublished ? 'bg-brand-green/15 text-brand-green' : 'bg-yellow-500/15 text-yellow-500';
+        const badgeLabel = isPublished ? 'Publié' : 'Brouillon';
+
+        tr.innerHTML = `
+          <td class="py-3 px-4">
+            <div class="w-8 h-8 rounded-full overflow-hidden border border-[#2a2a2a] bg-[#111]">
+              <img src="${item.avatar || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop'}" class="w-full h-full object-cover" alt="">
+            </div>
+          </td>
+          <td class="py-3 px-4 text-sm font-semibold text-white">
+            ${item.name}
+            <span class="block text-[11px] font-normal text-[#555] mt-0.5">${item.company}</span>
+          </td>
+          <td class="py-3 px-4 text-xs text-[#888] pr-8 leading-relaxed max-w-[400px] truncate" title="${item.text}">
+            "${item.text}"
+          </td>
+          <td class="py-3 px-4 text-xs font-semibold whitespace-nowrap">
+            <div class="flex items-center gap-1">
+              ${stars}
+            </div>
+          </td>
+          <td class="py-3 px-4">
+            <button onclick="toggleItemStatus('${item.id}')" title="Cliquer pour changer de statut" class="${badgeClass} text-[10px] font-bold px-2.5 py-1 rounded-full cursor-pointer hover:scale-105 transition-transform">
+              ${badgeLabel}
+            </button>
+          </td>
+          <td class="py-3 px-4 text-xs">
+            <div class="flex items-center gap-3">
+              <button onclick="openEditDrawer('${item.id}')" class="text-[#666] hover:text-white transition-colors" title="Modifier">
+                <i data-lucide="edit-3" class="w-4 h-4"></i>
+              </button>
+              <button onclick="confirmDelete('${item.id}')" class="text-[#666] hover:text-red-400 transition-colors" title="Supprimer">
+                <i data-lucide="trash-2" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+      lucide.createIcons();
+    }
+
+    // Toggle status Published/Draft
+    function toggleItemStatus(id) {
+      let list = getTestimonials();
+      const idx = list.findIndex(item => item.id === id);
+      if (idx !== -1) {
+        const oldStatus = list[idx].status;
+        list[idx].status = oldStatus === 'published' ? 'draft' : 'published';
+        saveTestimonials(list);
+        renderList();
+        showToast(`Témoignage mis en ${list[idx].status === 'published' ? 'En ligne' : 'Brouillon'} !`, 'info');
+      }
+    }
+
+    // Delete actions
+    function confirmDelete(id) {
+      currentDeleteId = id;
+      const modal = document.getElementById('delete-modal-backdrop');
+      modal.classList.remove('hidden');
+      document.getElementById('btn-confirm-delete').onclick = () => {
+        executeDelete();
+      };
+    }
+
+    function closeDeleteModal() {
+      const modal = document.getElementById('delete-modal-backdrop');
+      modal.classList.add('hidden');
+      currentDeleteId = null;
+    }
+
+    function executeDelete() {
+      if (currentDeleteId) {
+        let list = getTestimonials();
+        list = list.filter(item => item.id !== currentDeleteId);
+        saveTestimonials(list);
+        closeDeleteModal();
+        renderList();
+        showToast("Témoignage supprimé avec succès !", "success");
+      }
+    }
+
+    // Edit actions
+    function openEditDrawer(id) {
+      const list = getTestimonials();
+      const item = list.find(it => it.id === id);
+      if (!item) return;
+
+      document.getElementById('edit-id').value = item.id;
+      document.getElementById('edit-name').value = item.name;
+      document.getElementById('edit-company').value = item.company;
+      document.getElementById('edit-text').value = item.text;
+      document.getElementById('edit-rating').value = item.rating;
+      document.getElementById('edit-status').value = item.status;
+      document.getElementById('edit-date').value = item.date || new Date().toISOString().split('T')[0];
+      
+      document.getElementById('edit-avatar-url').value = item.avatar;
+      document.getElementById('edit-avatar-preview').src = item.avatar || '';
+
+      setupEditStars(item.rating);
+
+      const drawer = document.getElementById('edit-drawer');
+      const backdrop = document.getElementById('drawer-backdrop');
+      drawer.classList.remove('translate-x-full');
+      backdrop.classList.remove('hidden');
+    }
+
+    function closeEditDrawer() {
+      const drawer = document.getElementById('edit-drawer');
+      const backdrop = document.getElementById('drawer-backdrop');
+      drawer.classList.add('translate-x-full');
+      backdrop.classList.add('hidden');
+    }
+
+    function setupEditStars(ratingValue) {
+      const container = document.getElementById('edit-star-container');
+      container.innerHTML = '';
+      for (let i = 1; i <= 5; i++) {
+        const fill = i <= ratingValue ? 'fill-current text-brand-orange' : 'text-[#333] hover:text-[#555]';
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.onclick = () => changeEditRating(i);
+        btn.className = 'star-btn ' + fill;
+        btn.innerHTML = `<i data-lucide="star" class="w-5 h-5"></i>`;
+        container.appendChild(btn);
+      }
+      lucide.createIcons();
+    }
+
+    function changeEditRating(ratingValue) {
+      document.getElementById('edit-rating').value = ratingValue;
+      setupEditStars(ratingValue);
+    }
+
+    function updateTestimonial(e) {
+      e.preventDefault();
+      const id = document.getElementById('edit-id').value;
+      const name = document.getElementById('edit-name').value.trim();
+      const company = document.getElementById('edit-company').value.trim();
+      const text = document.getElementById('edit-text').value.trim();
+      const rating = parseInt(document.getElementById('edit-rating').value);
+      const status = document.getElementById('edit-status').value;
+      const date = document.getElementById('edit-date').value;
+      const avatar = document.getElementById('edit-avatar-url').value.trim();
+
+      if (!name || !text) {
+        showToast("Veuillez remplir les champs obligatoires", "error");
+        return;
+      }
+
+      let list = getTestimonials();
+      const idx = list.findIndex(item => item.id === id);
+      if (idx !== -1) {
+        list[idx] = {
+          ...list[idx],
+          name,
+          company,
+          text,
+          rating,
+          status,
+          date,
+          avatar
+        };
+        saveTestimonials(list);
+        closeEditDrawer();
+        renderList();
+        showToast("Témoignage mis à jour avec succès !", "success");
+      }
+    }
+  </script>
+</body>
+</html>

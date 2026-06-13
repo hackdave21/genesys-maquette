@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="assets/favicon.PNG">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajouter un Témoignage - GENESYS Admin</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { orange: '#FF6B2B', gold: '#C5A572', green: '#00A86B' }
+          },
+          fontFamily: {
+            jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .lucide { display: inline-block; vertical-align: middle; }
+    html, body { height: 100%; }
+    .star-btn { transition: transform 0.15s ease; }
+    .star-btn:hover { transform: scale(1.2); }
+  </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#070707] text-white font-jakarta antialiased h-screen flex overflow-hidden">
+
+  <!-- Sidebar Backdrop -->
+  <div id="sidebar-backdrop" class="fixed inset-0 bg-black/60 z-40 hidden transition-opacity duration-300" onclick="toggleSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="w-56 bg-[#0d0d0d] border-r border-[#1f1f1f] flex flex-col flex-shrink-0 fixed inset-y-0 left-0 z-50 -translate-x-full md:translate-x-0 md:static transition-transform duration-300 ease-in-out">
+    <div class="p-5 border-b border-[#1f1f1f] flex items-center justify-between">
+      <div>
+        <a href="../index.html" class="block mb-2">
+          <img src="assets/logo.PNG" alt="GENESYS" class="h-7 w-auto">
+        </a>
+        <span class="text-[10px] text-[#444] uppercase tracking-widest font-medium">Admin Panel</span>
+      </div>
+      <button onclick="toggleSidebar()" class="md:hidden text-[#888] hover:text-white p-1" title="Fermer le menu">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+    
+    <nav class="flex-1 p-4 flex flex-col gap-1 overflow-y-auto">
+      <p class="text-[9px] text-[#333] uppercase tracking-widest font-bold px-3 py-2">Général</p>
+      <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <i data-lucide="bar-chart-3" class="w-4 h-4"></i> Tableau de bord
+      </a>
+      <a href="devis.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <i data-lucide="clipboard-list" class="w-4 h-4"></i> Demandes de Devis
+      </a>
+      <a href="projets.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <i data-lucide="clapperboard" class="w-4 h-4"></i> Projets & Kanban
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <i data-lucide="users" class="w-4 h-4"></i> Clients & Contacts
+      </a>
+      
+      <p class="text-[9px] text-[#333] uppercase tracking-widest font-bold px-3 py-2 mt-3">Contenu Site</p>
+      <!-- Témoignages -->
+      <div>
+        <button onclick="toggleSubmenu('submenu-temoignages')" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+          <span class="flex items-center gap-3">
+            <i data-lucide="message-square" class="w-4 h-4"></i> Témoignages
+          </span>
+          <i data-lucide="chevron-down" id="arrow-temoignages" class="w-3.5 h-3.5 transition-transform duration-200"></i>
+        </button>
+        <div id="submenu-temoignages" class="hidden flex-col gap-1 pl-9 mt-1">
+          <a href="temoignages-ajouter.html" class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
+            Ajouter un témoignage
+          </a>
+          <a href="temoignages-liste.html" class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
+            Liste témoignages
+          </a>
+        </div>
+      </div>
+
+      <!-- Vidéos -->
+      <div>
+        <button onclick="toggleSubmenu('submenu-videos')" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+          <span class="flex items-center gap-3">
+            <i data-lucide="video" class="w-4 h-4"></i> Vidéos
+          </span>
+          <i data-lucide="chevron-down" id="arrow-videos" class="w-3.5 h-3.5 transition-transform duration-200"></i>
+        </button>
+        <div id="submenu-videos" class="hidden flex-col gap-1 pl-9 mt-1">
+          <a href="videos-ajouter.html" class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
+            Ajouter une vidéo
+          </a>
+          <a href="videos-liste.html" class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
+            Liste vidéos
+          </a>
+        </div>
+      </div>
+
+      <!-- Packs -->
+      <a href="packs.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <i data-lucide="package" class="w-4 h-4"></i> Packs & Tarifs
+      </a>
+
+      <div class="mt-auto pt-4 border-t border-[#1a1a1a]">
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+          <i data-lucide="settings" class="w-4 h-4"></i> Configuration
+        </a>
+        <a href="../index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+          <i data-lucide="external-link" class="w-4 h-4"></i> Voir le site
+        </a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="flex-1 flex flex-col overflow-hidden">
+    <!-- TOP BAR -->
+    <header class="h-14 bg-[#0a0a0a] border-b border-[#1a1a1a] px-4 md:px-6 flex items-center justify-between flex-shrink-0">
+      <div class="flex items-center gap-3">
+        <button onclick="toggleSidebar()" class="md:hidden text-[#888] hover:text-white transition-colors p-1" title="Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+        <h1 class="font-jakarta text-base md:text-lg font-bold">Ajouter un Témoignage</h1>
+      </div>
+      <div class="flex items-center gap-3">
+        <button class="text-[#666] hover:text-white transition-colors"><i data-lucide="bell" class="w-4 h-4"></i></button>
+        <div class="flex items-center gap-2 md:gap-4">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 md:w-8 md:h-8 bg-brand-orange rounded-full flex items-center justify-center text-xs font-bold">TA</div>
+            <span class="text-xs md:text-sm text-[#888] hidden sm:inline">Thierry Amenyah</span>
+          </div>
+          <a href="login.html" class="text-[#666] hover:text-red-400 transition-colors" title="Déconnexion">
+            <i data-lucide="log-out" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="flex-1 overflow-y-auto p-6 bg-[#070707] flex justify-center items-start">
+      <div class="w-full max-w-2xl bg-[#0d0d0d] border border-[#1f1f1f] rounded-2xl p-6 md:p-8">
+        <div class="mb-6">
+          <h2 class="text-lg font-bold text-white mb-1">Nouveau Témoignage</h2>
+          <p class="text-xs text-[#666]">Remplissez le formulaire ci-dessous pour ajouter un avis client qui sera publié ou conservé en brouillon.</p>
+        </div>
+
+        <form id="form-testimonial" onsubmit="saveTestimonial(event)" class="space-y-6">
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Client Name -->
+            <div>
+              <label for="name" class="block text-xs font-bold uppercase tracking-wider text-[#666] mb-2">Nom du Client *</label>
+              <input type="text" id="name" required placeholder="ex: Jean Dupont" class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-[#444] font-jakarta focus:border-brand-orange outline-none transition-colors">
+            </div>
+            
+            <!-- Company / Role -->
+            <div>
+              <label for="company" class="block text-xs font-bold uppercase tracking-wider text-[#666] mb-2">Entreprise & Fonction</label>
+              <input type="text" id="company" placeholder="ex: Directeur - Ecobank Togo" class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-[#444] font-jakarta focus:border-brand-orange outline-none transition-colors">
+            </div>
+          </div>
+
+          <!-- Testimonial Text -->
+          <div>
+            <label for="text" class="block text-xs font-bold uppercase tracking-wider text-[#666] mb-2">Message *</label>
+            <textarea id="text" required rows="4" placeholder="Saisissez le témoignage ou l'avis du client..." class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-[#444] font-jakarta focus:border-brand-orange outline-none transition-colors resize-none"></textarea>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <!-- Rating -->
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-[#666] mb-2">Note de Satisfaction</label>
+              <div class="flex items-center gap-2 mt-1">
+                <input type="hidden" id="rating" value="5">
+                <div class="flex gap-1" id="star-container">
+                  <button type="button" onclick="setRating(1)" class="star-btn text-brand-orange" title="1 étoile"><i data-lucide="star" class="w-7 h-7 fill-current"></i></button>
+                  <button type="button" onclick="setRating(2)" class="star-btn text-brand-orange" title="2 étoiles"><i data-lucide="star" class="w-7 h-7 fill-current"></i></button>
+                  <button type="button" onclick="setRating(3)" class="star-btn text-brand-orange" title="3 étoiles"><i data-lucide="star" class="w-7 h-7 fill-current"></i></button>
+                  <button type="button" onclick="setRating(4)" class="star-btn text-brand-orange" title="4 étoiles"><i data-lucide="star" class="w-7 h-7 fill-current"></i></button>
+                  <button type="button" onclick="setRating(5)" class="star-btn text-brand-orange" title="5 étoiles"><i data-lucide="star" class="w-7 h-7 fill-current"></i></button>
+                </div>
+                <span class="text-sm font-semibold text-[#888] ml-2" id="rating-label">5.0 / 5</span>
+              </div>
+            </div>
+
+            <!-- Status -->
+            <div>
+              <label for="status" class="block text-xs font-bold uppercase tracking-wider text-[#666] mb-2">Statut de Publication</label>
+              <select id="status" class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-4 py-2.5 text-sm text-white font-jakarta focus:border-brand-orange outline-none transition-colors">
+                <option value="published" selected>Publié (visible sur le site)</option>
+                <option value="draft">Brouillon (invisible)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Avatar / Photo selection -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-[#666] mb-3">Avatar du client</label>
+            <div class="flex flex-wrap items-center gap-4">
+              <!-- Preview -->
+              <div class="relative w-16 h-16 rounded-full overflow-hidden border border-[#2a2a2a] bg-[#111] flex items-center justify-center flex-shrink-0">
+                <img id="avatar-preview" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop" alt="Aperçu" class="w-full h-full object-cover">
+              </div>
+              
+              <!-- Options presets -->
+              <div class="flex flex-col gap-2">
+                <span class="text-[10px] text-[#555] font-semibold">Choisir parmi nos presets :</span>
+                <div class="flex gap-2" id="presets-container">
+                  <button type="button" onclick="selectPreset('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop', this)" class="preset-btn w-9 h-9 rounded-full overflow-hidden border-2 border-brand-orange ring-1 ring-black">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop" class="w-full h-full object-cover" alt="Preset 1">
+                  </button>
+                  <button type="button" onclick="selectPreset('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop', this)" class="preset-btn w-9 h-9 rounded-full overflow-hidden border-2 border-transparent hover:border-gray-500">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop" class="w-full h-full object-cover" alt="Preset 2">
+                  </button>
+                  <button type="button" onclick="selectPreset('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop', this)" class="preset-btn w-9 h-9 rounded-full overflow-hidden border-2 border-transparent hover:border-gray-500">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop" class="w-full h-full object-cover" alt="Preset 3">
+                  </button>
+                  <button type="button" onclick="selectPreset('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop', this)" class="preset-btn w-9 h-9 rounded-full overflow-hidden border-2 border-transparent hover:border-gray-500">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop" class="w-full h-full object-cover" alt="Preset 4">
+                  </button>
+                </div>
+              </div>
+
+              <!-- Manual URL or simulated upload -->
+              <div class="flex-1 min-w-[200px] flex flex-col gap-2">
+                <span class="text-[10px] text-[#555] font-semibold">Ou insérer un lien d'image personnalisé :</span>
+                <input type="text" id="avatar-url" placeholder="https://exemple.com/photo.jpg" oninput="updateAvatarFromUrl(this.value)" class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-1.5 text-xs text-white placeholder:text-[#444] font-jakarta focus:border-brand-orange outline-none transition-colors">
+              </div>
+            </div>
+          </div>
+
+          <!-- Date field -->
+          <div>
+            <label for="date" class="block text-xs font-bold uppercase tracking-wider text-[#666] mb-2">Date du témoignage</label>
+            <input type="date" id="date" class="w-full max-w-[200px] bg-[#111] border border-[#2a2a2a] rounded-lg px-4 py-2 text-sm text-white font-jakarta focus:border-brand-orange outline-none transition-colors">
+          </div>
+
+          <!-- Submit Buttons -->
+          <div class="pt-4 border-t border-[#1f1f1f] flex items-center justify-between gap-4">
+            <span class="text-[10px] text-[#444] font-semibold">* Champs obligatoires</span>
+            <div class="flex gap-2">
+              <a href="temoignages-liste.html" class="bg-transparent border border-[#2a2a2a] text-[#888] hover:text-white hover:border-[#444] text-xs font-semibold px-5 py-2.5 rounded-lg transition-colors">
+                Annuler
+              </a>
+              <button type="submit" class="bg-brand-orange text-white text-xs font-bold px-6 py-2.5 rounded-lg hover:bg-orange-600 transition-colors flex items-center gap-1.5">
+                <i data-lucide="check" class="w-3.5 h-3.5"></i> Enregistrer
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/admin-common.js"></script>
+  <script>
+    // Set default date to today
+    document.addEventListener("DOMContentLoaded", () => {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('date').value = today;
+    });
+
+    let currentAvatarUrl = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop';
+
+    // Toggle Mobile Sidebar
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (sidebar.classList.contains('-translate-x-full')) {
+        sidebar.classList.remove('-translate-x-full');
+        backdrop.classList.remove('hidden');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+      }
+    }
+
+    // Interactive Star Rating
+    function setRating(ratingValue) {
+      document.getElementById('rating').value = ratingValue;
+      document.getElementById('rating-label').textContent = `${ratingValue}.0 / 5`;
+      
+      const buttons = document.querySelectorAll('#star-container button');
+      buttons.forEach((btn, idx) => {
+        const starIcon = btn.querySelector('svg') || btn;
+        if (idx < ratingValue) {
+          btn.className = 'star-btn text-brand-orange';
+          btn.innerHTML = '<i data-lucide="star" class="w-7 h-7 fill-current"></i>';
+        } else {
+          btn.className = 'star-btn text-[#333] hover:text-[#555]';
+          btn.innerHTML = '<i data-lucide="star" class="w-7 h-7"></i>';
+        }
+      });
+      lucide.createIcons();
+    }
+
+    // Avatar Selection presets
+    function selectPreset(url, element) {
+      currentAvatarUrl = url;
+      document.getElementById('avatar-preview').src = url;
+      document.getElementById('avatar-url').value = '';
+      
+      // Update active border style on buttons
+      document.querySelectorAll('.preset-btn').forEach(btn => {
+        btn.className = 'preset-btn w-9 h-9 rounded-full overflow-hidden border-2 border-transparent hover:border-gray-500';
+      });
+      element.className = 'preset-btn w-9 h-9 rounded-full overflow-hidden border-2 border-brand-orange ring-1 ring-black';
+    }
+
+    function updateAvatarFromUrl(url) {
+      if (url.trim()) {
+        currentAvatarUrl = url;
+        document.getElementById('avatar-preview').src = url;
+        
+        // Remove active preset border
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+          btn.className = 'preset-btn w-9 h-9 rounded-full overflow-hidden border-2 border-transparent hover:border-gray-500';
+        });
+      }
+    }
+
+    // Save Testimonial to LocalStorage
+    function saveTestimonial(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const text = document.getElementById('text').value.trim();
+      const rating = parseInt(document.getElementById('rating').value);
+      const status = document.getElementById('status').value;
+      const date = document.getElementById('date').value;
+
+      if (!name || !text) {
+        showToast("Veuillez remplir les champs obligatoires", "error");
+        return;
+      }
+
+      const newTestimonial = {
+        id: Date.now().toString(),
+        name,
+        company: company || "Client",
+        text,
+        rating,
+        date,
+        status,
+        avatar: currentAvatarUrl
+      };
+
+      // Fetch list and save
+      let list = [];
+      try {
+        list = JSON.parse(localStorage.getItem('genesys_testimonials')) || [];
+      } catch (err) {
+        list = [];
+      }
+
+      list.push(newTestimonial);
+      localStorage.setItem('genesys_testimonials', JSON.stringify(list));
+
+      // Show toast
+      showToast("Témoignage ajouté avec succès !", "success");
+
+      // Reset form
+      document.getElementById('form-testimonial').reset();
+      setRating(5);
+      
+      // Reset preset selection to first preset
+      const firstPresetBtn = document.querySelector('.preset-btn');
+      if (firstPresetBtn) {
+        firstPresetBtn.click();
+      }
+
+      // Re-fill date
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('date').value = today;
+
+      // Redirect after a short delay
+      setTimeout(() => {
+        window.location.href = 'temoignages-liste.html';
+      }, 1500);
+    }
+  </script>
+</body>
+</html>

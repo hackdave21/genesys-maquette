@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="assets/favicon.PNG">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des Vidéos - GENESYS Admin</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { orange: '#FF6B2B', gold: '#C5A572', green: '#00A86B' }
+          },
+          fontFamily: {
+            jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .lucide { display: inline-block; vertical-align: middle; }
+    html, body { height: 100%; }
+    .video-card:hover .play-overlay { opacity: 1; }
+  </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#070707] text-white font-jakarta antialiased h-screen flex overflow-hidden">
+
+  <!-- Sidebar Backdrop -->
+  <div id="sidebar-backdrop" class="fixed inset-0 bg-black/60 z-40 hidden transition-opacity duration-300" onclick="toggleSidebar()"></div>
+
+  <!-- Edit Drawer Backdrop -->
+  <div id="drawer-backdrop" class="fixed inset-0 bg-black/60 z-40 hidden transition-opacity duration-300" onclick="closeEditDrawer()"></div>
+
+  <!-- Delete Modal Backdrop -->
+  <div id="delete-modal-backdrop" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300">
+    <div class="bg-[#0d0d0d] border border-[#1f1f1f] rounded-2xl p-6 w-full max-w-sm">
+      <div class="w-12 h-12 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-4 text-red-500">
+        <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+      </div>
+      <h3 class="text-center font-bold text-base mb-2">Supprimer la vidéo ?</h3>
+      <p class="text-center text-xs text-[#555] mb-6">Cette action retirera la vidéo du portfolio d'administration et du site public.</p>
+      <div class="flex gap-2">
+        <button onclick="closeDeleteModal()" class="flex-1 bg-transparent border border-[#2a2a2a] text-[#888] hover:text-white hover:border-[#444] text-xs font-semibold py-2.5 rounded-lg transition-colors">Annuler</button>
+        <button id="btn-confirm-delete" class="flex-1 bg-red-600 text-white text-xs font-bold py-2.5 rounded-lg hover:bg-red-700 transition-colors">Supprimer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX PLAYER MODAL -->
+  <div id="lightbox-player" class="fixed inset-0 bg-black/95 z-50 hidden flex-col items-center justify-center p-4">
+    <div class="absolute top-4 right-4 flex gap-4 items-center">
+      <h3 id="lightbox-title" class="text-sm font-semibold text-white max-w-md truncate">Lecteur Vidéo</h3>
+      <button onclick="closeLightbox()" class="text-[#888] hover:text-white p-2 bg-[#111] hover:bg-[#222] border border-[#2a2a2a] rounded-full transition-colors" title="Fermer le lecteur">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+    <div class="w-full max-w-4xl aspect-video rounded-2xl overflow-hidden border border-[#2a2a2a] bg-black shadow-2xl">
+      <iframe id="lightbox-iframe" class="w-full h-full border-0" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="w-56 bg-[#0d0d0d] border-r border-[#1f1f1f] flex flex-col flex-shrink-0 fixed inset-y-0 left-0 z-50 -translate-x-full md:translate-x-0 md:static transition-transform duration-300 ease-in-out">
+    <div class="p-5 border-b border-[#1f1f1f] flex items-center justify-between">
+      <div>
+        <a href="../index.html" class="block mb-2">
+          <img src="assets/logo.PNG" alt="GENESYS" class="h-7 w-auto">
+        </a>
+        <span class="text-[10px] text-[#444] uppercase tracking-widest font-medium">Admin Panel</span>
+      </div>
+      <button onclick="toggleSidebar()" class="md:hidden text-[#888] hover:text-white p-1" title="Fermer le menu">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+    
+    <nav class="flex-1 p-4 flex flex-col gap-1 overflow-y-auto">
+      <p class="text-[9px] text-[#333] uppercase tracking-widest font-bold px-3 py-2">Général</p>
+      <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <i data-lucide="bar-chart-3" class="w-4 h-4"></i> Tableau de bord
+      </a>
+      <a href="devis.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <i data-lucide="clipboard-list" class="w-4 h-4"></i> Demandes de Devis
+      </a>
+      <a href="projets.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <i data-lucide="clapperboard" class="w-4 h-4"></i> Projets & Kanban
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <i data-lucide="users" class="w-4 h-4"></i> Clients & Contacts
+      </a>
+      
+      <p class="text-[9px] text-[#333] uppercase tracking-widest font-bold px-3 py-2 mt-3">Contenu Site</p>
+      <!-- Témoignages -->
+      <div>
+        <button onclick="toggleSubmenu('submenu-temoignages')" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+          <span class="flex items-center gap-3">
+            <i data-lucide="message-square" class="w-4 h-4"></i> Témoignages
+          </span>
+          <i data-lucide="chevron-down" id="arrow-temoignages" class="w-3.5 h-3.5 transition-transform duration-200"></i>
+        </button>
+        <div id="submenu-temoignages" class="hidden flex-col gap-1 pl-9 mt-1">
+          <a href="temoignages-ajouter.html" class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
+            Ajouter un témoignage
+          </a>
+          <a href="temoignages-liste.html" class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
+            Liste témoignages
+          </a>
+        </div>
+      </div>
+
+      <!-- Vidéos -->
+      <div>
+        <button onclick="toggleSubmenu('submenu-videos')" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+          <span class="flex items-center gap-3">
+            <i data-lucide="video" class="w-4 h-4"></i> Vidéos
+          </span>
+          <i data-lucide="chevron-down" id="arrow-videos" class="w-3.5 h-3.5 transition-transform duration-200"></i>
+        </button>
+        <div id="submenu-videos" class="hidden flex-col gap-1 pl-9 mt-1">
+          <a href="videos-ajouter.html" class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
+            Ajouter une vidéo
+          </a>
+          <a href="videos-liste.html" class="flex items-center gap-2 py-1.5 text-xs text-[#888] hover:text-white transition-colors">
+            Liste vidéos
+          </a>
+        </div>
+      </div>
+
+      <!-- Packs -->
+      <a href="packs.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+        <i data-lucide="package" class="w-4 h-4"></i> Packs & Tarifs
+      </a>
+
+      <div class="mt-auto pt-4 border-t border-[#1a1a1a]">
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+          <i data-lucide="settings" class="w-4 h-4"></i> Configuration
+        </a>
+        <a href="../index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#888] hover:bg-[#141414] hover:text-white font-medium transition-colors">
+          <i data-lucide="external-link" class="w-4 h-4"></i> Voir le site
+        </a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="flex-1 flex flex-col overflow-hidden">
+    <!-- TOP BAR -->
+    <header class="h-14 bg-[#0a0a0a] border-b border-[#1a1a1a] px-4 md:px-6 flex items-center justify-between flex-shrink-0">
+      <div class="flex items-center gap-3">
+        <button onclick="toggleSidebar()" class="md:hidden text-[#888] hover:text-white transition-colors p-1" title="Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+        <h1 class="font-jakarta text-base md:text-lg font-bold">Gestion des Vidéos</h1>
+      </div>
+      <div class="flex items-center gap-3">
+        <button class="text-[#666] hover:text-white transition-colors"><i data-lucide="bell" class="w-4 h-4"></i></button>
+        <div class="flex items-center gap-2 md:gap-4">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 md:w-8 md:h-8 bg-brand-orange rounded-full flex items-center justify-center text-xs font-bold">TA</div>
+            <span class="text-xs md:text-sm text-[#888] hidden sm:inline">Thierry Amenyah</span>
+          </div>
+          <a href="login.html" class="text-[#666] hover:text-red-400 transition-colors" title="Déconnexion">
+            <i data-lucide="log-out" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <div class="flex-1 overflow-y-auto p-6 bg-[#070707] flex flex-col gap-6">
+      
+      <!-- SEARCH & FILTERS -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 flex-wrap">
+        <!-- Category filters -->
+        <div class="flex gap-2 flex-wrap items-center" id="category-filters">
+          <button class="v-pill bg-brand-orange/10 border border-brand-orange text-brand-orange px-4 py-1.5 rounded-full text-xs font-semibold" onclick="filterCategory(this,'all')">
+            Tous <span id="count-all" class="bg-brand-orange text-white rounded-full px-1.5 ml-1 text-[9px]">0</span>
+          </button>
+          <button class="v-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors" onclick="filterCategory(this,'Publicité')">Publicité</button>
+          <button class="v-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors" onclick="filterCategory(this,'Événement')">Événement</button>
+          <button class="v-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors" onclick="filterCategory(this,'Reels')">Reels</button>
+          <button class="v-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors" onclick="filterCategory(this,'Corporate')">Corporate</button>
+        </div>
+
+        <div class="flex items-center gap-2 w-full sm:w-auto">
+          <!-- Text search -->
+          <div class="relative flex items-center flex-1 sm:flex-initial">
+            <input type="text" id="search-input" oninput="renderVideos()" placeholder="Rechercher une vidéo..." class="w-full sm:w-auto bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg pl-8 pr-3 py-2 text-xs text-white placeholder:text-[#555] font-jakarta focus:border-brand-orange outline-none">
+            <i data-lucide="search" class="w-3.5 h-3.5 text-[#555] absolute left-2.5"></i>
+          </div>
+          <a href="videos-ajouter.html" class="bg-brand-orange text-white text-xs font-bold px-3.5 py-2 rounded-lg flex items-center gap-1.5 hover:bg-orange-600 transition-colors whitespace-nowrap">
+            <i data-lucide="plus" class="w-3.5 h-3.5"></i> Ajouter
+          </a>
+        </div>
+      </div>
+
+      <!-- VIDEOS GRID -->
+      <div id="videos-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <!-- Dynamically filled -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="hidden flex-col items-center justify-center py-20">
+        <i data-lucide="video" class="w-16 h-16 text-[#222] mb-3"></i>
+        <p class="text-sm font-semibold text-[#888]">Aucune vidéo trouvée</p>
+        <p class="text-xs text-[#555] mt-1">Créez une vidéo ou modifiez les filtres de recherche.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EDIT DRAWER PANEL -->
+  <div id="edit-drawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-[#0a0a0a] border-l border-[#1a1a1a] p-6 overflow-y-auto flex flex-col gap-6 transition-transform duration-300 ease-in-out translate-x-full">
+    <div class="flex justify-between items-center pb-4 border-b border-[#1a1a1a]">
+      <div>
+        <h2 class="font-jakarta text-base font-bold text-white">Modifier la Vidéo</h2>
+        <p class="text-[10px] text-[#555] mt-0.5">Mettez à jour les détails du portfolio</p>
+      </div>
+      <button onclick="closeEditDrawer()" class="text-[#888] hover:text-white p-1" title="Fermer">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <form id="form-edit" onsubmit="updateVideo(event)" class="space-y-4 flex-1">
+      <input type="hidden" id="edit-id">
+      
+      <div>
+        <label for="edit-title" class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Titre de la Vidéo *</label>
+        <input type="text" id="edit-title" required class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3.5 py-2 text-xs text-white focus:border-brand-orange outline-none">
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label for="edit-category" class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Catégorie *</label>
+          <select id="edit-category" required class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-2 text-xs text-white focus:border-brand-orange outline-none">
+            <option value="Publicité">Publicité</option>
+            <option value="Événement">Événement</option>
+            <option value="Reels">Reels</option>
+            <option value="Corporate">Corporate</option>
+          </select>
+        </div>
+        <div>
+          <label for="edit-status" class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Visibilité</label>
+          <select id="edit-status" class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3 py-2 text-xs text-white focus:border-brand-orange outline-none">
+            <option value="visible">Public</option>
+            <option value="archive">Archivé</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="edit-desc" class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Description</label>
+        <textarea id="edit-desc" rows="3" class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3.5 py-2 text-xs text-white focus:border-brand-orange outline-none resize-none"></textarea>
+      </div>
+
+      <div>
+        <label for="edit-url" class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">URL YouTube / Vimeo *</label>
+        <input type="text" id="edit-url" required class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3.5 py-2 text-xs text-white focus:border-brand-orange outline-none">
+      </div>
+
+      <div>
+        <label for="edit-thumbnail" class="block text-[10px] font-bold uppercase tracking-wider text-[#555] mb-1.5">Lien de la Miniature (image)</label>
+        <input type="text" id="edit-thumbnail" class="w-full bg-[#111] border border-[#2a2a2a] rounded-lg px-3.5 py-2 text-xs text-white focus:border-brand-orange outline-none">
+      </div>
+
+      <div class="flex items-center pt-2">
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" id="edit-featured" class="w-4 h-4 rounded text-brand-orange bg-[#111] border-[#2a2a2a] focus:ring-brand-orange">
+          <span class="text-xs font-medium text-white flex items-center gap-1.5">
+            <i data-lucide="star" class="w-3.5 h-3.5 text-brand-gold fill-current"></i> Mettre en avant sur la page d'accueil
+          </span>
+        </label>
+      </div>
+
+      <div class="pt-6 border-t border-[#1a1a1a] flex gap-2 justify-end">
+        <button type="button" onclick="closeEditDrawer()" class="bg-transparent border border-[#2a2a2a] text-[#888] hover:text-white hover:border-[#444] text-xs font-semibold px-4 py-2.5 rounded-lg transition-colors">Annuler</button>
+        <button type="submit" class="bg-brand-orange text-white text-xs font-bold px-5 py-2.5 rounded-lg hover:bg-orange-600 transition-colors">Enregistrer</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="assets/admin-common.js"></script>
+  <script>
+    let activeCat = 'all';
+    let currentDeleteId = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderVideos();
+    });
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (sidebar.classList.contains('-translate-x-full')) {
+        sidebar.classList.remove('-translate-x-full');
+        backdrop.classList.remove('hidden');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+      }
+    }
+
+    function getVideos() {
+      try {
+        return JSON.parse(localStorage.getItem('genesys_videos')) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveVideos(list) {
+      localStorage.setItem('genesys_videos', JSON.stringify(list));
+    }
+
+    function filterCategory(el, val) {
+      document.querySelectorAll('.v-pill').forEach(b => {
+        b.className = 'v-pill bg-transparent border border-[#2a2a2a] text-[#666] px-4 py-1.5 rounded-full text-xs font-semibold hover:border-[#444] hover:text-[#ccc] transition-colors';
+      });
+      el.className = 'v-pill bg-brand-orange/10 border border-brand-orange text-brand-orange px-4 py-1.5 rounded-full text-xs font-semibold';
+      activeCat = val;
+      renderVideos();
+    }
+
+    // Embed parser helper
+    function parseVideoEmbed(url) {
+      if (!url) return null;
+      const ytRegex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
+      const ytMatch = url.match(ytRegex);
+      if (ytMatch && ytMatch[1]) {
+        return `https://www.youtube.com/embed/${ytMatch[1]}`;
+      }
+      const vimeoRegex = /(?:vimeo\.com\/|player\.vimeo\.com\/video\/)([0-9]+)/i;
+      const vimeoMatch = url.match(vimeoRegex);
+      if (vimeoMatch && vimeoMatch[1]) {
+        return `https://player.vimeo.com/video/${vimeoMatch[1]}`;
+      }
+      return null;
+    }
+
+    // Render cards
+    function renderVideos() {
+      const list = getVideos();
+      const grid = document.getElementById('videos-grid');
+      const search = document.getElementById('search-input').value.toLowerCase();
+      
+      document.getElementById('count-all').textContent = list.length;
+      grid.innerHTML = '';
+
+      const filtered = list.filter(item => {
+        const matchesCategory = activeCat === 'all' || item.category === activeCat;
+        const matchesSearch = item.title.toLowerCase().includes(search) || (item.desc && item.desc.toLowerCase().includes(search));
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        document.getElementById('empty-state').classList.remove('hidden');
+        document.getElementById('empty-state').classList.add('flex');
+      } else {
+        document.getElementById('empty-state').classList.add('hidden');
+        document.getElementById('empty-state').classList.remove('flex');
+      }
+
+      // Sort by id desc
+      filtered.sort((a,b) => b.id.localeCompare(a.id));
+
+      filtered.forEach(video => {
+        const card = document.createElement('div');
+        card.className = 'video-card bg-[#0d0d0d] border border-[#1f1f1f] rounded-xl overflow-hidden hover:border-[#333] transition-colors flex flex-col group';
+
+        const isVisible = video.status === 'visible';
+        const statusClass = isVisible ? 'bg-brand-green/15 text-brand-green' : 'bg-[#222] text-[#666]';
+        const statusLabel = isVisible ? 'Visible' : 'Archivé';
+        
+        // Star color if featured
+        const starClass = video.featured ? 'text-brand-gold fill-current' : 'text-[#444] hover:text-brand-gold';
+
+        card.innerHTML = `
+          <!-- Thumbnail Frame -->
+          <div class="relative aspect-video bg-black flex-shrink-0 cursor-pointer overflow-hidden" onclick="playVideo('${video.id}')">
+            <img src="${video.thumbnail}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="${video.title}">
+            <div class="play-overlay absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 transition-opacity">
+              <div class="w-10 h-10 bg-brand-orange rounded-full flex items-center justify-center text-white scale-90 group-hover:scale-100 transition-transform">
+                <i data-lucide="play" class="w-5 h-5 fill-current translate-x-0.5"></i>
+              </div>
+            </div>
+            <span class="absolute top-2 left-2 bg-[#050505]/70 backdrop-blur-md text-[#aaa] text-[9px] font-bold px-2 py-0.5 rounded">
+              ${video.category}
+            </span>
+          </div>
+
+          <!-- Content info -->
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start gap-2 mb-1">
+                <h3 class="text-sm font-semibold text-white group-hover:text-brand-orange transition-colors truncate w-full" title="${video.title}">${video.title}</h3>
+                <button onclick="toggleFeatured('${video.id}')" class="flex-shrink-0 p-0.5" title="Mettre en avant">
+                  <i data-lucide="star" class="w-4 h-4 ${starClass} transition-colors"></i>
+                </button>
+              </div>
+              <p class="text-xs text-[#555] line-clamp-2 leading-relaxed mb-4" title="${video.desc || ''}">${video.desc || 'Pas de description.'}</p>
+            </div>
+
+            <div class="flex items-center justify-between pt-3 border-t border-[#1a1a1a] mt-auto">
+              <span class="${statusClass} text-[9px] font-bold px-2.5 py-0.5 rounded-full inline-block">
+                ${statusLabel}
+              </span>
+              
+              <div class="flex gap-2">
+                <button onclick="openEditDrawer('${video.id}')" class="text-[#555] hover:text-white transition-colors" title="Modifier">
+                  <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+                </button>
+                <button onclick="confirmDelete('${video.id}')" class="text-[#555] hover:text-red-400 transition-colors" title="Supprimer">
+                  <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      lucide.createIcons();
+    }
+
+    // Play video lightbox
+    function playVideo(id) {
+      const list = getVideos();
+      const video = list.find(v => v.id === id);
+      if (!video) return;
+
+      const embedUrl = parseVideoEmbed(video.url);
+      if (!embedUrl) {
+        showToast("Lien vidéo invalide.", "error");
+        return;
+      }
+
+      document.getElementById('lightbox-title').textContent = video.title;
+      // Add autoplay parameter to play immediately
+      document.getElementById('lightbox-iframe').src = `${embedUrl}?autoplay=1`;
+      document.getElementById('lightbox-player').classList.remove('hidden');
+      document.getElementById('lightbox-player').classList.add('flex');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox-player').classList.add('hidden');
+      document.getElementById('lightbox-player').classList.remove('flex');
+      document.getElementById('lightbox-iframe').src = '';
+    }
+
+    // Toggle Featured status
+    function toggleFeatured(id) {
+      let list = getVideos();
+      const idx = list.findIndex(v => v.id === id);
+      if (idx !== -1) {
+        list[idx].featured = !list[idx].featured;
+        saveVideos(list);
+        renderVideos();
+        showToast(list[idx].featured ? "Vidéo mise en vedette !" : "Vidéo retirée de la page d'accueil", "info");
+      }
+    }
+
+    // Delete handlers
+    function confirmDelete(id) {
+      currentDeleteId = id;
+      document.getElementById('delete-modal-backdrop').classList.remove('hidden');
+      document.getElementById('btn-confirm-delete').onclick = () => {
+        executeDelete();
+      };
+    }
+
+    function closeDeleteModal() {
+      document.getElementById('delete-modal-backdrop').classList.add('hidden');
+      currentDeleteId = null;
+    }
+
+    function executeDelete() {
+      if (currentDeleteId) {
+        let list = getVideos();
+        list = list.filter(v => v.id !== currentDeleteId);
+        saveVideos(list);
+        closeDeleteModal();
+        renderVideos();
+        showToast("Vidéo supprimée avec succès !", "success");
+      }
+    }
+
+    // Edit drawer handlers
+    function openEditDrawer(id) {
+      const list = getVideos();
+      const video = list.find(v => v.id === id);
+      if (!video) return;
+
+      document.getElementById('edit-id').value = video.id;
+      document.getElementById('edit-title').value = video.title;
+      document.getElementById('edit-category').value = video.category;
+      document.getElementById('edit-status').value = video.status;
+      document.getElementById('edit-desc').value = video.desc || '';
+      document.getElementById('edit-url').value = video.url;
+      document.getElementById('edit-thumbnail').value = video.thumbnail;
+      document.getElementById('edit-featured').checked = video.featured;
+
+      document.getElementById('edit-drawer').classList.remove('translate-x-full');
+      document.getElementById('drawer-backdrop').classList.remove('hidden');
+    }
+
+    function closeEditDrawer() {
+      document.getElementById('edit-drawer').classList.add('translate-x-full');
+      document.getElementById('drawer-backdrop').classList.add('hidden');
+    }
+
+    function updateVideo(e) {
+      e.preventDefault();
+      const id = document.getElementById('edit-id').value;
+      const title = document.getElementById('edit-title').value.trim();
+      const category = document.getElementById('edit-category').value;
+      const status = document.getElementById('edit-status').value;
+      const desc = document.getElementById('edit-desc').value.trim();
+      const url = document.getElementById('edit-url').value.trim();
+      const thumbnail = document.getElementById('edit-thumbnail').value.trim();
+      const featured = document.getElementById('edit-featured').checked;
+
+      const embedUrl = parseVideoEmbed(url);
+      if (!embedUrl) {
+        showToast("Veuillez entrer une URL YouTube ou Vimeo valide", "error");
+        return;
+      }
+
+      let list = getVideos();
+      const idx = list.findIndex(v => v.id === id);
+      if (idx !== -1) {
+        list[idx] = {
+          ...list[idx],
+          title,
+          category,
+          status,
+          desc,
+          url,
+          thumbnail,
+          featured
+        };
+        saveVideos(list);
+        closeEditDrawer();
+        renderVideos();
+        showToast("Vidéo mise à jour avec succès !", "success");
+      }
+    }
+  </script>
+</body>
+</html>
